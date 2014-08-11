@@ -1,0 +1,287 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:BenchBuddy
+LIBS:LettuceBuddy
+LIBS:HealthyPH-cache
+EELAYER 27 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 7
+Title ""
+Date "11 aug 2014"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Sheet
+S 4700 900  1950 2200
+U 53CA7F21
+F0 "Digital Access" 50
+F1 "DigitalAccess.sch" 50
+F2 "~RESET" I L 4700 2850 60 
+F3 "~DR" O L 4700 2600 60 
+F4 "Temp+" I R 6650 2000 60 
+F5 "Temp-" I R 6650 2150 60 
+F6 "pH_ADC+" I R 6650 1000 60 
+F7 "pH_ADC-" I R 6650 1200 60 
+F8 "V+_WallWart" O R 6650 2950 60 
+F9 "MOSI_ISO" I L 4700 1850 60 
+F10 "MISO_ISO" O L 4700 1550 60 
+F11 "SCLK_ISO" I L 4700 1250 60 
+F12 "~CS_ISO" I L 4700 2150 60 
+$EndSheet
+$Sheet
+S 7250 800  1900 700 
+U 53C9635B
+F0 "pH" 50
+F1 "pH.sch" 50
+F2 "ph_ADC+" I L 7250 1000 60 
+F3 "pH_ADC-" I L 7250 1200 60 
+F4 "V+_WallWart" I L 7250 1400 60 
+F5 "pH_V+(in)" I R 9150 1100 60 
+F6 "pH_VGND" I R 9150 1200 60 
+$EndSheet
+$Sheet
+S 7250 2800 1950 600 
+U 53DB8BC1
+F0 "Wall Wart" 50
+F1 "WallWart.sch" 50
+F2 "V+_WallWart" O L 7250 3150 60 
+$EndSheet
+Wire Wire Line
+	6650 1000 7250 1000
+Wire Wire Line
+	6650 1200 7250 1200
+Wire Wire Line
+	6650 2000 7250 2000
+Wire Wire Line
+	7250 2150 6650 2150
+Wire Wire Line
+	7300 1400 6800 1400
+Wire Wire Line
+	7250 2350 6800 2350
+Wire Wire Line
+	6800 1400 6800 3150
+Wire Wire Line
+	6800 3150 7250 3150
+Connection ~ 6800 2350
+Wire Wire Line
+	6650 2950 6800 2950
+Connection ~ 6800 2950
+$Sheet
+S 800  900  1800 3500
+U 53DCD805
+F0 "Arduino" 50
+F1 "Arduino.sch" 50
+F2 "SCLK" O R 2600 1250 60 
+F3 "MISO" I R 2600 1550 60 
+F4 "MOSI" O R 2600 1850 60 
+F5 "~CS" O R 2600 2150 60 
+F6 "PHPUMPDOWN" O R 2600 3850 60 
+F7 "~RESET" O R 2600 2850 60 
+F8 "~DR" I R 2600 2600 60 
+F9 "V+_ARD" O R 2600 4000 60 
+F10 "GND_ARD" I R 2600 4200 60 
+$EndSheet
+Wire Wire Line
+	2600 2850 4700 2850
+$Sheet
+S 7300 3750 2000 600 
+U 53C2998C
+F0 "Pumps" 50
+F1 "Pumps.sch" 50
+F2 "pHDOWNPump" I L 7300 3850 60 
+F3 "V+_ARD" I L 7300 4000 60 
+F4 "GND_ARD" O L 7300 4200 60 
+F5 "Pump_V+" I R 9300 3950 60 
+F6 "Pump_SW" I R 9300 4150 60 
+$EndSheet
+Wire Wire Line
+	2600 3850 7300 3850
+Wire Wire Line
+	2600 4000 7300 4000
+Wire Wire Line
+	2600 4200 7300 4200
+Wire Notes Line
+	9950 550  9950 3600
+Wire Notes Line
+	9950 3600 4000 3600
+Wire Notes Line
+	4000 3600 4000 600 
+Wire Notes Line
+	4000 600  9950 600 
+Wire Notes Line
+	3000 600  3000 3700
+Wire Notes Line
+	3000 3700 9950 3700
+Wire Notes Line
+	9950 3700 9950 5000
+Wire Notes Line
+	9950 5000 600  5000
+Wire Notes Line
+	600  5000 600  600 
+Wire Notes Line
+	600  600  3000 600 
+Text Notes 2900 4900 0    118  ~ 0
+Arduino +5V
+Text Notes 4300 3500 0    118  ~ 0
+6V - 9V Wall Wart
+$Comp
+L R R6
+U 1 1 53E4B553
+P 3400 1250
+F 0 "R6" V 3480 1250 40  0000 C CNN
+F 1 "499" V 3407 1251 40  0000 C CNN
+F 2 "~" V 3330 1250 30  0000 C CNN
+F 3 "~" H 3400 1250 30  0000 C CNN
+	1    3400 1250
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R7
+U 1 1 53E4B560
+P 3400 1550
+F 0 "R7" V 3480 1550 40  0000 C CNN
+F 1 "499" V 3407 1551 40  0000 C CNN
+F 2 "~" V 3330 1550 30  0000 C CNN
+F 3 "~" H 3400 1550 30  0000 C CNN
+	1    3400 1550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R8
+U 1 1 53E4B566
+P 3400 1850
+F 0 "R8" V 3480 1850 40  0000 C CNN
+F 1 "499" V 3407 1851 40  0000 C CNN
+F 2 "~" V 3330 1850 30  0000 C CNN
+F 3 "~" H 3400 1850 30  0000 C CNN
+	1    3400 1850
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R9
+U 1 1 53E4B56C
+P 3400 2150
+F 0 "R9" V 3480 2150 40  0000 C CNN
+F 1 "499" V 3407 2151 40  0000 C CNN
+F 2 "~" V 3330 2150 30  0000 C CNN
+F 3 "~" H 3400 2150 30  0000 C CNN
+	1    3400 2150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R10
+U 1 1 53E4B572
+P 3400 2600
+F 0 "R10" V 3480 2600 40  0000 C CNN
+F 1 "499" V 3407 2601 40  0000 C CNN
+F 2 "~" V 3330 2600 30  0000 C CNN
+F 3 "~" H 3400 2600 30  0000 C CNN
+	1    3400 2600
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3650 1250 4700 1250
+Wire Wire Line
+	3650 1550 4700 1550
+Wire Wire Line
+	4700 1850 3650 1850
+Wire Wire Line
+	3650 2150 4700 2150
+Wire Wire Line
+	4700 2600 3650 2600
+Wire Wire Line
+	3150 2600 2600 2600
+Wire Wire Line
+	2600 2150 3150 2150
+Wire Wire Line
+	3150 1850 2600 1850
+Wire Wire Line
+	2600 1550 3150 1550
+Wire Wire Line
+	3150 1250 2600 1250
+$Comp
+L CONN_6 P1
+U 1 1 53E7E93F
+P 10900 1350
+F 0 "P1" V 10850 1350 60  0000 C CNN
+F 1 "CONN_6" V 10950 1350 60  0000 C CNN
+F 2 "" H 10900 1350 60  0000 C CNN
+F 3 "" H 10900 1350 60  0000 C CNN
+	1    10900 1350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9150 1200 10550 1200
+$Sheet
+S 7250 1900 1900 600 
+U 53C98328
+F0 "Temperature" 50
+F1 "Temperature.sch" 50
+F2 "V+_WallWart" I L 7250 2350 60 
+F3 "Temp+" O L 7250 2000 60 
+F4 "Temp-" O L 7250 2150 60 
+F5 "Temp" O R 9150 2350 60 
+F6 "pH_V+" I R 9150 2150 60 
+$EndSheet
+Wire Wire Line
+	9150 2150 10000 2150
+Wire Wire Line
+	10000 2150 10000 1300
+Wire Wire Line
+	10000 1300 10550 1300
+Wire Wire Line
+	9150 2350 10100 2350
+Wire Wire Line
+	10100 2350 10100 1400
+Wire Wire Line
+	10100 1400 10550 1400
+Wire Wire Line
+	10550 1100 9150 1100
+Wire Wire Line
+	9300 3950 10300 3950
+Wire Wire Line
+	10300 3950 10300 1500
+Wire Wire Line
+	10300 1500 10550 1500
+Wire Wire Line
+	10550 1600 10450 1600
+Wire Wire Line
+	10450 1600 10450 4150
+Wire Wire Line
+	10450 4150 9300 4150
+$EndSCHEMATC

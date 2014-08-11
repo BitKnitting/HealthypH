@@ -1,0 +1,23 @@
+EESchema-DOCLIB  Version 2.0  Date: 8/5/2014 5:08:54 AM
+#
+$CMP ARD_ANALOG
+D ymbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP ARD_DIGITAL
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP ARD_DIGITAL1
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP ARD_PWR
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+#End Doc Library

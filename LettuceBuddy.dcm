@@ -1,0 +1,29 @@
+EESchema-DOCLIB  Version 2.0  Date: 8/6/2014 10:38:05 AM
+#
+$CMP ARD_ANALOG
+D ymbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP ARD_DIGITAL
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP ARD_DIGITAL1
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP ARD_PWR
+D Symbole general de connecteur
+K CONN
+$ENDCMP
+#
+$CMP LMV341
+D Dual Op amp (low power)
+K ampliop
+F analog-dev/op275.pdf
+$ENDCMP
+#
+#End Doc Library

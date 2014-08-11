@@ -1,0 +1,149 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:BenchBuddy
+LIBS:LettuceBuddy
+LIBS:HealthPH-cache
+EELAYER 27 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 7
+Title ""
+Date "5 aug 2014"
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Sheet
+S 7300 3750 2000 600 
+U 53C2998C
+F0 "Pumps" 50
+F1 "Pumps.sch" 50
+F2 "pHDOWNPump" I L 7300 4000 60 
+F3 "V+_ARD" I L 7300 4200 60 
+$EndSheet
+$Sheet
+S 4700 900  1950 2200
+U 53CA7F21
+F0 "Digital Access" 50
+F1 "DigitalAccess.sch" 50
+F2 "~RESET" I L 4700 2850 60 
+F3 "~DR" O L 4700 2600 60 
+F4 "Temp+" I R 6650 2000 60 
+F5 "Temp-" I R 6650 2150 60 
+F6 "pH_ADC+" I R 6650 1000 60 
+F7 "pH_ADC-" I R 6650 1200 60 
+F8 "V+_WallWart" O R 6650 2950 60 
+F9 "MOSI_ISO" I L 4700 1850 60 
+F10 "MISO_ISO" O L 4700 1550 60 
+F11 "SCLK_ISO" I L 4700 1250 60 
+F12 "~CS_ISO" I L 4700 2150 60 
+$EndSheet
+$Sheet
+S 7250 800  1900 700 
+U 53C9635B
+F0 "pH" 50
+F1 "pH.sch" 50
+F2 "ph_ADC+" I L 7250 1000 60 
+F3 "pH_ADC-" I L 7250 1200 60 
+F4 "V+_WallWart" I L 7250 1400 60 
+$EndSheet
+$Sheet
+S 7250 2800 1950 600 
+U 53DB8BC1
+F0 "Wall Wart" 50
+F1 "WallWart.sch" 50
+F2 "V+_WallWart" O L 7250 3150 60 
+$EndSheet
+Wire Wire Line
+	6650 1000 7250 1000
+Wire Wire Line
+	6650 1200 7250 1200
+Wire Wire Line
+	6650 2000 7250 2000
+Wire Wire Line
+	7250 2150 6650 2150
+Wire Wire Line
+	7300 1400 6800 1400
+Wire Wire Line
+	7250 2350 6800 2350
+Wire Wire Line
+	6800 1400 6800 3150
+Wire Wire Line
+	6800 3150 7250 3150
+Connection ~ 6800 2350
+$Sheet
+S 7250 1900 1900 600 
+U 53C98328
+F0 "Temperature" 50
+F1 "Temperature.sch" 50
+F2 "V+_WallWart" I L 7250 2350 60 
+F3 "Temp+" O L 7250 2000 60 
+F4 "Temp-" O L 7250 2150 60 
+$EndSheet
+Wire Wire Line
+	6650 2950 6800 2950
+Connection ~ 6800 2950
+Wire Wire Line
+	2600 4000 7300 4000
+Wire Wire Line
+	2600 4200 7300 4200
+$Sheet
+S 800  900  1800 3500
+U 53DCD805
+F0 "Arduino" 50
+F1 "Arduino.sch" 50
+F2 "SCLK" O R 2600 1250 60 
+F3 "MISO" I R 2600 1550 60 
+F4 "MOSI" O R 2600 1850 60 
+F5 "~CS" O R 2600 2150 60 
+F6 "PHPUMPDOWN" O R 2600 4000 60 
+F7 "~RESET" O R 2600 2850 60 
+F8 "~DR" I R 2600 2600 60 
+F9 "V+_ARD" O R 2600 4200 60 
+$EndSheet
+Wire Wire Line
+	2600 2600 4700 2600
+Wire Wire Line
+	2600 2850 4700 2850
+Wire Wire Line
+	2600 2150 4700 2150
+Wire Wire Line
+	2600 1850 4700 1850
+Wire Wire Line
+	2600 1550 4700 1550
+Wire Wire Line
+	2600 1250 4700 1250
+$EndSCHEMATC
