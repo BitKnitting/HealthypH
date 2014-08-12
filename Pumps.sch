@@ -36,9 +36,9 @@ EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 7
+Sheet 7 7
 Title ""
-Date "11 aug 2014"
+Date "12 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -86,7 +86,7 @@ $EndComp
 Wire Wire Line
 	4700 1150 4700 1300
 Text HLabel 2000 2650 0    59   Input ~ 0
-pHDOWNPump
+DownPump
 $Comp
 L GND #PWR12
 U 1 1 53DC3138
@@ -122,7 +122,7 @@ $EndComp
 Wire Wire Line
 	1750 1150 4700 1150
 Text Label 4050 2350 0    60   ~ 0
-SW-PUMP
+SW-DownPump
 Text Label 4700 1900 0    60   ~ 0
 Pump-V+
 Text Label 3450 2650 0    60   ~ 0
@@ -153,7 +153,73 @@ Wire Wire Line
 Text Label 3900 3000 0    60   ~ 0
 Pump-GND
 Text HLabel 6000 2150 2    60   Input ~ 0
-Pump_V+
+V+_DownPump
 Text HLabel 6000 2350 2    60   Input ~ 0
-Pump_SW
+SW_DownPump
+$Comp
+L TIP120 Q?
+U 1 1 53EA6E0F
+P 3800 4150
+F 0 "Q?" H 3750 4000 40  0000 R CNN
+F 1 "TIP122" H 3800 4300 40  0000 R CNN
+F 2 "TO220" H 3680 4255 29  0001 C CNN
+F 3 "~" H 3800 4150 60  0000 C CNN
+	1    3800 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 53EA6E15
+P 3100 4150
+F 0 "R?" V 3180 4150 40  0000 C CNN
+F 1 "2.2K" V 3107 4151 40  0000 C CNN
+F 2 "~" V 3030 4150 30  0000 C CNN
+F 3 "~" H 3100 4150 30  0000 C CNN
+	1    3100 4150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3350 4150 3600 4150
+Wire Wire Line
+	2000 4150 2850 4150
+Text HLabel 2000 4150 0    59   Input ~ 0
+UpPump
+$Comp
+L GND #PWR?
+U 1 1 53EA6E1E
+P 3900 4750
+F 0 "#PWR?" H 3900 4750 30  0001 C CNN
+F 1 "GND" H 3900 4680 30  0001 C CNN
+F 2 "" H 3900 4750 60  0000 C CNN
+F 3 "" H 3900 4750 60  0000 C CNN
+	1    3900 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 3850 6000 3850
+Wire Wire Line
+	3900 3850 3900 3950
+Text Label 4050 3850 0    60   ~ 0
+SW_UpPump
+Text Label 3450 4150 0    60   ~ 0
+PUMP
+Wire Wire Line
+	3900 4350 3900 4750
+Text Label 3900 4500 0    60   ~ 0
+Pump-GND
+Text HLabel 6000 3850 2    60   Input ~ 0
+SW_UpPump
+Wire Wire Line
+	5300 2150 5300 3500
+Wire Wire Line
+	5300 3500 6000 3500
+Connection ~ 5300 2150
+Text HLabel 6000 3500 2    60   Input ~ 0
+V+_UpPump
+Wire Wire Line
+	2550 3150 2550 4600
+Wire Wire Line
+	2550 4600 3900 4600
+Connection ~ 3900 4600
+Connection ~ 2550 3150
 $EndSCHEMATC

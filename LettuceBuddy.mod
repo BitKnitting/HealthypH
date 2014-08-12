@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  8/11/2014 3:19:40 AM
+PCBNEW-LibModule-V1  8/12/2014 1:17:43 PM
 # encoding utf-8
 Units mm
 $INDEX
@@ -8,6 +8,7 @@ ArduinoLettuceBuddy
 LB_2CONN
 LB_2TB
 LB_6PosTB
+LB_8PosTB
 LB_BNC
 LB_BarrelJack
 LB_Crystal
@@ -677,6 +678,75 @@ Ne 0 ""
 Po 17.5 0
 $EndPAD
 $EndMODULE LB_6PosTB
+$MODULE LB_8PosTB
+Po 0 0 0 15 53EA765D 00000000 ~~
+Li LB_8PosTB
+Sc 0
+AR /53EA8DDA
+Op 0 0 0
+T0 1.75 1.3 1 1 0 0.15 N V 21 N "P1"
+T1 22.75 5.9 1 1 0 0.15 N V 21 N "CONN_SENSORS"
+DS 0 0 29 0 0.15 21
+DS 29 0 29 7 0.15 21
+DS 29 7 0 7 0.15 21
+DS 0 7 0 0 0.15 21
+$PAD
+Sh "1" C 1.1 1.1 0 0 0
+Dr 0.9 0 0
+At STD N 00E0FFFF
+Ne 6 "/pH/pH_V+(in)"
+Po 2.27 3.4
+$EndPAD
+$PAD
+Sh "2" C 1.1 1.1 0 0 0
+Dr 0.9 0 0
+At STD N 00E0FFFF
+Ne 2 "/Digital Access/pH_ADC+"
+Po 5.77 3.4
+$EndPAD
+$PAD
+Sh "3" C 1.1 1.1 0 0 0
+Dr 0.9 0 0
+At STD N 00E0FFFF
+Ne 1 "+5V"
+Po 9.27 3.4
+$EndPAD
+$PAD
+Sh "4" C 1.1 1.1 0 0 0
+Dr 0.9 0 0
+At STD N 00E0FFFF
+Ne 5 "/Temperature/Temp"
+Po 12.77 3.4
+$EndPAD
+$PAD
+Sh "5" C 1.1 1.1 0 0 0
+Dr 0.9 0 0
+At STD N 00E0FFFF
+Ne 4 "/Pumps/V+_DownPump"
+Po 16.27 3.4
+$EndPAD
+$PAD
+Sh "6" C 1.1 1.1 0 0 0
+Dr 0.9 0 0
+At STD N 00E0FFFF
+Ne 3 "/Pumps/SW_DownPump"
+Po 19.77 3.4
+$EndPAD
+$PAD
+Sh "7" C 1 1 0 0 0
+Dr 0.65 0 0
+At STD N 00E0FFFF
+Ne 0 ""
+Po 22.75 3.5
+$EndPAD
+$PAD
+Sh "8" C 1 1 0 0 0
+Dr 0.65 0 0
+At STD N 00E0FFFF
+Ne 0 ""
+Po 26.25 3.5
+$EndPAD
+$EndMODULE LB_8PosTB
 $MODULE LB_BNC
 Po 0 0 0 15 53E21EB0 00000000 ~~
 Li LB_BNC
