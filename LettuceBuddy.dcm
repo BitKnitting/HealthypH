@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 8/6/2014 10:38:05 AM
+EESchema-DOCLIB  Version 2.0  Date: 8/14/2014 5:13:43 AM
 #
 $CMP ARD_ANALOG
 D ymbole general de connecteur
@@ -20,7 +20,19 @@ D Symbole general de connecteur
 K CONN
 $ENDCMP
 #
+$CMP LMP7701
+D Dual Op amp (low power)
+K ampliop
+F analog-dev/op275.pdf
+$ENDCMP
+#
 $CMP LMV341
+D Dual Op amp (low power)
+K ampliop
+F analog-dev/op275.pdf
+$ENDCMP
+#
+$CMP MCP6241
 D Dual Op amp (low power)
 K ampliop
 F analog-dev/op275.pdf

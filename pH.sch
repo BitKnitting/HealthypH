@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 7
 Title ""
-Date "12 aug 2014"
+Date "14 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -131,17 +131,6 @@ Text Label 5300 3400 0    60   ~ 0
 VGND
 Text Label 4450 3100 0    60   ~ 0
 V+(in)
-$Comp
-L LMV341 U1
-U 1 1 53E268A2
-P 3800 3200
-F 0 "U1" H 3800 3350 60  0000 L CNN
-F 1 "LMV341" H 3800 3050 60  0000 L CNN
-F 2 "" H 3800 3200 60  0000 C CNN
-F 3 "" H 3800 3200 60  0000 C CNN
-	1    3800 3200
-	-1   0    0    -1  
-$EndComp
 Text Label 3900 2750 0    60   ~ 0
 V+
 Text Label 3900 3600 0    60   ~ 0
@@ -158,4 +147,15 @@ pH_V+(in)
 Text HLabel 4800 3300 2    60   Input ~ 0
 pH_VGND
 Connection ~ 4450 3300
+$Comp
+L MCP6241 U1
+U 1 1 53ECAB65
+P 3800 3200
+F 0 "U1" H 3800 3350 60  0000 L CNN
+F 1 "MCP6241" H 3800 3050 60  0000 L CNN
+F 2 "~" H 3800 3200 60  0000 C CNN
+F 3 "~" H 3800 3200 60  0000 C CNN
+	1    3800 3200
+	-1   0    0    -1  
+$EndComp
 $EndSCHEMATC

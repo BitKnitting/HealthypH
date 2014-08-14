@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 7
 Title ""
-Date "12 aug 2014"
+Date "14 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -276,10 +276,10 @@ Wire Wire Line
 Wire Wire Line
 	2700 4600 7300 4600
 $Comp
-L CONN_8 P?
+L CONN_8 P1
 U 1 1 53EA8DDA
 P 11050 1450
-F 0 "P?" V 11000 1450 60  0000 C CNN
+F 0 "P1" V 11000 1450 60  0000 C CNN
 F 1 "CONN_8" V 11100 1450 60  0000 C CNN
 F 2 "" H 11050 1450 60  0000 C CNN
 F 3 "" H 11050 1450 60  0000 C CNN
