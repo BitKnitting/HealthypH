@@ -1,4 +1,4 @@
-EESchema-DOCLIB  Version 2.0  Date: 8/14/2014 4:37:26 AM
+EESchema-DOCLIB  Version 2.0  Date: 8/19/2014 9:22:15 AM
 #
 $CMP ARD_ANALOG
 D ymbole general de connecteur
@@ -27,6 +27,12 @@ F analog-dev/op275.pdf
 $ENDCMP
 #
 $CMP LMV341
+D Dual Op amp (low power)
+K ampliop
+F analog-dev/op275.pdf
+$ENDCMP
+#
+$CMP MCP6241
 D Dual Op amp (low power)
 K ampliop
 F analog-dev/op275.pdf

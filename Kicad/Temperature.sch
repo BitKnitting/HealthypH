@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 7
 Title ""
-Date "14 aug 2014"
+Date "19 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -51,10 +51,10 @@ V+_WallWart
 Wire Wire Line
 	1950 1500 5400 1500
 $Comp
-L AGND #PWR11
+L AGND #PWR012
 U 1 1 53CE414D
 P 5400 3450
-F 0 "#PWR11" H 5400 3450 40  0001 C CNN
+F 0 "#PWR012" H 5400 3450 40  0001 C CNN
 F 1 "AGND" H 5400 3380 50  0000 C CNN
 F 2 "" H 5400 3450 60  0000 C CNN
 F 3 "" H 5400 3450 60  0000 C CNN

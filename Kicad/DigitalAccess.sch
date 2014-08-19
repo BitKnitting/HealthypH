@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 7
 Title ""
-Date "14 aug 2014"
+Date "19 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -54,8 +54,6 @@ Text HLabel 3000 3350 0    60   Input ~ 0
 SCLK_ISO
 Text HLabel 3000 3500 0    60   Input ~ 0
 ~CS_ISO
-Text Notes 6950 1750 0    60   ~ 0
-16-24Bit ADC
 $Comp
 L MCP3901 U2
 U 1 1 52578016
@@ -68,17 +66,6 @@ F 3 "" H 6150 3250 60  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L +5V #PWR4
-U 1 1 5257A5AA
-P 6100 950
-F 0 "#PWR4" H 6100 1040 20  0001 C CNN
-F 1 "+5V" H 6100 1040 30  0000 C CNN
-F 2 "~" H 6100 950 60  0000 C CNN
-F 3 "~" H 6100 950 60  0000 C CNN
-	1    6100 950 
-	1    0    0    -1  
-$EndComp
-$Comp
 L C C8
 U 1 1 5257A6DE
 P 7000 1350
@@ -87,7 +74,7 @@ F 1 "10u" H 7006 1265 40  0000 L CNN
 F 2 "SM0805" H 7038 1200 30  0000 C CNN
 F 3 "~" H 7000 1350 60  0000 C CNN
 	1    7000 1350
-	0    -1   -1   0   
+	-1   0    0    1   
 $EndComp
 $Comp
 L C C7
@@ -100,15 +87,13 @@ F 3 "~" H 5100 1400 60  0000 C CNN
 	1    5100 1400
 	0    -1   -1   0   
 $EndComp
-Text HLabel 3000 3050 0    60   Input ~ 0
-~RESET
 Text HLabel 3000 2700 0    60   Output ~ 0
 ~DR
 $Comp
-L AGND #PWR5
+L AGND #PWR01
 U 1 1 527EEF67
 P 6100 4700
-F 0 "#PWR5" H 6100 4700 40  0001 C CNN
+F 0 "#PWR01" H 6100 4700 40  0001 C CNN
 F 1 "AGND" H 6100 4630 50  0000 C CNN
 F 2 "~" H 6100 4700 60  0000 C CNN
 F 3 "~" H 6100 4700 60  0000 C CNN
@@ -116,10 +101,10 @@ F 3 "~" H 6100 4700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L AGND #PWR3
+L AGND #PWR02
 U 1 1 527EEF6D
 P 5300 4700
-F 0 "#PWR3" H 5300 4700 40  0001 C CNN
+F 0 "#PWR02" H 5300 4700 40  0001 C CNN
 F 1 "AGND" H 5300 4630 50  0000 C CNN
 F 2 "~" H 5300 4700 60  0000 C CNN
 F 3 "~" H 5300 4700 60  0000 C CNN
@@ -127,10 +112,10 @@ F 3 "~" H 5300 4700 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L AGND #PWR2
+L AGND #PWR03
 U 1 1 527EEF73
 P 4750 1500
-F 0 "#PWR2" H 4750 1500 40  0001 C CNN
+F 0 "#PWR03" H 4750 1500 40  0001 C CNN
 F 1 "AGND" H 4750 1430 50  0000 C CNN
 F 2 "~" H 4750 1500 60  0000 C CNN
 F 3 "~" H 4750 1500 60  0000 C CNN
@@ -138,14 +123,14 @@ F 3 "~" H 4750 1500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L AGND #PWR6
+L AGND #PWR04
 U 1 1 527EEF79
-P 7400 1450
-F 0 "#PWR6" H 7400 1450 40  0001 C CNN
-F 1 "AGND" H 7400 1380 50  0000 C CNN
-F 2 "~" H 7400 1450 60  0000 C CNN
-F 3 "~" H 7400 1450 60  0000 C CNN
-	1    7400 1450
+P 7200 1700
+F 0 "#PWR04" H 7200 1700 40  0001 C CNN
+F 1 "AGND" H 7200 1630 50  0000 C CNN
+F 2 "~" H 7200 1700 60  0000 C CNN
+F 3 "~" H 7200 1700 60  0000 C CNN
+	1    7200 1700
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -193,18 +178,16 @@ F 3 "~" H 3800 2000 60  0000 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L AGND #PWR1
+L AGND #PWR05
 U 1 1 53CD7905
 P 3750 2250
-F 0 "#PWR1" H 3750 2250 40  0001 C CNN
+F 0 "#PWR05" H 3750 2250 40  0001 C CNN
 F 1 "AGND" H 3750 2180 50  0000 C CNN
 F 2 "~" H 3750 2250 60  0000 C CNN
 F 3 "~" H 3750 2250 60  0000 C CNN
 	1    3750 2250
 	1    0    0    -1  
 $EndComp
-Text Notes 6400 1050 0    60   ~ 0
-Proper decoupling capacitors (0.1 µF ceramic and 10 µF tantalum)\nshould bemounted as close as possible to the AVDD pin
 $Comp
 L C C6
 U 1 1 53CE351B
@@ -214,7 +197,7 @@ F 1 ".1u" H 6506 1265 40  0000 L CNN
 F 2 "SM0805" H 6538 1200 30  0000 C CNN
 F 3 "~" H 6500 1350 60  0000 C CNN
 	1    6500 1350
-	0    -1   -1   0   
+	-1   0    0    1   
 $EndComp
 Text HLabel 7900 3150 2    60   Input ~ 0
 pH_ADC+
@@ -235,7 +218,7 @@ F 3 "~" H 3200 2200 30  0000 C CNN
 	1    3200 2200
 	1    0    0    -1  
 $EndComp
-Text HLabel 6100 1000 0    60   Output ~ 0
+Text HLabel 5650 1000 0    60   Output ~ 0
 V+_WallWart
 Wire Wire Line
 	3000 3200 4400 3200
@@ -245,11 +228,6 @@ Wire Wire Line
 	3000 3500 4400 3500
 Wire Wire Line
 	3000 2850 4400 2850
-Wire Wire Line
-	6100 950  6100 1650
-Wire Wire Line
-	6100 1350 6300 1350
-Connection ~ 6100 1350
 Wire Wire Line
 	5300 1400 5450 1400
 Connection ~ 5400 1400
@@ -262,14 +240,9 @@ Wire Wire Line
 Wire Wire Line
 	6100 4450 6100 4700
 Wire Wire Line
-	3000 3050 4400 3050
-Wire Wire Line
 	3000 2700 4400 2700
 Wire Wire Line
 	5400 1400 5400 1650
-Wire Wire Line
-	6050 1400 6100 1400
-Connection ~ 6100 1400
 Wire Wire Line
 	4000 2000 4400 2000
 Wire Wire Line
@@ -294,12 +267,6 @@ Wire Wire Line
 	3750 2200 3750 2250
 Connection ~ 3550 2200
 Wire Wire Line
-	6700 1350 6800 1350
-Wire Wire Line
-	7200 1350 7400 1350
-Wire Wire Line
-	7400 1350 7400 1450
-Wire Wire Line
 	7250 3150 7900 3150
 Wire Wire Line
 	7250 3250 7900 3250
@@ -315,16 +282,6 @@ Wire Wire Line
 Wire Wire Line
 	3200 1600 3200 1950
 Connection ~ 5400 1600
-Text Label 6100 1650 0    60   ~ 0
-VDD
-Text Label 5400 1500 0    60   ~ 0
-VDD
-Text Label 3850 1600 0    60   ~ 0
-DR
-Text Label 4150 2700 0    60   ~ 0
-DR
-Text Notes 8050 1800 0    60   ~ 0
-For optimal performance, bypass capacitances should\nbe connected between this pin and AGND at all times\neven when the internal voltage reference is used.\nHowever, these capacitors are not mandatory to\nensure proper operation.
 $Comp
 L C C1
 U 1 1 53E3E761
@@ -361,10 +318,10 @@ Wire Wire Line
 Wire Wire Line
 	8450 2900 8450 2800
 $Comp
-L AGND #PWR7
+L AGND #PWR06
 U 1 1 53E3E82B
 P 8300 3000
-F 0 "#PWR7" H 8300 3000 40  0001 C CNN
+F 0 "#PWR06" H 8300 3000 40  0001 C CNN
 F 1 "AGND" H 8300 2930 50  0000 C CNN
 F 2 "~" H 8300 3000 60  0000 C CNN
 F 3 "~" H 8300 3000 60  0000 C CNN
@@ -374,12 +331,47 @@ $EndComp
 Wire Wire Line
 	8300 3000 8300 2900
 Connection ~ 8300 2900
-Text Label 7350 2300 0    60   ~ 0
-RFIN+
-Text Label 4200 2000 0    60   ~ 0
-OSC1
-Text Label 4200 2600 0    60   ~ 0
-OSC2
-Text Label 3050 2700 0    60   ~ 0
-DR
+Wire Wire Line
+	5650 1000 6100 1000
+Wire Wire Line
+	6100 1000 6100 1650
+Wire Wire Line
+	6050 1400 6100 1400
+Connection ~ 6100 1400
+Wire Wire Line
+	7250 2450 7450 2450
+Wire Wire Line
+	7450 2450 7450 2650
+$Comp
+L AGND #PWR07
+U 1 1 53F231BC
+P 7450 2650
+F 0 "#PWR07" H 7450 2650 40  0001 C CNN
+F 1 "AGND" H 7450 2580 50  0000 C CNN
+F 2 "" H 7450 2650 60  0000 C CNN
+F 3 "" H 7450 2650 60  0000 C CNN
+	1    7450 2650
+	1    0    0    -1  
+$EndComp
+Text HLabel 3000 3050 0    60   Input ~ 0
+~RESET
+Wire Wire Line
+	3000 3050 4400 3050
+Wire Wire Line
+	7000 1150 7000 1050
+Wire Wire Line
+	7000 1050 6100 1050
+Connection ~ 6100 1050
+Wire Wire Line
+	6500 1150 6500 1050
+Connection ~ 6500 1050
+Wire Wire Line
+	6500 1550 6500 1600
+Wire Wire Line
+	6500 1600 7200 1600
+Wire Wire Line
+	7000 1550 7000 1600
+Connection ~ 7000 1600
+Wire Wire Line
+	7200 1600 7200 1700
 $EndSCHEMATC

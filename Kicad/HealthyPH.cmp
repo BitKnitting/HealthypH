@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 8/14/2014 4:41:01 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 8/19/2014 9:16:47 AM
 
 BeginCmp
 TimeStamp = /53DCD805/53E0F48C;
@@ -122,7 +122,7 @@ EndCmp
 BeginCmp
 TimeStamp = /53DB8BC1/53E89338;
 Reference = P2;
-ValeurCmp = V+_WallWart;
+ValeurCmp = WallWartExtension;
 IdModule  = LB_2TB;
 EndCmp
 
@@ -155,9 +155,9 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C9635B/53D7D144;
+TimeStamp = /53C9635B/53F37946;
 Reference = R3;
-ValeurCmp = 10K;
+ValeurCmp = R;
 IdModule  = SM0805;
 EndCmp
 
@@ -218,9 +218,9 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C9635B/53ECA021;
+TimeStamp = /53C9635B/53ECAB65;
 Reference = U1;
-ValeurCmp = LMP7701;
+ValeurCmp = MCP6241;
 IdModule  = SOT23-5;
 EndCmp
 
@@ -232,8 +232,8 @@ IdModule  = LB_MCP3901;
 EndCmp
 
 BeginCmp
-TimeStamp = /53DB8BC1/53DB8BFE;
-Reference = U5;
+TimeStamp = /53DB8BC1/53F3809A;
+Reference = U3;
 ValeurCmp = LM7805;
 IdModule  = LB_SOT89_3;
 EndCmp

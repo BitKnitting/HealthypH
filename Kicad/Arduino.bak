@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 7
 Title ""
-Date "14 aug 2014"
+Date "19 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -66,8 +66,6 @@ Text HLabel 2500 3550 0    60   Output ~ 0
 PumpDown
 Text HLabel 6400 3800 2    60   Output ~ 0
 ~RESET
-Wire Wire Line
-	5750 3800 6400 3800
 Text HLabel 6450 4200 2    60   Input ~ 0
 ~DR
 Wire Wire Line
@@ -97,4 +95,6 @@ Text HLabel 2500 3750 0    60   Output ~ 0
 PumpUp
 Wire Wire Line
 	2500 3750 3550 3750
+Wire Wire Line
+	5750 3800 6400 3800
 $EndSCHEMATC
