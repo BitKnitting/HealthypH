@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  8/20/2014 2:36:33 AM
+PCBNEW-LibModule-V1  8/20/2014 2:17:57 PM
 # encoding utf-8
 Units mm
 $INDEX
@@ -584,7 +584,7 @@ Po -2.6 -7.2
 $EndPAD
 $EndMODULE LB_2CONN
 $MODULE LB_2TB
-Po 0 0 0 15 53F46A5C 00000000 ~~
+Po 0 0 0 15 53F4D2AA 00000000 ~~
 Li LB_2TB
 Cd module 2 pin (trou 6 mm)
 Kw DEV
@@ -598,17 +598,17 @@ DS 7.62 0 7.62 -2.5 0.15 21
 DS 7.62 -2.5 0 -2.5 0.15 21
 DS 0 -2.5 0 0 0.15 21
 $PAD
-Sh "1" C 0.69 0.69 0 0 0
-Dr 0.34 0 0
+Sh "1" C 1.016 1.016 0 0 0
+Dr 0.65 0 0
 At STD N 00E0FFFF
-Ne 1 "AGND"
+Ne 2 "AGND"
 Po 2.54 -1.25
 $EndPAD
 $PAD
-Sh "2" C 0.69 0.69 0 0 0
-Dr 0.34 0 0
+Sh "2" C 1.016 1.016 0 0 0
+Dr 0.65 0 0
 At STD N 00E0FFFF
-Ne 0 ""
+Ne 1 "/Digital Access/V+_WallWart"
 Po 5.1 -1.24
 $EndPAD
 $SHAPE3D
@@ -680,7 +680,7 @@ Po 17.5 0
 $EndPAD
 $EndMODULE LB_6PosTB
 $MODULE LB_8PosTB
-Po 0 0 0 15 53F46BFB 00000000 ~~
+Po 0 0 0 15 53F51077 00000000 ~~
 Li LB_8PosTB
 Sc 0
 AR /53EA8DDA
@@ -692,57 +692,57 @@ DS 29 0 29 7 0.15 21
 DS 29 7 0 7 0.15 21
 DS 0 7 0 0 0.15 21
 $PAD
-Sh "1" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "1" C 1.778 1.778 0 0 0
+Dr 1 0 0
 At STD N 00E0FFFF
 Ne 7 "/pH/pH_V+(in)"
 Po 2.27 3.4
 $EndPAD
 $PAD
-Sh "2" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "2" C 1.778 1.778 0 0 0
+Dr 1 0 0
 At STD N 00E0FFFF
 Ne 2 "/Digital Access/pH_ADC+"
 Po 5.77 3.4
 $EndPAD
 $PAD
-Sh "3" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "3" C 1.778 1.778 0 0 0
+Dr 1 0 0
 At STD N 00E0FFFF
 Ne 1 "/Digital Access/V+_WallWart"
 Po 9.27 3.4
 $EndPAD
 $PAD
-Sh "4" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "4" C 1.778 1.778 0 0 0
+Dr 0.9906 0 0
 At STD N 00E0FFFF
 Ne 6 "/Temperature/Temp"
 Po 12.77 3.4
 $EndPAD
 $PAD
-Sh "5" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "5" C 1.778 1.778 0 0 0
+Dr 1 0 0
 At STD N 00E0FFFF
 Ne 5 "/Pumps/V+_DownPump"
 Po 16.27 3.4
 $EndPAD
 $PAD
-Sh "6" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "6" C 1.778 1.778 0 0 0
+Dr 1 0 0
 At STD N 00E0FFFF
 Ne 3 "/Pumps/SW_DownPump"
 Po 19.77 3.4
 $EndPAD
 $PAD
-Sh "7" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "7" C 1.778 1.778 0 0 0
+Dr 1 0 0
 At STD N 00E0FFFF
 Ne 5 "/Pumps/V+_DownPump"
 Po 22.75 3.5
 $EndPAD
 $PAD
-Sh "8" C 1.3 1.3 0 0 0
-Dr 0.9 0 0
+Sh "8" C 1.778 1.778 0 0 0
+Dr 1 0 0
 At STD N 00E0FFFF
 Ne 4 "/Pumps/SW_UpPump"
 Po 26.25 3.5
@@ -822,7 +822,7 @@ Po 11.2 2.5
 $EndPAD
 $EndMODULE LB_BarrelJack
 $MODULE LB_Crystal
-Po 0 0 0 15 53F4694A 00000000 ~~
+Po 0 0 0 15 53F4D005 00000000 ~~
 Li LB_Crystal
 Sc 0
 AR /53CA7F21/53CAF696
@@ -838,15 +838,15 @@ DS 0.4 0 11.1 0 0.15 21
 DS 11.5 -0.6 11.5 -4.5 0.15 21
 DS 11.1 -5 0.5 -5 0.15 21
 $PAD
-Sh "1" C 0.69 0.69 0 0 0
-Dr 0.34 0 0
+Sh "1" C 1.27 1.27 0 0 0
+Dr 0.9 0 0
 At STD N 00E0FFFF
 Ne 2 "N-0000031"
 Po 3.3 -2.6
 $EndPAD
 $PAD
-Sh "2" C 0.69 0.69 0 0 0
-Dr 0.34 0 0
+Sh "2" C 1.27 1.27 0 0 0
+Dr 0.9 0 0
 At STD N 00E0FFFF
 Ne 1 "N-0000027"
 Po 8.18 -2.6

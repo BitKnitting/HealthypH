@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 8/19/2014 9:16:47 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 8/20/2014 9:43:35 AM
 
 BeginCmp
 TimeStamp = /53DCD805/53E0F48C;
@@ -232,9 +232,9 @@ IdModule  = LB_MCP3901;
 EndCmp
 
 BeginCmp
-TimeStamp = /53DB8BC1/53F3809A;
+TimeStamp = /53DB8BC1/53F37E5C;
 Reference = U3;
-ValeurCmp = LM7805;
+ValeurCmp = MC78L05;
 IdModule  = LB_SOT89_3;
 EndCmp
 

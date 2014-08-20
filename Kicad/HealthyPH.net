@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source "//psf/Home/Documents/Lettuce Buddy HW/HealthyPH/Kicad/HealthyPH.sch")
-    (date "8/20/2014 2:42:41 AM")
+    (date "8/20/2014 10:34:40 AM")
     (tool "eeschema (2013-07-07 BZR 4022)-stable"))
   (components
     (comp (ref R6)
@@ -105,7 +105,7 @@
       (sheetpath (names /pH/) (tstamps /53C9635B/))
       (tstamp 53ECAB65))
     (comp (ref R3)
-      (value R)
+      (value 10K)
       (libsource (lib device) (part R))
       (sheetpath (names /pH/) (tstamps /53C9635B/))
       (tstamp 53F37946))
