@@ -36,9 +36,9 @@ EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 7
+Sheet 6 7
 Title ""
-Date "20 aug 2014"
+Date "21 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -96,4 +96,18 @@ Text HLabel 5850 1950 2    60   Input ~ 0
 pH_V+
 Text HLabel 5850 2150 2    60   Output ~ 0
 Temp
+$Comp
+L CONN_1 TP12
+U 1 1 53F5F81F
+P 4200 2150
+F 0 "TP12" H 4280 2150 40  0000 L CNN
+F 1 "CONN_1" H 4200 2205 30  0001 C CNN
+F 2 "" H 4200 2150 60  0000 C CNN
+F 3 "" H 4200 2150 60  0000 C CNN
+	1    4200 2150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 2150 4050 2550
+Connection ~ 4050 2550
 $EndSCHEMATC

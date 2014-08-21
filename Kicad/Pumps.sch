@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 7 7
 Title ""
-Date "20 aug 2014"
+Date "21 aug 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -121,10 +121,6 @@ F 3 "~" H 2800 1500 60  0000 C CNN
 $EndComp
 Wire Wire Line
 	1750 1150 4700 1150
-Text Label 4700 1900 0    60   ~ 0
-Pump-V+
-Text Label 3450 2650 0    60   ~ 0
-PUMP
 Wire Wire Line
 	3900 2850 3900 3250
 Text HLabel 2000 3150 0    59   Output ~ 0
