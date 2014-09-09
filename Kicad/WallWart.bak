@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 7
 Title ""
-Date "21 aug 2014"
+Date "9 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -91,7 +91,7 @@ F 3 "" H 3450 3550 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5600 3750 5600 4100
+	5600 4100 5600 3750
 Wire Wire Line
 	3750 4100 7200 4100
 Wire Wire Line
@@ -123,7 +123,7 @@ Text Notes 3150 3150 0    60   ~ 0
 6.25V - 12V
 Text Notes 4700 2450 0    60   ~ 0
 see http://www.troydowling.org/content/troyduino
-Text HLabel 9150 3450 2    60   Output ~ 0
+Text HLabel 10050 3300 2    60   Output ~ 0
 V+_WallWart
 $Comp
 L AGND #PWR010
@@ -142,29 +142,29 @@ Connection ~ 5250 4100
 $Comp
 L CONN_2 P2
 U 1 1 53E89338
-P 7500 2450
-F 0 "P2" V 7450 2450 40  0000 C CNN
-F 1 "WallWartExtension" V 7550 2450 40  0000 C CNN
-F 2 "" H 7500 2450 60  0000 C CNN
-F 3 "" H 7500 2450 60  0000 C CNN
-	1    7500 2450
+P 8250 2450
+F 0 "P2" V 8200 2450 40  0000 C CNN
+F 1 "WallWartExtension" V 8300 2450 40  0000 C CNN
+F 2 "" H 8250 2450 60  0000 C CNN
+F 3 "" H 8250 2450 60  0000 C CNN
+	1    8250 2450
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	7600 2800 7600 3450
+	8350 2800 8350 3300
 $Comp
 L AGND #PWR011
 U 1 1 53F2345C
-P 7400 2950
-F 0 "#PWR011" H 7400 2950 40  0001 C CNN
-F 1 "AGND" H 7400 2880 50  0000 C CNN
-F 2 "" H 7400 2950 60  0000 C CNN
-F 3 "" H 7400 2950 60  0000 C CNN
-	1    7400 2950
+P 8150 2950
+F 0 "#PWR011" H 8150 2950 40  0001 C CNN
+F 1 "AGND" H 8150 2880 50  0000 C CNN
+F 2 "" H 8150 2950 60  0000 C CNN
+F 3 "" H 8150 2950 60  0000 C CNN
+	1    8150 2950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7400 2800 7400 2950
+	8150 2800 8150 2950
 $Comp
 L MC78L05 U3
 U 1 1 53F37E5C
@@ -177,11 +177,9 @@ F 3 "~" H 5600 3500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6250 3300 7600 3300
+	6250 3300 7400 3300
 Wire Wire Line
-	7200 3300 7200 3550
-Wire Wire Line
-	6800 3550 6800 3300
+	6800 3300 6800 3550
 Connection ~ 6800 3300
 Wire Wire Line
 	4450 3450 4350 3450
@@ -192,23 +190,18 @@ Wire Wire Line
 Wire Wire Line
 	4750 3550 4750 3300
 Connection ~ 4750 3300
-Wire Wire Line
-	7600 3450 8350 3450
-Connection ~ 7200 3300
-Connection ~ 7600 3300
+Connection ~ 8350 3300
 $Comp
 L DIODE D3
 U 1 1 53F5B6B0
-P 8550 3450
-F 0 "D3" H 8550 3550 40  0000 C CNN
-F 1 "4004" H 8550 3350 40  0000 C CNN
-F 2 "~" H 8550 3450 60  0000 C CNN
-F 3 "~" H 8550 3450 60  0000 C CNN
-	1    8550 3450
+P 7600 3300
+F 0 "D3" H 7600 3400 40  0000 C CNN
+F 1 "4004" H 7600 3200 40  0000 C CNN
+F 2 "~" H 7600 3300 60  0000 C CNN
+F 3 "~" H 7600 3300 60  0000 C CNN
+	1    7600 3300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	8750 3450 9150 3450
 $Comp
 L CONN_1 TP9
 U 1 1 53F5FBA0
@@ -221,20 +214,6 @@ F 3 "" H 4600 3050 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 4450 3300
-$Comp
-L CONN_1 TP11
-U 1 1 53F5FBD1
-P 9100 3000
-F 0 "TP11" H 9180 3000 40  0000 L CNN
-F 1 "CONN_1" H 9100 3055 30  0001 C CNN
-F 2 "" H 9100 3000 60  0000 C CNN
-F 3 "" H 9100 3000 60  0000 C CNN
-	1    9100 3000
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8950 3000 8950 3450
-Connection ~ 8950 3450
 $Comp
 L CONN_1 TP10
 U 1 1 53F5FBF5
@@ -249,4 +228,55 @@ $EndComp
 Wire Wire Line
 	6100 3850 6100 4100
 Connection ~ 6100 4100
+$Comp
+L LED D?
+U 1 1 540ED65C
+P 9400 3300
+F 0 "D?" H 9400 3400 50  0000 C CNN
+F 1 "LED" H 9400 3200 50  0000 C CNN
+F 2 "~" H 9400 3300 60  0000 C CNN
+F 3 "~" H 9400 3300 60  0000 C CNN
+	1    9400 3300
+	1    0    0    -1  
+$EndComp
+Text Label 8100 3700 0    60   ~ 0
+Green Status LED always on when there is power
+$Comp
+L R R?
+U 1 1 540EDC27
+P 8750 3300
+F 0 "R?" V 8830 3300 40  0000 C CNN
+F 1 "120" V 8757 3301 40  0000 C CNN
+F 2 "~" V 8680 3300 30  0000 C CNN
+F 3 "~" H 8750 3300 30  0000 C CNN
+	1    8750 3300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7800 3300 8500 3300
+Wire Wire Line
+	9000 3300 9200 3300
+Wire Wire Line
+	9600 3300 10050 3300
+Wire Wire Line
+	7200 3300 7200 3550
+Connection ~ 7200 3300
+Text Label 7050 1600 0    60   ~ 0
+http://media.digikey.com/pdf/Data%20Sheets/Lite-On%20PDFs/LTST-C171GKT.pdf
+Text Label 8600 1300 0    60   ~ 0
+LED: 20mA, 2.5 forward voltage
+$Comp
+L CONN_1 TP?
+U 1 1 540EE2E1
+P 9950 2950
+F 0 "TP?" H 10030 2950 40  0000 L CNN
+F 1 "CONN_1" H 9950 3005 30  0001 C CNN
+F 2 "" H 9950 2950 60  0000 C CNN
+F 3 "" H 9950 2950 60  0000 C CNN
+	1    9950 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9800 2950 9800 3300
+Connection ~ 9800 3300
 $EndSCHEMATC

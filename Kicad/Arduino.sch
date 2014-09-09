@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 7
 Title ""
-Date "21 aug 2014"
+Date "9 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -97,4 +97,51 @@ Wire Wire Line
 	2500 3750 3550 3750
 Wire Wire Line
 	5750 3800 6400 3800
+Text HLabel 2500 3950 0    60   Input ~ 0
+TempV
+Wire Wire Line
+	3550 3950 2500 3950
+$Comp
+L R R?
+U 1 1 540EE433
+P 6400 4000
+F 0 "R?" V 6480 4000 40  0000 C CNN
+F 1 "125" V 6407 4001 40  0000 C CNN
+F 2 "~" V 6330 4000 30  0000 C CNN
+F 3 "~" H 6400 4000 30  0000 C CNN
+	1    6400 4000
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5750 4000 6150 4000
+Wire Wire Line
+	6650 4000 6850 4000
+Wire Wire Line
+	6850 4900 3100 4900
+Wire Wire Line
+	3100 4900 3100 2650
+Connection ~ 3100 2650
+$Comp
+L LED D?
+U 1 1 540EE47C
+P 6850 4400
+F 0 "D?" H 6850 4500 50  0000 C CNN
+F 1 "LED" H 6850 4300 50  0000 C CNN
+F 2 "~" H 6850 4400 60  0000 C CNN
+F 3 "~" H 6850 4400 60  0000 C CNN
+	1    6850 4400
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6850 4000 6850 4200
+Wire Wire Line
+	6850 4600 6850 4900
+Text Label 7050 4350 0    60   ~ 0
+RGB Circuit Status
+Text Label 7050 4500 0    60   ~ 0
+I=20mA, Vf = 2.5V
+Text Label 5850 3950 0    60   ~ 0
+5V
+Text Label 6700 3950 0    60   ~ 0
+2.5V
 $EndSCHEMATC

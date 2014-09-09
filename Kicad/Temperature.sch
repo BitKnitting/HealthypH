@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 6 7
 Title ""
-Date "21 aug 2014"
+Date "9 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,68 +46,63 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 1950 1500 0    60   Input ~ 0
+Text HLabel 5400 2000 0    60   Input ~ 0
 V+_WallWart
-Wire Wire Line
-	1950 1500 5400 1500
 $Comp
 L AGND #PWR012
 U 1 1 53CE414D
-P 5400 3450
-F 0 "#PWR012" H 5400 3450 40  0001 C CNN
-F 1 "AGND" H 5400 3380 50  0000 C CNN
-F 2 "" H 5400 3450 60  0000 C CNN
-F 3 "" H 5400 3450 60  0000 C CNN
-	1    5400 3450
+P 5400 4300
+F 0 "#PWR012" H 5400 4300 40  0001 C CNN
+F 1 "AGND" H 5400 4230 50  0000 C CNN
+F 2 "" H 5400 4300 60  0000 C CNN
+F 3 "" H 5400 4300 60  0000 C CNN
+	1    5400 4300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5400 1500 5400 1950
 $Comp
-L R R5
-U 1 1 53CE4168
-P 5400 2950
-F 0 "R5" V 5480 2950 40  0000 C CNN
-F 1 "10K" V 5407 2951 40  0000 C CNN
-F 2 "~" V 5330 2950 30  0000 C CNN
-F 3 "~" H 5400 2950 30  0000 C CNN
-	1    5400 2950
+L R R?
+U 1 1 540DEB6D
+P 5400 3550
+F 0 "R?" V 5480 3550 40  0000 C CNN
+F 1 "10K" V 5407 3551 40  0000 C CNN
+F 2 "~" V 5330 3550 30  0000 C CNN
+F 3 "~" H 5400 3550 30  0000 C CNN
+	1    5400 3550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5400 3200 5400 3450
-Wire Wire Line
-	5400 2150 5400 2700
-Wire Wire Line
-	1950 2550 5400 2550
-Connection ~ 5400 2550
-Text HLabel 1950 2550 0    60   Output ~ 0
-Temp+
-Text HLabel 1950 3250 0    60   Output ~ 0
-Temp-
-Wire Wire Line
-	1950 3250 5400 3250
-Connection ~ 5400 3250
-Wire Wire Line
-	5850 2150 5400 2150
-Wire Wire Line
-	5400 1950 5850 1950
-Text HLabel 5850 1950 2    60   Input ~ 0
-pH_V+
-Text HLabel 5850 2150 2    60   Output ~ 0
-Temp
+Text HLabel 6400 2700 2    60   Input ~ 0
+TempR
+Text HLabel 3500 3000 0    60   Output ~ 0
+TempV
+Text HLabel 6450 4150 2    60   Input ~ 0
+AGND
 $Comp
-L CONN_1 TP12
-U 1 1 53F5F81F
-P 4200 2150
-F 0 "TP12" H 4280 2150 40  0000 L CNN
-F 1 "CONN_1" H 4200 2205 30  0001 C CNN
-F 2 "" H 4200 2150 60  0000 C CNN
-F 3 "" H 4200 2150 60  0000 C CNN
-	1    4200 2150
+L CONN_1 TP?
+U 1 1 540E05A9
+P 4200 2800
+F 0 "TP?" H 4280 2800 40  0000 L CNN
+F 1 "CONN_1" H 4200 2855 30  0001 C CNN
+F 2 "" H 4200 2800 60  0000 C CNN
+F 3 "" H 4200 2800 60  0000 C CNN
+	1    4200 2800
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4050 2150 4050 2550
-Connection ~ 4050 2550
+	5400 3800 5400 4300
+Wire Wire Line
+	5400 2000 5400 3300
+Wire Wire Line
+	3500 3000 5400 3000
+Wire Wire Line
+	5400 4150 6450 4150
+Connection ~ 5400 4150
+Wire Wire Line
+	4050 3000 4050 2800
+Connection ~ 5400 3000
+Connection ~ 4050 3000
+Wire Wire Line
+	6400 2700 5400 2700
+Connection ~ 5400 2700
+Text Label 6250 2550 0    60   ~ 0
+Thermistor is in water
 $EndSCHEMATC

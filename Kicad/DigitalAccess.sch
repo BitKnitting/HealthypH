@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 7
 Title ""
-Date "21 aug 2014"
+Date "9 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -203,10 +203,6 @@ Text HLabel 7900 3150 2    60   Input ~ 0
 pH_ADC+
 Text HLabel 7900 3250 2    60   Input ~ 0
 pH_ADC-
-Text HLabel 7900 3650 2    60   Input ~ 0
-Temp+
-Text HLabel 7900 3750 2    60   Input ~ 0
-Temp-
 $Comp
 L R R2
 U 1 1 53DB6B94
@@ -270,10 +266,6 @@ Wire Wire Line
 	7250 3150 7900 3150
 Wire Wire Line
 	7250 3250 7900 3250
-Wire Wire Line
-	7250 3650 7900 3650
-Wire Wire Line
-	7250 3750 7900 3750
 Wire Wire Line
 	3200 2450 3200 2700
 Connection ~ 3200 2700
@@ -374,4 +366,12 @@ Wire Wire Line
 Connection ~ 7000 1600
 Wire Wire Line
 	7200 1600 7200 1700
+Text HLabel 7900 3650 2    60   Input ~ 0
+EC_ADC+
+Text HLabel 7900 3750 2    60   Input ~ 0
+EC_ADC-
+Wire Wire Line
+	7250 3650 7900 3650
+Wire Wire Line
+	7900 3750 7250 3750
 $EndSCHEMATC

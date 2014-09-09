@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 7
 Title ""
-Date "21 aug 2014"
+Date "9 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,40 +46,27 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 1350 2400 0    60   Input ~ 0
+Text HLabel 3900 2400 0    60   Input ~ 0
 V+_WallWart
 Text HLabel 1350 3200 0    60   Input ~ 0
-ph_ADC+
-Wire Wire Line
-	3100 3200 3100 3850
-Wire Wire Line
-	4450 3300 4450 3850
-Wire Wire Line
-	4150 3300 6600 3300
+ph_ADC_IN+
 Wire Wire Line
 	3900 3500 3900 3750
-Connection ~ 3100 3200
 $Comp
 L R R4
 U 1 1 53D7D158
-P 5700 4450
-F 0 "R4" V 5780 4450 40  0000 C CNN
-F 1 "1K" V 5707 4451 40  0000 C CNN
-F 2 "~" V 5630 4450 30  0000 C CNN
-F 3 "~" H 5700 4450 30  0000 C CNN
-	1    5700 4450
+P 7450 3850
+F 0 "R4" V 7530 3850 40  0000 C CNN
+F 1 "1K" V 7457 3851 40  0000 C CNN
+F 2 "~" V 7380 3850 30  0000 C CNN
+F 3 "~" H 7450 3850 30  0000 C CNN
+	1    7450 3850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	1350 3200 3450 3200
-Wire Wire Line
-	4150 3100 4800 3100
-Wire Wire Line
-	4450 3850 3100 3850
-Wire Wire Line
-	5700 4700 5700 5050
-Text HLabel 1350 4050 0    60   Input ~ 0
-pH_ADC-
+Text HLabel 7950 1900 0    60   Input ~ 0
+pH_ADC_IN-
 $Comp
 L AGND #PWR08
 U 1 1 53DCC7DA
@@ -91,22 +78,6 @@ F 3 "" H 3900 3750 60  0000 C CNN
 	1    3900 3750
 	1    0    0    -1  
 $EndComp
-$Comp
-L AGND #PWR09
-U 1 1 53DCC7F8
-P 5700 5050
-F 0 "#PWR09" H 5700 5050 40  0001 C CNN
-F 1 "AGND" H 5700 4980 50  0000 C CNN
-F 2 "" H 5700 5050 60  0000 C CNN
-F 3 "" H 5700 5050 60  0000 C CNN
-	1    5700 5050
-	1    0    0    -1  
-$EndComp
-Text HLabel 4800 3100 2    60   Input ~ 0
-pH_V+(in)
-Text HLabel 6600 3300 2    60   Input ~ 0
-pH_VGND
-Connection ~ 4450 3300
 $Comp
 L MCP6241 U1
 U 1 1 53ECAB65
@@ -121,26 +92,16 @@ $EndComp
 $Comp
 L R R3
 U 1 1 53F37946
-P 5700 2900
-F 0 "R3" V 5780 2900 40  0000 C CNN
-F 1 "10K" V 5707 2901 40  0000 C CNN
-F 2 "~" V 5630 2900 30  0000 C CNN
-F 3 "~" H 5700 2900 30  0000 C CNN
-	1    5700 2900
+P 7450 2950
+F 0 "R3" V 7530 2950 40  0000 C CNN
+F 1 "10K" V 7457 2951 40  0000 C CNN
+F 2 "~" V 7380 2950 30  0000 C CNN
+F 3 "~" H 7450 2950 30  0000 C CNN
+	1    7450 2950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5700 3150 5700 4200
-Wire Wire Line
-	5700 2650 5700 2400
-Wire Wire Line
-	5700 2400 1350 2400
-Wire Wire Line
-	1350 4050 5700 4050
-Connection ~ 5700 4050
-Wire Wire Line
 	3900 2900 3900 2400
-Connection ~ 3900 2400
 $Comp
 L CONN_1 TP1
 U 1 1 53F5D6D1
@@ -155,18 +116,73 @@ $EndComp
 Wire Wire Line
 	2350 3050 2350 3200
 Connection ~ 2350 3200
+Wire Wire Line
+	7450 3200 7450 3600
+Text HLabel 7450 2450 0    60   Input ~ 0
+V+_WallWart
+Wire Wire Line
+	7450 2700 7450 2450
+Text HLabel 5700 3100 2    60   Input ~ 0
+pH_BNC_V
+Wire Wire Line
+	4150 3100 5700 3100
+Wire Wire Line
+	2950 3200 2950 4100
+Wire Wire Line
+	2950 4100 4750 4100
+Wire Wire Line
+	4750 4100 4750 3300
+Wire Wire Line
+	4750 3300 4150 3300
+Connection ~ 2950 3200
 $Comp
-L CONN_1 TP8
-U 1 1 53F5D987
-P 2300 3750
-F 0 "TP8" H 2380 3750 40  0000 L CNN
-F 1 "CONN_1" H 2300 3805 30  0001 C CNN
-F 2 "" H 2300 3750 60  0000 C CNN
-F 3 "" H 2300 3750 60  0000 C CNN
-	1    2300 3750
+L AGND #PWR?
+U 1 1 540C92AB
+P 7450 4400
+F 0 "#PWR?" H 7450 4400 40  0001 C CNN
+F 1 "AGND" H 7450 4330 50  0000 C CNN
+F 2 "" H 7450 4400 60  0000 C CNN
+F 3 "" H 7450 4400 60  0000 C CNN
+	1    7450 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 4400 7450 4100
+Text HLabel 8600 3400 2    60   Input ~ 0
+pH_BNC_GND
+$Comp
+L CONN_1 TP?
+U 1 1 540C941C
+P 8200 2900
+F 0 "TP?" H 8280 2900 40  0000 L CNN
+F 1 "CONN_1" H 8200 2955 30  0001 C CNN
+F 2 "" H 8200 2900 60  0000 C CNN
+F 3 "" H 8200 2900 60  0000 C CNN
+	1    8200 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 1900 8050 3400
+$Comp
+L CONN_1 TP?
+U 1 1 540C9446
+P 5150 2750
+F 0 "TP?" H 5230 2750 40  0000 L CNN
+F 1 "CONN_1" H 5150 2805 30  0001 C CNN
+F 2 "" H 5150 2750 60  0000 C CNN
+F 3 "" H 5150 2750 60  0000 C CNN
+	1    5150 2750
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	2300 3900 2300 4050
-Connection ~ 2300 4050
+	5150 2900 5150 3100
+Connection ~ 5150 3100
+Wire Wire Line
+	8050 1900 7950 1900
+Text Label 7650 3350 0    60   ~ 0
+.45V
+Wire Wire Line
+	7450 3400 8600 3400
+Connection ~ 7450 3400
+Connection ~ 8050 3400
 $EndSCHEMATC

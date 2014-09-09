@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 7 7
 Title ""
-Date "21 aug 2014"
+Date "9 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -75,16 +75,14 @@ Wire Wire Line
 $Comp
 L DIODE D1
 U 1 1 53CBD4B8
-P 4700 1500
-F 0 "D1" H 4700 1600 40  0000 C CNN
-F 1 "4004" H 4700 1400 40  0000 C CNN
-F 2 "~" H 4700 1500 60  0000 C CNN
-F 3 "~" H 4700 1500 60  0000 C CNN
-	1    4700 1500
-	0    1    1    0   
+P 5650 2050
+F 0 "D1" H 5650 2150 40  0000 C CNN
+F 1 "4004" H 5650 1950 40  0000 C CNN
+F 2 "~" H 5650 2050 60  0000 C CNN
+F 3 "~" H 5650 2050 60  0000 C CNN
+	1    5650 2050
+	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	4700 1150 4700 1300
 Text HLabel 2000 2650 0    59   Input ~ 0
 DownPump
 $Comp
@@ -98,29 +96,14 @@ F 3 "" H 3900 3250 60  0000 C CNN
 	1    3900 3250
 	1    0    0    -1  
 $EndComp
-Text HLabel 1750 1150 0    60   Input ~ 0
+Text HLabel 1750 1700 0    60   Input ~ 0
 V+_ARD
 Wire Wire Line
 	3900 2350 6000 2350
 Wire Wire Line
 	3900 2350 3900 2450
 Wire Wire Line
-	4700 1700 4700 2150
-Wire Wire Line
-	4700 2150 6000 2150
-$Comp
-L C C14
-U 1 1 53E26DDA
-P 2800 1500
-F 0 "C14" H 2800 1600 40  0000 L CNN
-F 1 "1u" H 2806 1415 40  0000 L CNN
-F 2 "~" H 2838 1350 30  0000 C CNN
-F 3 "~" H 2800 1500 60  0000 C CNN
-	1    2800 1500
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	1750 1150 4700 1150
+	1750 1700 6000 1700
 Wire Wire Line
 	3900 2850 3900 3250
 Text HLabel 2000 3150 0    59   Output ~ 0
@@ -128,23 +111,7 @@ GND_ARD
 Wire Wire Line
 	2000 3150 3900 3150
 Connection ~ 3900 3150
-Wire Wire Line
-	2800 1300 2800 1150
-Connection ~ 2800 1150
-$Comp
-L GND #PWR014
-U 1 1 53E3E3F6
-P 2800 1850
-F 0 "#PWR014" H 2800 1850 30  0001 C CNN
-F 1 "GND" H 2800 1780 30  0001 C CNN
-F 2 "" H 2800 1850 60  0000 C CNN
-F 3 "" H 2800 1850 60  0000 C CNN
-	1    2800 1850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2800 1700 2800 1850
-Text HLabel 6000 2150 2    60   Input ~ 0
+Text HLabel 6000 1700 2    60   Input ~ 0
 V+_DownPump
 Text HLabel 6000 2350 2    60   Input ~ 0
 SW_DownPump
@@ -196,11 +163,11 @@ Wire Wire Line
 Text HLabel 6000 3850 2    60   Input ~ 0
 SW_UpPump
 Wire Wire Line
-	5300 2150 5300 3500
+	5300 1700 5300 3200
 Wire Wire Line
-	5300 3500 6000 3500
-Connection ~ 5300 2150
-Text HLabel 6000 3500 2    60   Input ~ 0
+	5300 3200 6000 3200
+Connection ~ 5300 1700
+Text HLabel 6000 3200 2    60   Input ~ 0
 V+_UpPump
 Wire Wire Line
 	2550 3150 2550 4600
@@ -208,4 +175,35 @@ Wire Wire Line
 	2550 4600 3900 4600
 Connection ~ 3900 4600
 Connection ~ 2550 3150
+Text Label 2600 2400 0    60   ~ 0
+HIGH Signal -->
+Text Label 4150 3100 1    60   ~ 0
+<--
+Text Label 4150 2800 1    60   ~ 0
+Current
+$Comp
+L DIODE D?
+U 1 1 540E4757
+P 5650 3550
+F 0 "D?" H 5650 3650 40  0000 C CNN
+F 1 "4004" H 5650 3450 40  0000 C CNN
+F 2 "~" H 5650 3550 60  0000 C CNN
+F 3 "~" H 5650 3550 60  0000 C CNN
+	1    5650 3550
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5650 3350 5650 3200
+Connection ~ 5650 3200
+Wire Wire Line
+	5650 3750 5650 3850
+Connection ~ 5650 3850
+Wire Wire Line
+	5650 1850 5650 1700
+Connection ~ 5650 1700
+Wire Wire Line
+	5650 2250 5650 2350
+Connection ~ 5650 2350
+Text Label 5950 2100 0    60   ~ 0
+Stop Reverse Voltage Spike When Switched Off
 $EndSCHEMATC
