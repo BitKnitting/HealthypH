@@ -36,9 +36,9 @@ EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 7
+Sheet 5 7
 Title ""
-Date "9 sep 2014"
+Date "10 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -68,10 +68,6 @@ F 3 "~" H 3100 2650 30  0000 C CNN
 	1    3100 2650
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	3350 2650 3600 2650
-Wire Wire Line
-	2000 2650 2850 2650
 $Comp
 L DIODE D1
 U 1 1 53CBD4B8
@@ -86,10 +82,10 @@ $EndComp
 Text HLabel 2000 2650 0    59   Input ~ 0
 DownPump
 $Comp
-L GND #PWR013
+L GND #PWR05
 U 1 1 53DC3138
 P 3900 3250
-F 0 "#PWR013" H 3900 3250 30  0001 C CNN
+F 0 "#PWR05" H 3900 3250 30  0001 C CNN
 F 1 "GND" H 3900 3180 30  0001 C CNN
 F 2 "" H 3900 3250 60  0000 C CNN
 F 3 "" H 3900 3250 60  0000 C CNN
@@ -98,19 +94,8 @@ F 3 "" H 3900 3250 60  0000 C CNN
 $EndComp
 Text HLabel 1750 1700 0    60   Input ~ 0
 V+_ARD
-Wire Wire Line
-	3900 2350 6000 2350
-Wire Wire Line
-	3900 2350 3900 2450
-Wire Wire Line
-	1750 1700 6000 1700
-Wire Wire Line
-	3900 2850 3900 3250
 Text HLabel 2000 3150 0    59   Output ~ 0
 GND_ARD
-Wire Wire Line
-	2000 3150 3900 3150
-Connection ~ 3900 3150
 Text HLabel 6000 1700 2    60   Input ~ 0
 V+_DownPump
 Text HLabel 6000 2350 2    60   Input ~ 0
@@ -137,61 +122,125 @@ F 3 "~" H 3100 4150 30  0000 C CNN
 	1    3100 4150
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	3350 4150 3600 4150
-Wire Wire Line
-	2000 4150 2850 4150
 Text HLabel 2000 4150 0    59   Input ~ 0
 UpPump
 $Comp
-L GND #PWR015
+L GND #PWR06
 U 1 1 53EA6E1E
 P 3900 4750
-F 0 "#PWR015" H 3900 4750 30  0001 C CNN
+F 0 "#PWR06" H 3900 4750 30  0001 C CNN
 F 1 "GND" H 3900 4680 30  0001 C CNN
 F 2 "" H 3900 4750 60  0000 C CNN
 F 3 "" H 3900 4750 60  0000 C CNN
 	1    3900 4750
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3900 3850 6000 3850
-Wire Wire Line
-	3900 3850 3900 3950
-Wire Wire Line
-	3900 4350 3900 4750
 Text HLabel 6000 3850 2    60   Input ~ 0
 SW_UpPump
-Wire Wire Line
-	5300 1700 5300 3200
-Wire Wire Line
-	5300 3200 6000 3200
-Connection ~ 5300 1700
 Text HLabel 6000 3200 2    60   Input ~ 0
 V+_UpPump
-Wire Wire Line
-	2550 3150 2550 4600
-Wire Wire Line
-	2550 4600 3900 4600
-Connection ~ 3900 4600
-Connection ~ 2550 3150
-Text Label 2600 2400 0    60   ~ 0
-HIGH Signal -->
-Text Label 4150 3100 1    60   ~ 0
-<--
-Text Label 4150 2800 1    60   ~ 0
-Current
 $Comp
-L DIODE D?
+L DIODE D5
 U 1 1 540E4757
 P 5650 3550
-F 0 "D?" H 5650 3650 40  0000 C CNN
+F 0 "D5" H 5650 3650 40  0000 C CNN
 F 1 "4004" H 5650 3450 40  0000 C CNN
 F 2 "~" H 5650 3550 60  0000 C CNN
 F 3 "~" H 5650 3550 60  0000 C CNN
 	1    5650 3550
 	0    -1   -1   0   
 $EndComp
+$Comp
+L CONN_1 TP14
+U 1 1 541050CF
+P 3750 1300
+F 0 "TP14" H 3830 1300 40  0000 L CNN
+F 1 "CONN_1" H 3750 1355 30  0001 C CNN
+F 2 "" H 3750 1300 60  0000 C CNN
+F 3 "" H 3750 1300 60  0000 C CNN
+	1    3750 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 TP15
+U 1 1 54105105
+P 4650 2100
+F 0 "TP15" H 4730 2100 40  0000 L CNN
+F 1 "CONN_1" H 4650 2155 30  0001 C CNN
+F 2 "" H 4650 2100 60  0000 C CNN
+F 3 "" H 4650 2100 60  0000 C CNN
+	1    4650 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 TP16
+U 1 1 5410510B
+P 4750 3500
+F 0 "TP16" H 4830 3500 40  0000 L CNN
+F 1 "CONN_1" H 4750 3555 30  0001 C CNN
+F 2 "" H 4750 3500 60  0000 C CNN
+F 3 "" H 4750 3500 60  0000 C CNN
+	1    4750 3500
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 TP13
+U 1 1 54105111
+P 3650 3650
+F 0 "TP13" H 3730 3650 40  0000 L CNN
+F 1 "CONN_1" H 3650 3705 30  0001 C CNN
+F 2 "" H 3650 3650 60  0000 C CNN
+F 3 "" H 3650 3650 60  0000 C CNN
+	1    3650 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_1 TP12
+U 1 1 54105117
+P 3650 2100
+F 0 "TP12" H 3730 2100 40  0000 L CNN
+F 1 "CONN_1" H 3650 2155 30  0001 C CNN
+F 2 "" H 3650 2100 60  0000 C CNN
+F 3 "" H 3650 2100 60  0000 C CNN
+	1    3650 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 2650 3600 2650
+Wire Wire Line
+	2000 2650 2850 2650
+Wire Wire Line
+	3900 2350 6000 2350
+Wire Wire Line
+	3900 2350 3900 2450
+Wire Wire Line
+	1750 1700 6000 1700
+Wire Wire Line
+	3900 2850 3900 3250
+Wire Wire Line
+	2000 3150 3900 3150
+Connection ~ 3900 3150
+Wire Wire Line
+	3350 4150 3600 4150
+Wire Wire Line
+	2000 4150 2850 4150
+Wire Wire Line
+	3900 3850 6000 3850
+Wire Wire Line
+	3900 3850 3900 3950
+Wire Wire Line
+	3900 4350 3900 4750
+Wire Wire Line
+	5300 1700 5300 3200
+Wire Wire Line
+	5300 3200 6000 3200
+Connection ~ 5300 1700
+Wire Wire Line
+	2550 3150 2550 4600
+Wire Wire Line
+	2550 4600 3900 4600
+Connection ~ 3900 4600
+Connection ~ 2550 3150
 Wire Wire Line
 	5650 3350 5650 3200
 Connection ~ 5650 3200
@@ -204,6 +253,19 @@ Connection ~ 5650 1700
 Wire Wire Line
 	5650 2250 5650 2350
 Connection ~ 5650 2350
-Text Label 5950 2100 0    60   ~ 0
-Stop Reverse Voltage Spike When Switched Off
+Wire Wire Line
+	3600 1300 3600 1700
+Connection ~ 3600 1700
+Wire Wire Line
+	4500 2100 4500 2350
+Connection ~ 4500 2350
+Wire Wire Line
+	4600 3500 4600 3850
+Connection ~ 4600 3850
+Wire Wire Line
+	3500 2100 3500 2650
+Connection ~ 3500 2650
+Wire Wire Line
+	3500 3650 3500 4150
+Connection ~ 3500 4150
 $EndSCHEMATC
