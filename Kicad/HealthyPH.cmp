@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 8/21/2014 5:11:04 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 9/11/2014 3:27:01 AM
 
 BeginCmp
 TimeStamp = /53DCD805/53E0F48C;
@@ -78,13 +78,6 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C2998C/53E26DDA;
-Reference = C14;
-ValeurCmp = 1u;
-IdModule  = SM0805;
-EndCmp
-
-BeginCmp
 TimeStamp = /53DB8BC1/53DB8C46;
 Reference = CON1;
 ValeurCmp = LB_BarrelJack;
@@ -106,8 +99,22 @@ IdModule  = DO-214AC(SMA);
 EndCmp
 
 BeginCmp
-TimeStamp = /53DB8BC1/53F5B6B0;
+TimeStamp = /53DB8BC1/540ED65C;
 Reference = D3;
+ValeurCmp = LED;
+IdModule  = DO-214AC(SMA);
+EndCmp
+
+BeginCmp
+TimeStamp = /53DCD805/540F4D9B;
+Reference = D4;
+ValeurCmp = RGB_LED;
+IdModule  = ;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C2998C/540E4757;
+Reference = D5;
 ValeurCmp = 4004;
 IdModule  = DO-214AC(SMA);
 EndCmp
@@ -176,9 +183,9 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C98328/53CE4168;
+TimeStamp = /53DB8BC1/540EDC27;
 Reference = R5;
-ValeurCmp = 10K;
+ValeurCmp = 1K;
 IdModule  = SM0805;
 EndCmp
 
@@ -221,6 +228,34 @@ BeginCmp
 TimeStamp = /53C2998C/53EA6E15;
 Reference = R11;
 ValeurCmp = 2.2K;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53DCD805/540F4F03;
+Reference = R12;
+ValeurCmp = 500;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53DCD805/540F4E9E;
+Reference = R13;
+ValeurCmp = 500;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53DCD805/540F4E5D;
+Reference = R14;
+ValeurCmp = 500;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C98328/540DEB6D;
+Reference = R15;
+ValeurCmp = 10K;
 IdModule  = SM0805;
 EndCmp
 
@@ -274,7 +309,7 @@ IdModule  = LB_TestPoint;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C9635B/53F5D987;
+TimeStamp = /53DB8BC1/540EE2E1;
 Reference = TP8;
 ValeurCmp = CONN_1;
 IdModule  = LB_TestPoint;
@@ -295,22 +330,57 @@ IdModule  = LB_TestPoint;
 EndCmp
 
 BeginCmp
-TimeStamp = /53DB8BC1/53F5FBD1;
+TimeStamp = /53C98328/540E05A9;
 Reference = TP11;
 ValeurCmp = CONN_1;
 IdModule  = LB_TestPoint;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C98328/53F5F81F;
+TimeStamp = /53C2998C/54105117;
 Reference = TP12;
 ValeurCmp = CONN_1;
 IdModule  = LB_TestPoint;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C98328/53F5F83E;
+TimeStamp = /53C2998C/54105111;
 Reference = TP13;
+ValeurCmp = CONN_1;
+IdModule  = LB_TestPoint;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C2998C/541050CF;
+Reference = TP14;
+ValeurCmp = CONN_1;
+IdModule  = LB_TestPoint;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C2998C/54105105;
+Reference = TP15;
+ValeurCmp = CONN_1;
+IdModule  = LB_TestPoint;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C2998C/5410510B;
+Reference = TP16;
+ValeurCmp = CONN_1;
+IdModule  = LB_TestPoint;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C9635B/540C9446;
+Reference = TP17;
+ValeurCmp = CONN_1;
+IdModule  = LB_TestPoint;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C9635B/540C941C;
+Reference = TP18;
 ValeurCmp = CONN_1;
 IdModule  = LB_TestPoint;
 EndCmp

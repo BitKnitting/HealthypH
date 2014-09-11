@@ -1,4 +1,4 @@
-eeschema (2013-07-07 BZR 4022)-stable  >> Creation date: 8/21/2014 9:14:56 AM
+eeschema (2013-07-07 BZR 4022)-stable  >> Creation date: 9/11/2014 3:27:30 AM
 #Cmp ( order = Reference )
 | ARD1       ARDUINOPINS 
 | C1         10u         
@@ -11,11 +11,12 @@ eeschema (2013-07-07 BZR 4022)-stable  >> Creation date: 8/21/2014 9:14:56 AM
 | C11        1u          
 | C12        10u         
 | C13        .1u         
-| C14        1u          
 | CON1       LB_BarrelJack
 | D1         4004        
 | D2         4004        
-| D3         4004        
+| D3         LED         
+| D4         RGB_LED     
+| D5         4004        
 | L5         1U          
 | P1         CONN_8      
 | P2         WallWartExtension
@@ -25,13 +26,17 @@ eeschema (2013-07-07 BZR 4022)-stable  >> Creation date: 8/21/2014 9:14:56 AM
 | R2         1K          
 | R3         10K         
 | R4         1K          
-| R5         10K         
+| R5         1K          
 | R6         499         
 | R7         499         
 | R8         499         
 | R9         499         
 | R10        499         
 | R11        2.2K        
+| R12        500         
+| R13        500         
+| R14        500         
+| R15        10K         
 | TP1        CONN_1      
 | TP2        CONN_1      
 | TP3        CONN_1      
@@ -44,6 +49,12 @@ eeschema (2013-07-07 BZR 4022)-stable  >> Creation date: 8/21/2014 9:14:56 AM
 | TP10       CONN_1      
 | TP11       CONN_1      
 | TP12       CONN_1      
+| TP13       CONN_1      
+| TP14       CONN_1      
+| TP15       CONN_1      
+| TP16       CONN_1      
+| TP17       CONN_1      
+| TP18       CONN_1      
 | U1         MCP6241     
 | U2         MCP3901     
 | U3         MC78L05     
