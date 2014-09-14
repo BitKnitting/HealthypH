@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 7
 Title ""
-Date "11 sep 2014"
+Date "13 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -133,11 +133,9 @@ S 7250 1900 1900 600
 U 53C98328
 F0 "Temperature" 50
 F1 "Temperature.sch" 50
-F2 "V+_WallWart" I L 7250 2350 60 
-F3 "V+_Therm" I R 9150 2350 60 
-F4 "10K Therm" I R 9150 2150 60 
-F5 "Therm+" O L 7250 2050 60 
-F6 "Therm-" O L 7250 2200 60 
+F2 "10K Therm" I R 9150 2150 60 
+F3 "Therm+" O L 7250 2050 60 
+F4 "Therm-" O L 7250 2200 60 
 $EndSheet
 $Sheet
 S 7300 3750 2200 1100
@@ -235,12 +233,9 @@ Wire Wire Line
 Wire Wire Line
 	6650 1200 7250 1200
 Wire Wire Line
-	7250 2350 6800 2350
-Wire Wire Line
 	6800 1400 6800 3150
 Wire Wire Line
 	6800 3150 7250 3150
-Connection ~ 6800 2350
 Wire Wire Line
 	6650 2950 6800 2950
 Connection ~ 6800 2950
@@ -325,8 +320,6 @@ Wire Wire Line
 Wire Wire Line
 	7250 1400 6800 1400
 Wire Wire Line
-	2700 2850 4700 2850
-Wire Wire Line
 	4100 1000 4100 1250
 Connection ~ 4100 1250
 Wire Wire Line
@@ -343,11 +336,8 @@ Wire Wire Line
 Connection ~ 4150 2600
 Wire Wire Line
 	4150 2750 4150 2850
-Connection ~ 4150 2850
 Wire Wire Line
-	9150 2350 10150 2350
-Wire Wire Line
-	10150 2350 10150 1400
+	10150 2600 10150 1400
 Wire Wire Line
 	10150 1400 10700 1400
 $Sheet
@@ -388,4 +378,23 @@ Wire Wire Line
 	6650 2200 7250 2200
 Wire Wire Line
 	6650 2050 7250 2050
+$Comp
+L R R16
+U 1 1 54142348
+P 3400 2850
+F 0 "R16" V 3480 2850 40  0000 C CNN
+F 1 "499" V 3407 2851 40  0000 C CNN
+F 2 "~" V 3330 2850 30  0000 C CNN
+F 3 "~" H 3400 2850 30  0000 C CNN
+	1    3400 2850
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2700 2850 3150 2850
+Wire Wire Line
+	3650 2850 4700 2850
+Connection ~ 4150 2850
+Wire Wire Line
+	6800 2600 10150 2600
+Connection ~ 6800 2600
 $EndSCHEMATC

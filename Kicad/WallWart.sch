@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 7
 Title ""
-Date "11 sep 2014"
+Date "13 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -119,7 +119,7 @@ Wire Wire Line
 	3750 3550 3750 4100
 Connection ~ 4750 4100
 Connection ~ 3750 3650
-Text Notes 3150 3150 0    60   ~ 0
+Text Notes 2750 3150 0    60   ~ 0
 6.25V - 12V
 Text HLabel 10050 3300 2    60   Output ~ 0
 V+_WallWart
@@ -272,4 +272,32 @@ F 3 "" H 8850 4900 60  0000 C CNN
 	1    8850 4900
 	1    0    0    -1  
 $EndComp
+$Comp
+L CONN_1 TP20
+U 1 1 54142B38
+P 4050 3100
+F 0 "TP20" H 4130 3100 40  0000 L CNN
+F 1 "CONN_1" H 4050 3155 30  0001 C CNN
+F 2 "" H 4050 3100 60  0000 C CNN
+F 3 "" H 4050 3100 60  0000 C CNN
+	1    4050 3100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 3100 3900 3450
+Connection ~ 3900 3450
+$Comp
+L CONN_1 TP19
+U 1 1 54142B64
+P 3300 4000
+F 0 "TP19" H 3380 4000 40  0000 L CNN
+F 1 "CONN_1" H 3300 4055 30  0001 C CNN
+F 2 "" H 3300 4000 60  0000 C CNN
+F 3 "" H 3300 4000 60  0000 C CNN
+	1    3300 4000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3450 4000 3750 4000
+Connection ~ 3750 4000
 $EndSCHEMATC

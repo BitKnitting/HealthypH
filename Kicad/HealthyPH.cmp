@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 9/11/2014 3:27:01 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 9/13/2014 3:58:06 AM
 
 BeginCmp
 TimeStamp = /53DCD805/53E0F48C;
@@ -109,7 +109,7 @@ BeginCmp
 TimeStamp = /53DCD805/540F4D9B;
 Reference = D4;
 ValeurCmp = RGB_LED;
-IdModule  = ;
+IdModule  = LB_RGBLED;
 EndCmp
 
 BeginCmp
@@ -234,21 +234,21 @@ EndCmp
 BeginCmp
 TimeStamp = /53DCD805/540F4F03;
 Reference = R12;
-ValeurCmp = 500;
+ValeurCmp = 499;
 IdModule  = SM0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /53DCD805/540F4E9E;
 Reference = R13;
-ValeurCmp = 500;
+ValeurCmp = 499;
 IdModule  = SM0805;
 EndCmp
 
 BeginCmp
 TimeStamp = /53DCD805/540F4E5D;
 Reference = R14;
-ValeurCmp = 500;
+ValeurCmp = 499;
 IdModule  = SM0805;
 EndCmp
 
@@ -256,6 +256,13 @@ BeginCmp
 TimeStamp = /53C98328/540DEB6D;
 Reference = R15;
 ValeurCmp = 10K;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /54142348;
+Reference = R16;
+ValeurCmp = 499;
 IdModule  = SM0805;
 EndCmp
 
@@ -381,6 +388,20 @@ EndCmp
 BeginCmp
 TimeStamp = /53C9635B/540C941C;
 Reference = TP18;
+ValeurCmp = CONN_1;
+IdModule  = LB_TestPoint;
+EndCmp
+
+BeginCmp
+TimeStamp = /53DB8BC1/54142B64;
+Reference = TP19;
+ValeurCmp = CONN_1;
+IdModule  = LB_TestPoint;
+EndCmp
+
+BeginCmp
+TimeStamp = /53DB8BC1/54142B38;
+Reference = TP20;
 ValeurCmp = CONN_1;
 IdModule  = LB_TestPoint;
 EndCmp
