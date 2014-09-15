@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  9/12/2014 12:28:33 PM
+PCBNEW-LibModule-V1  9/15/2014 10:32:38 AM
 # encoding utf-8
 Units mm
 $INDEX
@@ -586,29 +586,29 @@ Po -2.6 -7.2
 $EndPAD
 $EndMODULE LB_2CONN
 $MODULE LB_2TB
-Po 0 0 0 15 53F4D2AA 00000000 ~~
+Po 0 0 0 15 5417229A 00000000 ~~
 Li LB_2TB
 Cd module 2 pin (trou 6 mm)
 Kw DEV
 Sc 0
 AR /53DB8BC1/53E89338
 Op 0 0 0
-T0 8.88 -1.04 1 1 0 0.25 N V 21 N "P2"
+T0 2.06 1.5 1 1 0 0.25 N V 21 N "P2"
 T1 5.12 -3.79 1.524 1 0 0.25 N V 21 N "WallWartExtension"
 DS 0 0 7.62 0 0.15 21
 DS 7.62 0 7.62 -2.5 0.15 21
 DS 7.62 -2.5 0 -2.5 0.15 21
 DS 0 -2.5 0 0 0.15 21
 $PAD
-Sh "1" C 1.016 1.016 0 0 0
-Dr 0.65 0 0
+Sh "1" C 1.778 1.778 0 0 0
+Dr 1.016 0 0
 At STD N 00E0FFFF
 Ne 2 "AGND"
 Po 2.54 -1.25
 $EndPAD
 $PAD
-Sh "2" C 1.016 1.016 0 0 0
-Dr 0.65 0 0
+Sh "2" C 1.778 1.778 0 0 0
+Dr 1.016 0 0
 At STD N 00E0FFFF
 Ne 1 "/Digital Access/V+_WallWart"
 Po 5.1 -1.24

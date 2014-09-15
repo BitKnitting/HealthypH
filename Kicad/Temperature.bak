@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 7
 Title ""
-Date "13 sep 2014"
+Date "15 sep 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,8 +46,6 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 6000 3300 2    60   Input ~ 0
-V+_Therm
 $Comp
 L AGND #PWR04
 U 1 1 53CE414D
@@ -107,13 +105,9 @@ Wire Notes Line
 	5350 3500 5350 3100
 Wire Notes Line
 	5350 3100 6000 3100
-Text HLabel 1200 1500 0    60   Input ~ 0
-V+_WallWart
-Wire Wire Line
-	6000 3300 6000 1500
-Wire Wire Line
-	6000 1500 1200 1500
 Text HLabel 950  3300 0    60   Output ~ 0
 Therm-
 Connection ~ 2650 3300
+Text Notes 6200 3250 0    60   ~ 0
+To V+ WallWart
 $EndSCHEMATC
