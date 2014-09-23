@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F0F4FD69-1962-47DA-BAB5-8726E846B0C4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HealthypHTestV1</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>89F75E27-B530-4CF7-B0CB-C57C6C4F7A09</key>
+		<string>https://github.com/BitKnitting/HealthypH.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Firmware/HealthypHTestV1/HealthypHTestV1.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>89F75E27-B530-4CF7-B0CB-C57C6C4F7A09</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/BitKnitting/HealthypH.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>89F75E27-B530-4CF7-B0CB-C57C6C4F7A09</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>89F75E27-B530-4CF7-B0CB-C57C6C4F7A09</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HealthyPH</string>
+		</dict>
+	</array>
+</dict>
+</plist>
