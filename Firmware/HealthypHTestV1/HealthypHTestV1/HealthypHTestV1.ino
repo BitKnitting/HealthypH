@@ -128,6 +128,7 @@ void on_turn_LED_on(MenuItem* p_menu_item)
 void on_turn_LED_off(MenuItem* p_menu_item)
 {
     Serial.println("\n****> Turn off LED Selected");
+    LEDTests.turnLEDoff();
 }
 
 void on_pH_selected(MenuItem* p_menu_item)

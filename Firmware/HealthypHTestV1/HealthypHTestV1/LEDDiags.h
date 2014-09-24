@@ -15,6 +15,7 @@ class LEDDiagTests
 public:
     LEDDiagTests (byte red_pin,byte blue_pin,byte green_pin);
     void turnLEDon(byte red,byte green,byte blue);
+    void turnLEDoff();
 private:
     byte Red_pin,Green_pin,Blue_pin;
 

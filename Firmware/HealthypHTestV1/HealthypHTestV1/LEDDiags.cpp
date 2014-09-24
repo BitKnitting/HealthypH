@@ -36,3 +36,9 @@ void LEDDiagTests::turnLEDon(byte red, byte green, byte blue)
     analogWrite(Green_pin, green);
     analogWrite(Blue_pin, blue);
 }
+void LEDDiagTests::turnLEDoff()
+{
+    analogWrite(Red_pin,255);
+    analogWrite(Green_pin,255);
+    analogWrite(Blue_pin,255);
+}
