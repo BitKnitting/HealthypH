@@ -95,16 +95,32 @@ MenuItem menuLED_mi2("Turn LED off");
 SPIDiagTests SPITests;
 /******************************************************************************
  * LED Diag tests are in LEDDiags.cpp
+ * see the Arduino schematic in the Healthy pH Shield schematic for pin assignment
  *******************************************************************************/
-LEDDiagTests LEDTests;
+const byte red_pin = A4;
+const byte green_pin = A3;
+const byte blue_pin = A2;
+
+LEDDiagTests LEDTests(red_pin,blue_pin,green_pin);
 // Menu callback functions
 /******************************************************************************
  * Type in values for R G B on Serial Port
  *******************************************************************************/
 void on_turn_LED_on(MenuItem* p_menu_item)
 {
-    Serial.println("\n****> Turn on LED Selected");
-    //ask for RGB colors
+    int red,green,blue;
+    Serial.println("\n****> Turn on LED Selected (Common Anode LED)");
+    Serial.println("ENTER RRR,GGG,BBB for the RED, GREEN, BLUE values of the LED (e.g. red is 0,255,255):");
+    //wait for input
+    while (Serial.available () == 0) {;}
+    // used (copy/pasted) reading a CSV from this link: http://arduino.cc/en/Tutorial/ReadASCIIString
+    // look for the next valid integer in the incoming serial stream:
+    red = Serial.parseInt();
+    // do it again:
+    green = Serial.parseInt();
+    // do it again:
+    blue = Serial.parseInt();
+    LEDTests.turnLEDon(red,green,blue);
 }
 /******************************************************************************
  * if the LED light in on, turn it off
@@ -200,8 +216,6 @@ void serialHandler() {
             case 'd': // Select pressed
                 ms.select();
                 displayMenu();
-                break;
-                case '#': //entering RGB in Hex for LED - a table of value/colors is located here:  http://www.javascripter.net/faq/rgbtohex.htm
                 break;
             case '?':
             case 'h': // Display help
