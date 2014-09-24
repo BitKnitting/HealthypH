@@ -26,63 +26,86 @@ const char register_write = 0;
 /******************************************************************************
  * read and then write to the two config registers.  Then set back to default.  The bytes returned should be what is expected as defined in the MCP3901 datasheet.
  *******************************************************************************/
-char SPIDiagTests::testConfig(byte CS_N,byte RESET_N,byte DR_N)
+byte SPIDiagTests::testConfig(byte CS_N,byte RESET_N,byte DR_N)
 {
     MCP3901_setup(CS_N, RESET_N, DR_N);
+    Serial.println("**** Read CONFIG registers ****");
+    //save the original register values in order to set them back after a write test
+    unsigned int register_values = read_and_print_config(CS_N);
+    Serial.print(" Register values: ");
+    Serial.println(register_values,HEX);
+    Serial.println("**** Change the ADC width from 16 bytes to 24 bytes for CH0 and CH1 (set in CONFIG 1 - see datasheet ****");
+    write_to_config(CS_N);
+    Serial.println("**** Read CONFIG registers ****");
     read_and_print_config(CS_N);
-    //Write to and print out the changed values for configs 1 and 2
-    //Reset configs to default
-    //Print out the default values
+    //reset configs to default
+    digitalWrite(RESET_N,LOW);
+    delay(50);
+    Serial.println("*** Reset CONFIG registers to default ****");
+    digitalWrite(RESET_N, HIGH);
+    read_and_print_config(CS_N);
 }
 /******************************************************************************
  * Send a control command to the MCP3901 asking to read the content of a config register then print out what is returned.
+ * The bits of the config registers are described in 7.6 of the MCP3901 datasheet.
  *******************************************************************************/
-void SPIDiagTests::read_and_print_config(char CS_N)
+unsigned int SPIDiagTests::read_and_print_config(byte CS_N)
 {
-Serial.print("Address of config 1: ");
-print_bits(address_register_config1,2);
-char register_value = MCP3901_read_config(CS_N,address_register_config1);
-Serial.print("Bits in config 1 register: ");
-print_bits(register_value,1);
-Serial.print("Address of config 2: ");
-print_bits(address_register_config2,2);
-register_value = MCP3901_read_config(CS_N,address_register_config2);
-Serial.print("Bits in config 2 register: ");
-print_bits(register_value,1);
+    unsigned int register_values = 0;
+    byte register_value = MCP3901_read_config(CS_N,address_register_config1);
+    Serial.print("->Bits in config 1 register: ");
+    print_bits(register_value,1);
+    //return config 1 in the MSB and config 2 in the LSB
+    register_values = (register_values|register_value) << 8;
+    register_value = MCP3901_read_config(CS_N,address_register_config2);
+    Serial.print("->Bits in config 2 register: ");
+    print_bits(register_value,1);
+    register_values = register_values | register_value;
+    return register_values;
+}
+/******************************************************************************
+ * Testing changing a value in the config register.  In this case, change ADC to use 24 bits instead of 16 bits.
+ *******************************************************************************/
+void SPIDiagTests::write_to_config(byte CS_N)
+{
+    //get the current value in config 1
+    byte register_value = MCP3901_read_config(CS_N, address_register_config1);
+    //set the width bits to 1 so the ADC is using 24 bits
+    register_value = register_value | 0b00001100;
+    //send the command to the MCP3901 to write to CONFIG1
+    byte SPIControlByte = address_register_config1 | register_write;
+    //we're using the SPI bus so set CS pin to LOW
+    digitalWrite(CS_N,LOW);
+    SPI.transfer(SPIControlByte);
+    SPI.transfer(register_value);
+    digitalWrite(CS_N,HIGH);
 }
 /******************************************************************************
  * Set up the SPI pins on the Arduino that vary per MCP3901 sharing the SPI - there are two: 1 for the Healthy pH Shield and 1 for the Healthy EC Shield.
  *******************************************************************************/
 void SPIDiagTests::MCP3901_setup(byte CS_N, byte RESET_N, byte DR_N)
 {
-    Serial.println("**** MCP3901_setup");
-    Serial.print("SPI Pins--->  CS: ");
-    Serial.print(CS_N);
-    Serial.print(" | RESET: ");
-    Serial.print(RESET_N);
-    Serial.print(" | DR: ");
-    Serial.println(DR_N);
     pinMode(CS_N, OUTPUT);
     pinMode(RESET_N, OUTPUT);
-//    pinMode(DR_N, INPUT);
-    digitalWrite(RESET_N, HIGH);
+    pinMode(DR_N, INPUT);
+    //reset registers to default
     //initialize the SPI bus
     SPI.setDataMode(SPI_MODE0);
     SPI.setClockDivider(SPI_CLOCK_DIV128); /* Slowest clock for testing */
     SPI.begin();
+    digitalWrite(RESET_N,HIGH);
 }
 /******************************************************************************
  * read one of the (two) configuration registers and return the value.
  *******************************************************************************/
-char SPIDiagTests:: MCP3901_read_config(char CS_N,unsigned int addr) {
-    Serial.println("**** MCP3901_config_read");
+byte SPIDiagTests:: MCP3901_read_config(byte CS_N,unsigned int addr) {
     //we're using the SPI bus so set CS pin to LOW
     digitalWrite(CS_N,LOW);
     //send the control byte to the MCP3901 with the config address and a read request
     byte SPIReadControlByte = addr | register_read;
-    Serial.print("Control byte: ");
-    print_bits(SPIReadControlByte,1);
-    char register_value = SPI.transfer(SPIReadControlByte);
+    //I would think just one SPI.transfer is needed but apparently two are...
+    SPI.transfer(SPIReadControlByte);
+    byte register_value = SPI.transfer(0XFF);  //Push dummy 1's and get byte return
     //get back the register value
     //char register_value = SPI.transfer(0xFF);
     //we're done using the SPI bus so set CS pin to HIGH
@@ -93,7 +116,7 @@ char SPIDiagTests:: MCP3901_read_config(char CS_N,unsigned int addr) {
  * Helper function to print out bits of one or more bytes in binary and hex format...including leading 0's
  * The second variable determines how many bytes to print.
  *******************************************************************************/
-void SPIDiagTests::print_bits(unsigned int bytes,char numBytes)
+void SPIDiagTests::print_bits(unsigned int bytes,byte numBytes)
 {
     for (int i = 0; i < 8*numBytes; i++)
     {
