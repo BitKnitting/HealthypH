@@ -16,12 +16,17 @@ LEDDiagTests::LEDDiagTests (byte red_pin,byte blue_pin,byte green_pin)
     pinMode(Red_pin, OUTPUT);
     pinMode(Green_pin,OUTPUT);
     pinMode(Blue_pin,OUTPUT);
+    //turn LED off to start
+    analogWrite(Red_pin,255);
+    analogWrite(Green_pin, 255);
+    analogWrite(Blue_pin, 255);
     
 }
 void LEDDiagTests::turnLEDon(byte red, byte green, byte blue)
 {
     Serial.println("***turnLEDon***");
-    // constrain the values to 0 - 255 and invert
+
+    // constrain the values to 0 - 255 and invert]
     // if you're using a common-cathode LED, just use "constrain(color, 0, 255);"
     red = constrain(red, 0, 255);
     green = constrain(green, 0, 255);

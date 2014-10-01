@@ -632,6 +632,7 @@
 		F07B97C119CEE53A00C3A45D /* MenuSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97BF19CEE53A00C3A45D /* MenuSystem.cpp */; };
 		F07B97C519CF050A00C3A45D /* SPIDiagTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97C319CF050A00C3A45D /* SPIDiagTests.cpp */; };
 		F07B97C819D1820400C3A45D /* LEDDiags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97C619D1820400C3A45D /* LEDDiags.cpp */; };
+		F0BDADE819D36821009B337C /* MCP3901.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0BDADE619D36821009B337C /* MCP3901.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1354,6 +1355,8 @@
 		F07B97C419CF050A00C3A45D /* SPIDiagTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPIDiagTests.h; sourceTree = "<group>"; };
 		F07B97C619D1820400C3A45D /* LEDDiags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LEDDiags.cpp; sourceTree = "<group>"; };
 		F07B97C719D1820400C3A45D /* LEDDiags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDiags.h; sourceTree = "<group>"; };
+		F0BDADE619D36821009B337C /* MCP3901.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MCP3901.cpp; sourceTree = "<group>"; };
+		F0BDADE719D36821009B337C /* MCP3901.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCP3901.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -3326,6 +3329,7 @@
 		F07B973319CEE43800C3A45D /* HealthypHTestV1 */ = {
 			isa = PBXGroup;
 			children = (
+				F0BDADE519D3680F009B337C /* MCP3901 */,
 				F07B97C219CF04C900C3A45D /* diagTests */,
 				F07B97BE19CEE48A00C3A45D /* MenuSystem */,
 				F07B973419CEE43800C3A45D /* main.cpp */,
@@ -3484,6 +3488,15 @@
 				F07B97C719D1820400C3A45D /* LEDDiags.h */,
 			);
 			name = diagTests;
+			sourceTree = "<group>";
+		};
+		F0BDADE519D3680F009B337C /* MCP3901 */ = {
+			isa = PBXGroup;
+			children = (
+				F0BDADE619D36821009B337C /* MCP3901.cpp */,
+				F0BDADE719D36821009B337C /* MCP3901.h */,
+			);
+			name = MCP3901;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4106,6 +4119,7 @@
 				AAA2140921034807AA000203 /* nlao_interrupts.h in Sources */,
 				AAA2140921034807AA000204 /* nlao_io.h in Sources */,
 				AAA2140921034807AA000205 /* nlao_usart.h in Sources */,
+				F0BDADE819D36821009B337C /* MCP3901.cpp in Sources */,
 				AAA2140921034807AA00020C /* parts.h in Sources */,
 				AAA2140921034807AA00020E /* mrepeat.h in Sources */,
 				AAA2140921034807AA00020F /* preprocessor.h in Sources */,

@@ -62,6 +62,7 @@
 #include "MenuSystem.h"
 #include "SPIDiagTests.h"
 #include "LEDDiags.h"
+#include "MCP3901.h"
 
 // Prototypes
 //Help
@@ -84,8 +85,9 @@ MenuItem pumps("pumps");
 Menu menuSPI("SPI");
 MenuItem temperature("temperature");
 
-MenuItem menuSPI_mi1("Healthy **pH** Shield");
-MenuItem menuSPI_mi2("Healthy **EC** Shield");
+MenuItem menuSPI_mi1("read CONFIG bytes");
+MenuItem menuSPI_mi2("set CONFIG 1 to 24 bits and OSR=256");
+MenuItem menuSPI_mi3("read ADC");
 
 MenuItem menuLED_mi1("Turn LED on");
 MenuItem menuLED_mi2("Turn LED off");
@@ -102,6 +104,7 @@ const byte green_pin = A3;
 const byte blue_pin = A2;
 
 LEDDiagTests LEDTests(red_pin,blue_pin,green_pin);
+MCP3901 adc_mcp3901(10,4,2);
 // Menu callback functions
 /******************************************************************************
  * Type in values for R G B on Serial Port
@@ -139,6 +142,11 @@ void on_pH_selected(MenuItem* p_menu_item)
 void on_pumps_selected(MenuItem* p_menu_item)
 {
     Serial.println("\n****> pumps Selected");
+    const byte pump_down = 5;
+    pinMode(pump_down,OUTPUT);
+    analogWrite(pump_down,255);
+    delay(3000);
+    analogWrite(pump_down,0);
 }
 
 void on_temperature_selected(MenuItem* p_menu_item)
@@ -149,24 +157,67 @@ void on_temperature_selected(MenuItem* p_menu_item)
  * The Healthy pH schematic shows the pH circuit uses CS = 10 for SPI.  Reset and DR are discussed in the MCP3901 data sheet.
  * The SPI test reads/writes to the config registers as shown in the MCP3901 datasheet.
  *******************************************************************************/
-void on_SPI_HealthypH_selected(MenuItem* p_menu_item)
+void on_SPI_readConfigs_selected(MenuItem* p_menu_item)
 {
-    Serial.println("\n****> Healthy **pH** Shield Selected");
-    byte CS_N = 10;
-    byte RESET_N = 4;
-    byte DR_N = 2;
-    SPITests.testConfig(CS_N,RESET_N,DR_N);
+    Serial.println("\n*********************************");
+    byte config = adc_mcp3901.read_config(1);
+    Serial.print("---> Config 1: 0X");
+    Serial.println(config,HEX);
+    config = adc_mcp3901.read_config(2);
+    Serial.print("---> Config 2: 0X");
+    Serial.println(config,HEX);
+//    byte CS_N = 10;
+//    byte RESET_N = 4;
+//    byte DR_N = 2;
+//    SPITests.testConfig(CS_N,RESET_N,DR_N);
+}
+/******************************************************************************
+ * Change config 1 from default to sampling at 24 bit width and OSR = 256
+ *******************************************************************************/
+void on_SPI_set24bits_selected(MenuItem* p_menu_item)
+{
+    adc_mcp3901.write_config(1,0x3C);
+    //verify
+    byte config = adc_mcp3901.read_config(1);
+    Serial.print("---> Config 1 should be 0X3C..here is the value in memory: 0X");
+    Serial.println(config,HEX);
 }
 /******************************************************************************
  * The Healthy EC schematic shows the EC circuit uses CS = 9 for SPI
  *******************************************************************************/
-void on_SPI_HealthyEC_selected(MenuItem* p_menu_item)
+void on_SPI_readADC_selected(MenuItem* p_menu_item)
 {
-    Serial.println("\n****> Healthy **EC** Shield Selected");
-    byte CS_N = 9;
-    byte RESET_N = 5;
-    byte DR_N = 3;
-    SPITests.testConfig(CS_N,RESET_N,DR_N);
+    Serial.println("***********************************");
+    float volts = adc_mcp3901.read_volts(1);
+    Serial.print("Volt reading: ");
+    Serial.println(volts);
+//    //start with the default OSR is 64, 16 bit width
+//    adc_mcp3901.read_channel(0);
+//    //set OSR to 256, 16 bit width
+////    Serial.print("---> OSR = 256 -->");
+////    byte address_register_config1 = (0x0A << 1);
+////    byte config1Value = B00110000;
+////    adc_mcp3901.write_byte(address_register_config1,config1Value);
+////    adc_mcp3901.read_channel(0);
+////    //set OSR to 128
+////    Serial.print("---> OSR = 128-->");
+////    config1Value = B00100000;
+////    adc_mcp3901.write_byte(address_register_config1,config1Value);
+////    adc_mcp3901.read_channel(0);
+////    //set OSR to 32
+////    Serial.print("---> OSR = 32-->");
+////    config1Value = B00000000;
+////    adc_mcp3901.write_byte(address_register_config1,config1Value);
+////    adc_mcp3901.read_channel(0);
+////    Serial.println("Press any key to START reading the ADC volt values for the pH");
+////    Serial.println("The ADC volt values will continue to be displayed until another character is typed");
+////    //wait for input
+////    while (Serial.available () == 0) {;}
+////    Serial.read();
+////    while (Serial.available() == 0) {
+////        adc_mcp3901.read_channel(0);
+////    }
+
 }
 // Add setup code 
 void setup() 
@@ -175,8 +226,9 @@ void setup()
     showHelp();
     //set up the menu
     mm.add_menu(&menuSPI);
-    menuSPI.add_item(&menuSPI_mi1, &on_SPI_HealthypH_selected);
-    menuSPI.add_item(&menuSPI_mi2, &on_SPI_HealthyEC_selected);
+    menuSPI.add_item(&menuSPI_mi1, &on_SPI_readConfigs_selected);
+    menuSPI.add_item(&menuSPI_mi2, &on_SPI_set24bits_selected);
+    menuSPI.add_item(&menuSPI_mi3, &on_SPI_readADC_selected);
     mm.add_menu(&menuLED);
     menuLED.add_item(&menuLED_mi1, &on_turn_LED_on);
     menuLED.add_item(&menuLED_mi2, &on_turn_LED_off);
@@ -184,9 +236,9 @@ void setup()
     mm.add_item(&pumps, &on_pumps_selected);
     mm.add_item(&temperature, &on_temperature_selected);
 
-
     ms.set_root_menu(&mm);
     displayMenu();
+    
 }
 
 // Add loop code 

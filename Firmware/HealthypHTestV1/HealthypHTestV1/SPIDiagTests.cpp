@@ -19,8 +19,8 @@
 //to make the control byte then the CONFIG1 (or 2) address needs to be bit shifted to the left by 1 so the address does not collide with the R/W bit.
 //note the R/W bit (the LSb) = 1 if read and 0 if write.
 //
-const unsigned int address_register_config1 = (0x0A << 1);  //0X0A = 0000 0000 0000 1010 0X14= 0000 0000 0001 0100
-const unsigned int address_register_config2 = (0x0B << 1);  //0X16 = 0000 0000 0001 0110
+byte address_register_config1 = (0x0A << 1);  //0X0A = 0000 0000 0000 1010 0X14= 0000 0000 0001 0100
+byte address_register_config2 = (0x0B << 1);  //0X16 = 0000 0000 0001 0110
 const char register_read = 1; //read config 1's register = 0x15 (| 1 to 0X14), config 2 = 0x17
 const char register_write = 0;
 /******************************************************************************
@@ -32,18 +32,18 @@ byte SPIDiagTests::testConfig(byte CS_N,byte RESET_N,byte DR_N)
     Serial.println("**** Read CONFIG registers ****");
     //save the original register values in order to set them back after a write test
     unsigned int register_values = read_and_print_config(CS_N);
-    Serial.print(" Register values: ");
-    Serial.println(register_values,HEX);
-    Serial.println("**** Change the ADC width from 16 bytes to 24 bytes for CH0 and CH1 (set in CONFIG 1 - see datasheet ****");
+//    Serial.print(" Register values: ");
+//    Serial.println(register_values,HEX);
+//    Serial.println("**** Change the ADC width from 16 bytes to 24 bytes for CH0 and CH1 (set in CONFIG 1 - see datasheet ****");
     write_to_config(CS_N);
     Serial.println("**** Read CONFIG registers ****");
     read_and_print_config(CS_N);
-    //reset configs to default
-    digitalWrite(RESET_N,LOW);
-    delay(50);
-    Serial.println("*** Reset CONFIG registers to default ****");
-    digitalWrite(RESET_N, HIGH);
-    read_and_print_config(CS_N);
+//    //reset configs to default
+//    digitalWrite(RESET_N,LOW);
+//    delay(50);
+//    Serial.println("*** Reset CONFIG registers to default ****");
+//    digitalWrite(RESET_N, HIGH);
+//    read_and_print_config(CS_N);
 }
 /******************************************************************************
  * Send a control command to the MCP3901 asking to read the content of a config register then print out what is returned.
@@ -71,7 +71,8 @@ void SPIDiagTests::write_to_config(byte CS_N)
     //get the current value in config 1
     byte register_value = MCP3901_read_config(CS_N, address_register_config1);
     //set the width bits to 1 so the ADC is using 24 bits
-    register_value = register_value | 0b00001100;
+    //register_value = register_value | 0b00001100;
+    register_value = 0b00111100;
     //send the command to the MCP3901 to write to CONFIG1
     byte SPIControlByte = address_register_config1 | register_write;
     //we're using the SPI bus so set CS pin to LOW
