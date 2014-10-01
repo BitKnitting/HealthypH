@@ -630,7 +630,6 @@
 		F072979719CEE43800C3A45D /* HealthypHTestV1.ino in Sources */ = {isa = PBXBuildFile; fileRef = F07B979719CEE43800C3A45D /* HealthypHTestV1.ino */; };
 		F07B973519CEE43800C3A45D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B973419CEE43800C3A45D /* main.cpp */; };
 		F07B97C119CEE53A00C3A45D /* MenuSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97BF19CEE53A00C3A45D /* MenuSystem.cpp */; };
-		F07B97C519CF050A00C3A45D /* SPIDiagTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97C319CF050A00C3A45D /* SPIDiagTests.cpp */; };
 		F07B97C819D1820400C3A45D /* LEDDiags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97C619D1820400C3A45D /* LEDDiags.cpp */; };
 		F0BDADE819D36821009B337C /* MCP3901.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0BDADE619D36821009B337C /* MCP3901.cpp */; };
 /* End PBXBuildFile section */
@@ -1351,8 +1350,6 @@
 		F07B979719CEE43800C3A45D /* HealthypHTestV1.ino */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = HealthypHTestV1.ino; sourceTree = "<group>"; };
 		F07B97BF19CEE53A00C3A45D /* MenuSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuSystem.cpp; sourceTree = "<group>"; };
 		F07B97C019CEE53A00C3A45D /* MenuSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSystem.h; sourceTree = "<group>"; };
-		F07B97C319CF050A00C3A45D /* SPIDiagTests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SPIDiagTests.cpp; sourceTree = "<group>"; };
-		F07B97C419CF050A00C3A45D /* SPIDiagTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPIDiagTests.h; sourceTree = "<group>"; };
 		F07B97C619D1820400C3A45D /* LEDDiags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LEDDiags.cpp; sourceTree = "<group>"; };
 		F07B97C719D1820400C3A45D /* LEDDiags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDiags.h; sourceTree = "<group>"; };
 		F0BDADE619D36821009B337C /* MCP3901.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MCP3901.cpp; sourceTree = "<group>"; };
@@ -3482,8 +3479,6 @@
 		F07B97C219CF04C900C3A45D /* diagTests */ = {
 			isa = PBXGroup;
 			children = (
-				F07B97C319CF050A00C3A45D /* SPIDiagTests.cpp */,
-				F07B97C419CF050A00C3A45D /* SPIDiagTests.h */,
 				F07B97C619D1820400C3A45D /* LEDDiags.cpp */,
 				F07B97C719D1820400C3A45D /* LEDDiags.h */,
 			);
@@ -3897,7 +3892,6 @@
 				AAA2140921034807AA0000E7 /* GSM3MobileCellManagement.cpp in Sources */,
 				AAA2140921034807AA0000E8 /* GSM3MobileCellManagement.h in Sources */,
 				AAA2140921034807AA0000E9 /* GSM3MobileClientProvider.cpp in Sources */,
-				F07B97C519CF050A00C3A45D /* SPIDiagTests.cpp in Sources */,
 				AAA2140921034807AA0000EA /* GSM3MobileClientProvider.h in Sources */,
 				AAA2140921034807AA0000EB /* GSM3MobileClientService.cpp in Sources */,
 				AAA2140921034807AA0000EC /* GSM3MobileClientService.h in Sources */,

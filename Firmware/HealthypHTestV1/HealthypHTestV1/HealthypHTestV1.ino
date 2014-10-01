@@ -60,7 +60,6 @@
 
 // Include application, user and local libraries
 #include "MenuSystem.h"
-#include "SPIDiagTests.h"
 #include "LEDDiags.h"
 #include "MCP3901.h"
 
@@ -91,10 +90,7 @@ MenuItem menuSPI_mi3("read ADC");
 
 MenuItem menuLED_mi1("Turn LED on");
 MenuItem menuLED_mi2("Turn LED off");
-/******************************************************************************
- * All SPI tests are in the SPIDiagTests class
- *******************************************************************************/
-SPIDiagTests SPITests;
+
 /******************************************************************************
  * LED Diag tests are in LEDDiags.cpp
  * see the Arduino schematic in the Healthy pH Shield schematic for pin assignment
@@ -166,10 +162,6 @@ void on_SPI_readConfigs_selected(MenuItem* p_menu_item)
     config = adc_mcp3901.read_config(2);
     Serial.print("---> Config 2: 0X");
     Serial.println(config,HEX);
-//    byte CS_N = 10;
-//    byte RESET_N = 4;
-//    byte DR_N = 2;
-//    SPITests.testConfig(CS_N,RESET_N,DR_N);
 }
 /******************************************************************************
  * Change config 1 from default to sampling at 24 bit width and OSR = 256
@@ -191,33 +183,6 @@ void on_SPI_readADC_selected(MenuItem* p_menu_item)
     float volts = adc_mcp3901.read_volts(1);
     Serial.print("Volt reading: ");
     Serial.println(volts);
-//    //start with the default OSR is 64, 16 bit width
-//    adc_mcp3901.read_channel(0);
-//    //set OSR to 256, 16 bit width
-////    Serial.print("---> OSR = 256 -->");
-////    byte address_register_config1 = (0x0A << 1);
-////    byte config1Value = B00110000;
-////    adc_mcp3901.write_byte(address_register_config1,config1Value);
-////    adc_mcp3901.read_channel(0);
-////    //set OSR to 128
-////    Serial.print("---> OSR = 128-->");
-////    config1Value = B00100000;
-////    adc_mcp3901.write_byte(address_register_config1,config1Value);
-////    adc_mcp3901.read_channel(0);
-////    //set OSR to 32
-////    Serial.print("---> OSR = 32-->");
-////    config1Value = B00000000;
-////    adc_mcp3901.write_byte(address_register_config1,config1Value);
-////    adc_mcp3901.read_channel(0);
-////    Serial.println("Press any key to START reading the ADC volt values for the pH");
-////    Serial.println("The ADC volt values will continue to be displayed until another character is typed");
-////    //wait for input
-////    while (Serial.available () == 0) {;}
-////    Serial.read();
-////    while (Serial.available() == 0) {
-////        adc_mcp3901.read_channel(0);
-////    }
-
 }
 // Add setup code 
 void setup() 
@@ -238,7 +203,6 @@ void setup()
 
     ms.set_root_menu(&mm);
     displayMenu();
-    
 }
 
 // Add loop code 
