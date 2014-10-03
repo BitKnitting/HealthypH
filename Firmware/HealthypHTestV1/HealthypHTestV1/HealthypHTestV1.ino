@@ -62,6 +62,8 @@
 #include "MenuSystem.h"
 #include "LEDDiags.h"
 #include "MCP3901.h"
+#include "Statistic.h"
+#include "Thermistor.h"
 
 // Prototypes
 //Help
@@ -101,6 +103,8 @@ const byte blue_pin = A2;
 
 LEDDiagTests LEDTests(red_pin,blue_pin,green_pin);
 MCP3901 adc_mcp3901(10,4,2);
+Thermistor therm;
+Statistic myStats;  //from http://playground.arduino.cc/Main/Statistics
 // Menu callback functions
 /******************************************************************************
  * Type in values for R G B on Serial Port
@@ -148,6 +152,9 @@ void on_pumps_selected(MenuItem* p_menu_item)
 void on_temperature_selected(MenuItem* p_menu_item)
 {
     Serial.println("\n****> temperature Selected");
+    float resistance_value = therm.read_thermistor_R();
+    Serial.print("--> Thermistor resistance: ");
+    Serial.println(resistance_value);
 }
 /******************************************************************************
  * The Healthy pH schematic shows the pH circuit uses CS = 10 for SPI.  Reset and DR are discussed in the MCP3901 data sheet.
@@ -180,9 +187,20 @@ void on_SPI_set24bits_selected(MenuItem* p_menu_item)
 void on_SPI_readADC_selected(MenuItem* p_menu_item)
 {
     Serial.println("***********************************");
-    float volts = adc_mcp3901.read_volts(1);
-    Serial.print("Volt reading: ");
-    Serial.println(volts);
+    Serial.println("Enter number readings to take an average and STDEV: ");
+        while (Serial.available () == 0) {;}
+    unsigned int num_readings = Serial.parseInt();
+    myStats.clear(); //explicitly start clean
+    for (int i=0;i < num_readings;i++){
+    myStats.add( adc_mcp3901.read_volts(0));
+    }
+    Serial.print("CH0 Volt reading: ");
+    Serial.print("  Count: ");
+    Serial.print(myStats.count());
+    Serial.print("  Average: ");
+    Serial.print(myStats.average());
+    Serial.print("  Std deviation: ");
+    Serial.println(myStats.pop_stdev());
 }
 // Add setup code 
 void setup() 

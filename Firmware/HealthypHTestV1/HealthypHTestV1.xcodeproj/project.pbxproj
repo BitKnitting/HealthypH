@@ -632,6 +632,8 @@
 		F07B97C119CEE53A00C3A45D /* MenuSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97BF19CEE53A00C3A45D /* MenuSystem.cpp */; };
 		F07B97C819D1820400C3A45D /* LEDDiags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F07B97C619D1820400C3A45D /* LEDDiags.cpp */; };
 		F0BDADE819D36821009B337C /* MCP3901.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0BDADE619D36821009B337C /* MCP3901.cpp */; };
+		F0D16B0C19DDBE6A001DC138 /* Statistic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0D16B0B19DDBE6A001DC138 /* Statistic.cpp */; };
+		F0D16B1119DDC0E4001DC138 /* Thermistor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0D16B0F19DDC0E4001DC138 /* Thermistor.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1354,6 +1356,10 @@
 		F07B97C719D1820400C3A45D /* LEDDiags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDiags.h; sourceTree = "<group>"; };
 		F0BDADE619D36821009B337C /* MCP3901.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MCP3901.cpp; sourceTree = "<group>"; };
 		F0BDADE719D36821009B337C /* MCP3901.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCP3901.h; sourceTree = "<group>"; };
+		F0D16B0B19DDBE6A001DC138 /* Statistic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Statistic.cpp; sourceTree = "<group>"; };
+		F0D16B0D19DDBE74001DC138 /* Statistic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
+		F0D16B0F19DDC0E4001DC138 /* Thermistor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thermistor.cpp; sourceTree = "<group>"; };
+		F0D16B1019DDC0E4001DC138 /* Thermistor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thermistor.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -3326,6 +3332,8 @@
 		F07B973319CEE43800C3A45D /* HealthypHTestV1 */ = {
 			isa = PBXGroup;
 			children = (
+				F0D16B0E19DDC0D3001DC138 /* Thermistor */,
+				F0D16B0A19DDBE5A001DC138 /* Statistic */,
 				F0BDADE519D3680F009B337C /* MCP3901 */,
 				F07B97C219CF04C900C3A45D /* diagTests */,
 				F07B97BE19CEE48A00C3A45D /* MenuSystem */,
@@ -3492,6 +3500,24 @@
 				F0BDADE719D36821009B337C /* MCP3901.h */,
 			);
 			name = MCP3901;
+			sourceTree = "<group>";
+		};
+		F0D16B0A19DDBE5A001DC138 /* Statistic */ = {
+			isa = PBXGroup;
+			children = (
+				F0D16B0D19DDBE74001DC138 /* Statistic.h */,
+				F0D16B0B19DDBE6A001DC138 /* Statistic.cpp */,
+			);
+			name = Statistic;
+			sourceTree = "<group>";
+		};
+		F0D16B0E19DDC0D3001DC138 /* Thermistor */ = {
+			isa = PBXGroup;
+			children = (
+				F0D16B0F19DDC0E4001DC138 /* Thermistor.cpp */,
+				F0D16B1019DDC0E4001DC138 /* Thermistor.h */,
+			);
+			name = Thermistor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3998,6 +4024,7 @@
 				AAA2140921034807AA000155 /* VirtualKeyboard.h in Sources */,
 				AAA2140921034807AA000158 /* ArduinoRobotMotorBoard.cpp in Sources */,
 				AAA2140921034807AA000159 /* ArduinoRobotMotorBoard.h in Sources */,
+				F0D16B1119DDC0E4001DC138 /* Thermistor.cpp in Sources */,
 				AAA2140921034807AA00015A /* EasyTransfer2.cpp in Sources */,
 				AAA2140921034807AA00015B /* EasyTransfer2.h in Sources */,
 				AAA2140921034807AA00015C /* lineFollow.cpp in Sources */,
@@ -4287,6 +4314,7 @@
 				AAA2140921034807AA0002F7 /* nlao_usart.h in Sources */,
 				AAA2140921034807AA0002FE /* parts.h in Sources */,
 				AAA2140921034807AA000300 /* mrepeat.h in Sources */,
+				F0D16B0C19DDBE6A001DC138 /* Statistic.cpp in Sources */,
 				AAA2140921034807AA000301 /* preprocessor.h in Sources */,
 				AAA2140921034807AA000302 /* stringz.h in Sources */,
 				AAA2140921034807AA000303 /* tpaste.h in Sources */,

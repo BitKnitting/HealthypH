@@ -38,16 +38,16 @@ MCP3901::MCP3901(byte cs_n, byte reset_n, byte dr_n)
 }
 /******************************************************************************
  * channel_num is either 0 for CH0 or 1 for CH1
- * -1.0 is returned if there is an error (say channel_num != 1 or 2)
+ * -1.0 is returned if there is an error (say channel_num != 0 or 1)
  *******************************************************************************/
 float MCP3901::read_volts(byte channel_num)
 
 {byte readaddress = address_CH0_msb;
     //read in the 24 bit ADC value.  NOTE: This function assumes the channel width = 24 bits
     switch(channel_num){
-        case 1:
+        case 0:
             break;
-        case 2:
+        case 1:
             readaddress = address_CH0_msb + 3;
             break;
         default:
