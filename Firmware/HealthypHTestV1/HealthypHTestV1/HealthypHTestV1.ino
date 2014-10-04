@@ -81,8 +81,8 @@ void displayMenu();
 MenuSystem ms;
 Menu mm("Healthy pH Shield Diagnostic Tests ");
 Menu menuLED("LED");
+Menu menuPumps("pumps");
 MenuItem pH("pH");
-MenuItem pumps("pumps");
 Menu menuSPI("SPI");
 MenuItem temperature("temperature");
 
@@ -92,6 +92,9 @@ MenuItem menuSPI_mi3("read ADC");
 
 MenuItem menuLED_mi1("Turn LED on");
 MenuItem menuLED_mi2("Turn LED off");
+
+MenuItem menuPumps_mi1("Test Down Pump (V+ = conn 5, SW = conn 6)");
+MenuItem menuPumps_mi2("Test Up Pump (V+ = conn 7, SW = conn 8)");
 
 /******************************************************************************
  * LED Diag tests are in LEDDiags.cpp
@@ -139,14 +142,35 @@ void on_pH_selected(MenuItem* p_menu_item)
     Serial.println("\n****> pH Selected");
 }
 
-void on_pumps_selected(MenuItem* p_menu_item)
+void on_test_down_pump(MenuItem* p_menu_item)
 {
-    Serial.println("\n****> pumps Selected");
-    const byte pump_down = 5;
+    Serial.println("\n****> Test the down pump");
+    const byte pump_down = A0;
     pinMode(pump_down,OUTPUT);
-    analogWrite(pump_down,255);
-    delay(3000);
-    analogWrite(pump_down,0);
+    //turn pump on and off until an input character is detected
+    while (Serial.available () == 0) {
+        analogWrite(pump_down,255);
+        Serial.println("Down pump is ON");
+        delay(2000);
+        analogWrite(pump_down,0);
+        Serial.println("Down pump is OFF");
+        delay(2000);
+    }
+}
+void on_test_up_pump(MenuItem* p_menu_item)
+{
+    Serial.println("\n****> Test the up pump");
+    const byte pump_up = A1;
+    pinMode(pump_up,OUTPUT);
+    //turn pump on and off until an input character is detected
+    while (Serial.available () == 0) {
+        analogWrite(pump_up,255);
+        Serial.println("Up pump is ON");
+        delay(2000);
+        analogWrite(pump_up,0);
+        Serial.println("Up pump is OFF");
+        delay(2000);
+    }
 }
 
 void on_temperature_selected(MenuItem* p_menu_item)
@@ -188,7 +212,7 @@ void on_SPI_readADC_selected(MenuItem* p_menu_item)
 {
     Serial.println("***********************************");
     Serial.println("Enter number readings to take an average and STDEV: ");
-        while (Serial.available () == 0) {;}
+    while (Serial.available () == 0) {;}
     unsigned int num_readings = Serial.parseInt();
     myStats.clear(); //explicitly start clean
     for (int i=0;i < num_readings;i++){
@@ -216,7 +240,9 @@ void setup()
     menuLED.add_item(&menuLED_mi1, &on_turn_LED_on);
     menuLED.add_item(&menuLED_mi2, &on_turn_LED_off);
     mm.add_item(&pH, &on_pH_selected);
-    mm.add_item(&pumps, &on_pumps_selected);
+    mm.add_menu(&menuPumps);
+    menuPumps.add_item(&menuPumps_mi1, &on_test_down_pump);
+    menuPumps.add_item(&menuPumps_mi2, &on_test_up_pump);
     mm.add_item(&temperature, &on_temperature_selected);
 
     ms.set_root_menu(&mm);
