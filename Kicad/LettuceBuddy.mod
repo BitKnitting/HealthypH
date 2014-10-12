@@ -1,4 +1,4 @@
-PCBNEW-LibModule-V1  9/27/2014 6:18:24 AM
+PCBNEW-LibModule-V1  10/11/2014 4:50:24 AM
 # encoding utf-8
 Units mm
 $INDEX
@@ -683,71 +683,71 @@ Po 17.5 0
 $EndPAD
 $EndMODULE LB_6PosTB
 $MODULE LB_8PosTB
-Po 0 0 0 15 53F51077 00000000 ~~
+Po 0 0 0 15 54391978 00000000 ~~
 Li LB_8PosTB
 Sc 0
 AR /53EA8DDA
 Op 0 0 0
-T0 1.75 1.3 1 1 0 0.15 N V 21 N "P1"
-T1 22.75 5.9 1 1 0 0.15 N V 21 N "CONN_8"
+T0 10.5918 8.4328 1 1 0 0.15 N V 21 N "P1"
+T1 9.9314 0.1905 0.508 0.8128 0 0.127 N V 21 N "CONN_8"
 DS 0 0 29 0 0.15 21
 DS 29 0 29 7 0.15 21
 DS 29 7 0 7 0.15 21
 DS 0 7 0 0 0.15 21
 $PAD
-Sh "1" C 1.778 1.778 0 0 0
-Dr 1 0 0
+Sh "1" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 7 "/pH/pH_V+(in)"
+Ne 7 "/pH/pH_Probe_V"
 Po 2.27 3.4
 $EndPAD
 $PAD
-Sh "2" C 1.778 1.778 0 0 0
-Dr 1 0 0
+Sh "2" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 2 "/Digital Access/pH_ADC+"
+Ne 3 "/Digital Access/pH_ADC-"
 Po 5.77 3.4
 $EndPAD
 $PAD
-Sh "3" C 1.778 1.778 0 0 0
-Dr 1 0 0
+Sh "3" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 1 "/Digital Access/V+_WallWart"
+Ne 6 "/Temperature/10K Therm"
 Po 9.27 3.4
 $EndPAD
 $PAD
-Sh "4" C 1.778 1.778 0 0 0
-Dr 0.9906 0 0
+Sh "4" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 6 "/Temperature/Temp"
+Ne 2 "/Digital Access/V+_WallWart"
 Po 12.77 3.4
 $EndPAD
 $PAD
-Sh "5" C 1.778 1.778 0 0 0
-Dr 1 0 0
+Sh "5" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 5 "/Pumps/V+_DownPump"
+Ne 1 "/Arduino/V+_ARD"
 Po 16.27 3.4
 $EndPAD
 $PAD
-Sh "6" C 1.778 1.778 0 0 0
-Dr 1 0 0
+Sh "6" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 3 "/Pumps/SW_DownPump"
+Ne 4 "/Pumps/SW_DownPump"
 Po 19.77 3.4
 $EndPAD
 $PAD
-Sh "7" C 1.778 1.778 0 0 0
-Dr 1 0 0
+Sh "7" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 5 "/Pumps/V+_DownPump"
+Ne 1 "/Arduino/V+_ARD"
 Po 22.75 3.5
 $EndPAD
 $PAD
-Sh "8" C 1.778 1.778 0 0 0
-Dr 1 0 0
+Sh "8" C 1.905 1.905 0 0 0
+Dr 1.143 0 0
 At STD N 00E0FFFF
-Ne 4 "/Pumps/SW_UpPump"
+Ne 5 "/Pumps/SW_UpPump"
 Po 26.25 3.5
 $EndPAD
 $EndMODULE LB_8PosTB
@@ -825,34 +825,34 @@ Po 10.9 2.8
 $EndPAD
 $EndMODULE LB_BarrelJack
 $MODULE LB_BarrelJack_Correct
-Po 0 0 0 15 5426B912 00000000 ~~
+Po 0 0 0 15 5439182C 00000000 ~~
 Li LB_BarrelJack_Correct
 Sc 0
 AR /53DB8BC1/53DB8C46
 Op 0 0 0
 T0 8.6614 6.604 1 1 0 0.15 N V 21 N "CON1"
-T1 7.4422 8.2042 1 1 0 0.15 N V 21 N "Barrel Jack"
+T1 7.4422 8.2042 1 1 0 0.15 N V 21 N "LB_BarrelJack"
 DS 0 0 11.3538 0 0.15 21
 DS 11.3538 0 11.3538 5.5372 0.15 21
 DS 11.3538 5.5372 0 5.5372 0.15 21
 DS 0 5.5372 0 0 0.15 21
 $PAD
-Sh "1" O 1.016 2.032 0 0 0
-Dr 0.5842 0 0 O 0.5842 1.524
+Sh "1" C 2.032 2.032 0 0 0
+Dr 1.27 0 0
 At STD N 00E0FFFF
 Ne 2 "N-0000035"
 Po 11.2014 2.7686
 $EndPAD
 $PAD
-Sh "2" O 1.016 2.032 0 0 0
-Dr 0.5842 0 0 O 0.5842 1.524
+Sh "2" C 2.032 2.032 0 0 0
+Dr 1.27 0 0
 At STD N 00E0FFFF
 Ne 1 "AGND"
 Po 6.1976 2.7686
 $EndPAD
 $PAD
-Sh "3" O 2.032 1.016 0 0 0
-Dr 1.524 0 0 O 1.524 0.5842
+Sh "3" C 2.032 2.032 0 0 0
+Dr 1.27 0 0
 At STD N 00E0FFFF
 Ne 1 "AGND"
 Po 8.7122 0.1524

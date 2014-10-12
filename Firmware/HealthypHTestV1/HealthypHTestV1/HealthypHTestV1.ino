@@ -104,7 +104,7 @@ const byte red_pin = A4;
 const byte green_pin = A3;
 const byte blue_pin = A2;
 
-LEDDiagTests LEDTests(red_pin,blue_pin,green_pin);
+LEDDiagTests LEDTests(red_pin,green_pin,blue_pin);
 MCP3901 adc_mcp3901(10,4,2);
 Thermistor therm;
 Statistic myStats;  //from http://playground.arduino.cc/Main/Statistics
@@ -211,19 +211,22 @@ void on_SPI_set24bits_selected(MenuItem* p_menu_item)
 void on_SPI_readADC_selected(MenuItem* p_menu_item)
 {
     Serial.println("***********************************");
-    Serial.println("Enter number readings to take an average and STDEV: ");
+    Serial.println("Enter number readings: ");
     while (Serial.available () == 0) {;}
     unsigned int num_readings = Serial.parseInt();
     myStats.clear(); //explicitly start clean
     for (int i=0;i < num_readings;i++){
-    myStats.add( adc_mcp3901.read_volts(0));
+        float volts = adc_mcp3901.read_volts(0);
+        Serial.print("--> Volts: ");
+        Serial.println(volts);
+        myStats.add( volts);
     }
-    Serial.print("CH0 Volt reading: ");
-    Serial.print("  Count: ");
+//    Serial.print("CH0 Volt reading: ");
+    Serial.print("|  Count: ");
     Serial.print(myStats.count());
-    Serial.print("  Average: ");
+    Serial.print("|  Average: ");
     Serial.print(myStats.average());
-    Serial.print("  Std deviation: ");
+    Serial.print("|  Std deviation: ");
     Serial.println(myStats.pop_stdev());
 }
 // Add setup code 

@@ -8,7 +8,7 @@
 
 #include "LEDDiags.h"
 
-LEDDiagTests::LEDDiagTests (byte red_pin,byte blue_pin,byte green_pin)
+LEDDiagTests::LEDDiagTests (byte red_pin,byte green_pin,byte blue_pin)
 {
     Red_pin = red_pin;
     Green_pin = green_pin;

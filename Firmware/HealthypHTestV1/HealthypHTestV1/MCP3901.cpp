@@ -37,12 +37,11 @@ MCP3901::MCP3901(byte cs_n, byte reset_n, byte dr_n)
     digitalWrite(RESET_N,HIGH);    
 }
 /******************************************************************************
- * channel_num is either 0 for CH0 or 1 for CH1
- * -1.0 is returned if there is an error (say channel_num != 0 or 1)
+ * Read the 24 bit ADC value from either CH0 or CH1
  *******************************************************************************/
-float MCP3901::read_volts(byte channel_num)
-
-{byte readaddress = address_CH0_msb;
+int32_t MCP3901::read_value(byte channel_num)
+{
+    byte readaddress = address_CH0_msb;
     //read in the 24 bit ADC value.  NOTE: This function assumes the channel width = 24 bits
     switch(channel_num){
         case 0:
@@ -55,19 +54,37 @@ float MCP3901::read_volts(byte channel_num)
             break;
     }
     readaddress = readaddress | register_read;
-    uint32_t adc_value=0;  //need 3 bytes for the ADC data
-    byte adc_value_bytes[3]={0};
+    long adc_value=0;  //need 3 bytes for the ADC data
+    byte adc_value_bytes[4]={0};
     //we're using the SPI bus so set CS pin to LOW
     digitalWrite(CS_N,LOW);
     SPI.transfer(readaddress);
-    for (byte i=0;i<3;i++){
+    //start with the 2nd byte since this is a 24 bit number and bit twiddling is needed if the number is negative.
+    for (byte i=1;i<4;i++){
         adc_value_bytes[i] = SPI.transfer(0xFF);
     }
     //we're done using the SPI bus so set CS pin to HIGH
     digitalWrite(CS_N,HIGH);
-    adc_value =   (unsigned long)adc_value_bytes[0]<<16 | (unsigned long)adc_value_bytes[1] << 8  | (unsigned long)adc_value_bytes[2];
-    Serial.print("--> ADC Value: ");
-    Serial.println(adc_value);
+    //numbers are stored in two's complement.  This would be super easy if what was returned was a 32 bit number.  But alas, 24 bits are returned.
+    //I check the 24th bit to see if it is a 1.  If it is, this is a negative number.  If a negative number, set the MSB byte to 0xFFFF.
+    //i then set the first bit of the 2nd to MSB to 0 since this is the two's complement bit for the 24 bit value.
+    //i found this post on two's complement helpful: http://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html#intro
+    if (CHECK_BIT(adc_value_bytes[1],7)) {
+        adc_value_bytes[0]  = 0xFFFF;
+        adc_value_bytes[1] &= ~0x8000;
+    }
+    adc_value =   (long)adc_value_bytes[0] << 24 | (long)adc_value_bytes[1]<<16 | (long)adc_value_bytes[2] << 8  | (long)adc_value_bytes[3];
+    return(adc_value);
+}
+
+/******************************************************************************
+ * channel_num is either 0 for CH0 or 1 for CH1
+ * -1.0 is returned if there is an error (say channel_num != 0 or 1)
+ *******************************************************************************/
+float MCP3901::read_volts(byte channel_num)
+
+{
+    int32_t adc_value =   read_value(channel_num);
     float volts = (float)adc_value/(8388608*3)*vRef;  //see sectin 5.6 Equation 5-3 of the MCP3901 datasheet
     return volts;
 }

@@ -10,10 +10,13 @@
 #define __HealthypHTestV1__MCP3901__
 #include "Arduino.h"
 #include "SPI.h"
+//figure out if a bit is on.
+#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 typedef uint8_t byte;
 class MCP3901
 {public:
     MCP3901 (byte cs_n,byte reset_n,byte dr_n);
+    int32_t read_value(byte channel_num);
     float read_volts(byte channel_num);
     void write_byte(byte addr,byte value);
     byte read_byte(byte addr);
