@@ -20,9 +20,9 @@ MCP3901 therm_mcp3901(10,4,2);
 float Thermistor::read_thermistor_R(void)
 {
     float volts = therm_mcp3901.read_volts(1);
-    Serial.print("--> volts: ");
+    Serial.print(F("--> volts: "));
     Serial.print(volts);
-    Serial.print(" | Thermistor Resistance: ");
+    Serial.print(F(" | Thermistor Resistance: "));
     Serial.println(KNOWN_RESISTANCE/volts);
     return (KNOWN_RESISTANCE/volts);
 }

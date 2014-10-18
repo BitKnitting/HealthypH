@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 7
 Title ""
-Date "11 oct 2014"
+Date "18 oct 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -90,18 +90,6 @@ F 3 "" H 3450 3550 60  0000 C CNN
 	1    3450 3550
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5600 4100 5600 3750
-Wire Wire Line
-	3750 4100 7200 4100
-Wire Wire Line
-	7200 4100 7200 3950
-Wire Wire Line
-	6800 3950 6800 4100
-Connection ~ 6800 4100
-Wire Wire Line
-	4750 4100 4750 3950
-Connection ~ 5600 4100
 $Comp
 L DIODE D2
 U 1 1 53DBBCE6
@@ -113,12 +101,6 @@ F 3 "~" H 4150 3450 60  0000 C CNN
 	1    4150 3450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3950 3450 3750 3450
-Wire Wire Line
-	3750 3550 3750 4100
-Connection ~ 4750 4100
-Connection ~ 3750 3650
 Text Notes 2750 3150 0    60   ~ 0
 6.25V - 12V
 Text HLabel 10050 3300 2    60   Output ~ 0
@@ -134,9 +116,6 @@ F 3 "" H 5250 4450 60  0000 C CNN
 	1    5250 4450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5250 4450 5250 4100
-Connection ~ 5250 4100
 $Comp
 L CONN_2 P2
 U 1 1 53E89338
@@ -148,8 +127,6 @@ F 3 "" H 8250 2450 60  0000 C CNN
 	1    8250 2450
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	8350 3300 8350 2800
 $Comp
 L AGND #PWR02
 U 1 1 53F2345C
@@ -161,56 +138,6 @@ F 3 "" H 8150 2950 60  0000 C CNN
 	1    8150 2950
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	8150 2800 8150 2950
-$Comp
-L MC78L05 U3
-U 1 1 53F37E5C
-P 5600 3500
-F 0 "U3" H 5750 3500 60  0000 C CNN
-F 1 "MC78L05" H 5600 3950 60  0000 C CNN
-F 2 "~" H 5600 3500 60  0000 C CNN
-F 3 "~" H 5600 3500 60  0000 C CNN
-	1    5600 3500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6800 3300 6800 3550
-Wire Wire Line
-	4450 3450 4350 3450
-Wire Wire Line
-	4450 3050 4450 3450
-Wire Wire Line
-	4450 3300 5000 3300
-Wire Wire Line
-	4750 3550 4750 3300
-Connection ~ 4750 3300
-$Comp
-L CONN_1 TP9
-U 1 1 53F5FBA0
-P 4600 3050
-F 0 "TP9" H 4680 3050 40  0000 L CNN
-F 1 "CONN_1" H 4600 3105 30  0001 C CNN
-F 2 "" H 4600 3050 60  0000 C CNN
-F 3 "" H 4600 3050 60  0000 C CNN
-	1    4600 3050
-	1    0    0    -1  
-$EndComp
-Connection ~ 4450 3300
-$Comp
-L CONN_1 TP10
-U 1 1 53F5FBF5
-P 6250 3850
-F 0 "TP10" H 6330 3850 40  0000 L CNN
-F 1 "CONN_1" H 6250 3905 30  0001 C CNN
-F 2 "" H 6250 3850 60  0000 C CNN
-F 3 "" H 6250 3850 60  0000 C CNN
-	1    6250 3850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6100 3850 6100 4100
-Connection ~ 6100 4100
 $Comp
 L LED D3
 U 1 1 540ED65C
@@ -233,34 +160,6 @@ F 3 "~" H 8850 4400 30  0000 C CNN
 	1    8850 4400
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	6250 3300 10050 3300
-Wire Wire Line
-	7200 3300 7200 3550
-$Comp
-L CONN_1 TP8
-U 1 1 540EE2E1
-P 9950 2950
-F 0 "TP8" H 10030 2950 40  0000 L CNN
-F 1 "CONN_1" H 9950 3005 30  0001 C CNN
-F 2 "" H 9950 2950 60  0000 C CNN
-F 3 "" H 9950 2950 60  0000 C CNN
-	1    9950 2950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9800 2950 9800 3300
-Connection ~ 9800 3300
-Connection ~ 6800 3300
-Connection ~ 7200 3300
-Connection ~ 8350 3300
-Wire Wire Line
-	8850 3500 8850 3300
-Connection ~ 8850 3300
-Wire Wire Line
-	8850 3900 8850 4150
-Wire Wire Line
-	8850 4650 8850 4900
 $Comp
 L AGND #PWR03
 U 1 1 5410156B
@@ -272,6 +171,57 @@ F 3 "" H 8850 4900 60  0000 C CNN
 	1    8850 4900
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	5600 4100 5600 3750
+Wire Wire Line
+	3750 4100 7200 4100
+Wire Wire Line
+	7200 4100 7200 3950
+Wire Wire Line
+	6800 3950 6800 4100
+Connection ~ 6800 4100
+Wire Wire Line
+	4750 4100 4750 3950
+Connection ~ 5600 4100
+Wire Wire Line
+	3950 3450 3750 3450
+Wire Wire Line
+	3750 3550 3750 4100
+Connection ~ 4750 4100
+Connection ~ 3750 3650
+Wire Wire Line
+	5250 4450 5250 4100
+Connection ~ 5250 4100
+Wire Wire Line
+	8350 3300 8350 2800
+Wire Wire Line
+	8150 2800 8150 2950
+Wire Wire Line
+	6800 3300 6800 3550
+Wire Wire Line
+	4450 3450 4350 3450
+Wire Wire Line
+	4450 3300 5000 3300
+Wire Wire Line
+	4750 3550 4750 3300
+Connection ~ 4750 3300
+Wire Wire Line
+	6250 3300 10050 3300
+Wire Wire Line
+	7200 3300 7200 3550
+Connection ~ 6800 3300
+Connection ~ 7200 3300
+Connection ~ 8350 3300
+Wire Wire Line
+	8850 3500 8850 3300
+Connection ~ 8850 3300
+Wire Wire Line
+	8850 3900 8850 4150
+Wire Wire Line
+	8850 4650 8850 4900
+Connection ~ 3900 3450
+Wire Wire Line
+	3900 3100 3900 3450
 $Comp
 L CONN_1 TP20
 U 1 1 54142B38
@@ -284,20 +234,16 @@ F 3 "" H 4050 3100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3900 3100 3900 3450
-Connection ~ 3900 3450
+	4450 3300 4450 3450
 $Comp
-L CONN_1 TP19
-U 1 1 54142B64
-P 3300 4000
-F 0 "TP19" H 3380 4000 40  0000 L CNN
-F 1 "CONN_1" H 3300 4055 30  0001 C CNN
-F 2 "" H 3300 4000 60  0000 C CNN
-F 3 "" H 3300 4000 60  0000 C CNN
-	1    3300 4000
-	-1   0    0    1   
+L MC78L05 U3
+U 1 1 54412DB6
+P 5600 3500
+F 0 "U3" H 5750 3500 60  0000 C CNN
+F 1 "MC78L05" H 5600 3950 60  0000 C CNN
+F 2 "~" H 5600 3500 60  0000 C CNN
+F 3 "~" H 5600 3500 60  0000 C CNN
+	1    5600 3500
+	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3450 4000 3750 4000
-Connection ~ 3750 4000
 $EndSCHEMATC

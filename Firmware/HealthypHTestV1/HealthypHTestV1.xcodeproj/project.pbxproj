@@ -634,6 +634,7 @@
 		F0BDADE819D36821009B337C /* MCP3901.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0BDADE619D36821009B337C /* MCP3901.cpp */; };
 		F0D16B0C19DDBE6A001DC138 /* Statistic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0D16B0B19DDBE6A001DC138 /* Statistic.cpp */; };
 		F0D16B1119DDC0E4001DC138 /* Thermistor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0D16B0F19DDC0E4001DC138 /* Thermistor.cpp */; };
+		F0F0422919EC3DE60006905F /* pH.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0F0422719EC3DE60006905F /* pH.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1354,12 +1355,15 @@
 		F07B97C019CEE53A00C3A45D /* MenuSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSystem.h; sourceTree = "<group>"; };
 		F07B97C619D1820400C3A45D /* LEDDiags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LEDDiags.cpp; sourceTree = "<group>"; };
 		F07B97C719D1820400C3A45D /* LEDDiags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEDDiags.h; sourceTree = "<group>"; };
+		F0A46AE819ED3CD4006D396A /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		F0BDADE619D36821009B337C /* MCP3901.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MCP3901.cpp; sourceTree = "<group>"; };
 		F0BDADE719D36821009B337C /* MCP3901.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCP3901.h; sourceTree = "<group>"; };
 		F0D16B0B19DDBE6A001DC138 /* Statistic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Statistic.cpp; sourceTree = "<group>"; };
 		F0D16B0D19DDBE74001DC138 /* Statistic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
 		F0D16B0F19DDC0E4001DC138 /* Thermistor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Thermistor.cpp; sourceTree = "<group>"; };
 		F0D16B1019DDC0E4001DC138 /* Thermistor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thermistor.h; sourceTree = "<group>"; };
+		F0F0422719EC3DE60006905F /* pH.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pH.cpp; sourceTree = "<group>"; };
+		F0F0422819EC3DE60006905F /* pH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pH.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -3332,6 +3336,8 @@
 		F07B973319CEE43800C3A45D /* HealthypHTestV1 */ = {
 			isa = PBXGroup;
 			children = (
+				F0A46AE819ED3CD4006D396A /* Common.h */,
+				F0F0422619EC3DD10006905F /* pH */,
 				F0D16B0E19DDC0D3001DC138 /* Thermistor */,
 				F0D16B0A19DDBE5A001DC138 /* Statistic */,
 				F0BDADE519D3680F009B337C /* MCP3901 */,
@@ -3518,6 +3524,15 @@
 				F0D16B1019DDC0E4001DC138 /* Thermistor.h */,
 			);
 			name = Thermistor;
+			sourceTree = "<group>";
+		};
+		F0F0422619EC3DD10006905F /* pH */ = {
+			isa = PBXGroup;
+			children = (
+				F0F0422719EC3DE60006905F /* pH.cpp */,
+				F0F0422819EC3DE60006905F /* pH.h */,
+			);
+			name = pH;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4132,6 +4147,7 @@
 				AAA2140921034807AA0001F7 /* compiler.h in Sources */,
 				AAA2140921034807AA0001F8 /* conf_isp.h in Sources */,
 				AAA2140921034807AA0001FA /* debug.c in Sources */,
+				F0F0422919EC3DE60006905F /* pH.cpp in Sources */,
 				AAA2140921034807AA0001FB /* debug.h in Sources */,
 				AAA2140921034807AA0001FC /* print_funcs.c in Sources */,
 				AAA2140921034807AA0001FD /* print_funcs.h in Sources */,

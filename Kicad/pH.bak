@@ -36,9 +36,9 @@ EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 7
+Sheet 6 7
 Title ""
-Date "15 sep 2014"
+Date "17 oct 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,7 +46,7 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 3900 2400 0    60   Input ~ 0
+Text HLabel 1400 1200 0    60   Input ~ 0
 V+_WallWart
 Text HLabel 1350 3200 0    60   Input ~ 0
 ph_ADC_IN+
@@ -100,8 +100,6 @@ F 3 "~" H 7450 2950 30  0000 C CNN
 	1    7450 2950
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3900 2900 3900 2400
 $Comp
 L CONN_1 TP1
 U 1 1 53F5D6D1
@@ -118,10 +116,6 @@ Wire Wire Line
 Connection ~ 2350 3200
 Wire Wire Line
 	7450 3200 7450 3600
-Text HLabel 7450 2450 0    60   Input ~ 0
-V+_WallWart
-Wire Wire Line
-	7450 2700 7450 2450
 Text HLabel 5700 3100 2    60   Input ~ 0
 pH_Probe_V
 Wire Wire Line
@@ -150,40 +144,55 @@ Wire Wire Line
 	7450 4400 7450 4100
 Text HLabel 8600 3400 2    60   Input ~ 0
 pH_Probe_GND
-$Comp
-L CONN_1 TP18
-U 1 1 540C941C
-P 8500 2900
-F 0 "TP18" H 8580 2900 40  0000 L CNN
-F 1 "CONN_1" H 8500 2955 30  0001 C CNN
-F 2 "" H 8500 2900 60  0000 C CNN
-F 3 "" H 8500 2900 60  0000 C CNN
-	1    8500 2900
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8050 1900 8050 3400
-$Comp
-L CONN_1 TP17
-U 1 1 540C9446
-P 5150 2750
-F 0 "TP17" H 5230 2750 40  0000 L CNN
-F 1 "CONN_1" H 5150 2805 30  0001 C CNN
-F 2 "" H 5150 2750 60  0000 C CNN
-F 3 "" H 5150 2750 60  0000 C CNN
-	1    5150 2750
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5150 2900 5150 3100
-Connection ~ 5150 3100
 Wire Wire Line
 	8050 1900 7950 1900
 Wire Wire Line
 	7450 3400 8600 3400
 Connection ~ 7450 3400
 Connection ~ 8050 3400
+$Comp
+L C C3
+U 1 1 5441038F
+P 2000 1650
+F 0 "C3" H 2000 1750 40  0000 L CNN
+F 1 ".1" H 2006 1565 40  0000 L CNN
+F 2 "~" H 2038 1500 30  0000 C CNN
+F 3 "~" H 2000 1650 60  0000 C CNN
+	1    2000 1650
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	8350 2900 8350 3400
-Connection ~ 8350 3400
+	7450 2450 6100 2450
+Text Notes 1850 1050 0    60   ~ 0
+Added .1uF
+Wire Wire Line
+	1400 1200 2750 1200
+Wire Wire Line
+	2000 1450 2000 1200
+Connection ~ 2000 1200
+$Comp
+L AGND #PWR09
+U 1 1 5441062F
+P 2000 2050
+F 0 "#PWR09" H 2000 2050 40  0001 C CNN
+F 1 "AGND" H 2000 1980 50  0000 C CNN
+F 2 "" H 2000 2050 60  0000 C CNN
+F 3 "" H 2000 2050 60  0000 C CNN
+	1    2000 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 1850 2000 2050
+Wire Wire Line
+	3900 2900 3900 2400
+Text Label 2750 1200 0    60   ~ 0
+V+Clean
+Text Label 3900 2400 1    60   ~ 0
+V+Clean
+Text Label 6100 2450 2    60   ~ 0
+V+Clean
+Wire Wire Line
+	7450 2700 7450 2450
 $EndSCHEMATC

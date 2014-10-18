@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 7
 Title ""
-Date "11 oct 2014"
+Date "18 oct 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -208,10 +208,6 @@ Wire Wire Line
 Wire Wire Line
 	9150 2150 10000 2150
 Wire Wire Line
-	10000 2150 10000 1300
-Wire Wire Line
-	10000 1300 10700 1300
-Wire Wire Line
 	10300 1500 10300 4000
 Wire Wire Line
 	10300 1500 10700 1500
@@ -254,9 +250,7 @@ Wire Wire Line
 Wire Wire Line
 	7250 1400 6800 1400
 Wire Wire Line
-	10150 2600 10150 1400
-Wire Wire Line
-	10150 1400 10700 1400
+	10150 1300 10150 2600
 $Sheet
 S 7250 800  1900 700 
 U 53C9635B
@@ -311,6 +305,12 @@ Wire Wire Line
 Wire Wire Line
 	3650 2850 4700 2850
 Wire Wire Line
-	6800 2600 10150 2600
+	10150 2600 6800 2600
 Connection ~ 6800 2600
+Wire Wire Line
+	10150 1300 10700 1300
+Wire Wire Line
+	10700 1400 10000 1400
+Wire Wire Line
+	10000 1400 10000 2150
 $EndSCHEMATC

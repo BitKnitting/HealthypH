@@ -20,7 +20,7 @@ const byte address_CH0_msb = 0x00;  //address of MSB of CH0
 
 MCP3901::MCP3901(byte cs_n, byte reset_n, byte dr_n)
 {
-    Serial.println("****DEBUG: IN MCP3901 INIT");
+    Serial.println(F("****DEBUG: IN MCP3901 INIT"));
     CS_N = cs_n;
     RESET_N = reset_n;
     DR_N = dr_n;
@@ -107,9 +107,9 @@ byte MCP3901::read_config(byte num)
             config_value = read_byte(address_config_control_action);
             break;
         default:
-            Serial.println("You entered: ");
+            Serial.println(F("You entered: "));
             Serial.print(num);
-            Serial.println("this routine expected either a 1 for config 1 or 2 for config 2");
+            Serial.println(F("this routine expected either a 1 for config 1 or 2 for config 2"));
             return 0xFF;
     }
     return config_value;
@@ -133,9 +133,9 @@ void MCP3901::write_config(byte num,byte value)
             write_byte(address_config_control_action,value);
             break;
         default:
-            Serial.println("You entered: ");
+            Serial.println(F("You entered: "));
             Serial.print(num);
-            Serial.println("this routine expected either a 1 for config 1 or 2 for config 2");
+            Serial.println(F("this routine expected either a 1 for config 1 or 2 for config 2"));
     }
 }
 
