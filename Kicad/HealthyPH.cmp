@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 10/17/2014 8:14:18 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 10/20/2014 10:18:43 AM
 
 BeginCmp
 TimeStamp = /53DCD805/53E0F48C;
@@ -22,9 +22,9 @@ IdModule  = SM0805;
 EndCmp
 
 BeginCmp
-TimeStamp = /53C9635B/5441038F;
+TimeStamp = /53C98328/544542CF;
 Reference = C3;
-ValeurCmp = .1;
+ValeurCmp = C;
 IdModule  = SM0805;
 EndCmp
 
@@ -60,6 +60,20 @@ BeginCmp
 TimeStamp = /53CA7F21/5257A6DE;
 Reference = C8;
 ValeurCmp = 10u;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C9635B/54453E50;
+Reference = C9;
+ValeurCmp = .1;
+IdModule  = SM0805;
+EndCmp
+
+BeginCmp
+TimeStamp = /53C9635B/54453F94;
+Reference = C10;
+ValeurCmp = .1;
 IdModule  = SM0805;
 EndCmp
 
@@ -276,13 +290,6 @@ EndCmp
 BeginCmp
 TimeStamp = /53C9635B/53F5D6D1;
 Reference = TP1;
-ValeurCmp = CONN_1;
-IdModule  = LB_TestPoint;
-EndCmp
-
-BeginCmp
-TimeStamp = /53DB8BC1/54142B64;
-Reference = TP19;
 ValeurCmp = CONN_1;
 IdModule  = LB_TestPoint;
 EndCmp

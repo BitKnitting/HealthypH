@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 7
 Title ""
-Date "18 oct 2014"
+Date "21 oct 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -52,22 +52,6 @@ U 53DB8BC1
 F0 "Wall Wart" 50
 F1 "WallWart.sch" 50
 F2 "V+_WallWart" O L 7250 3150 60 
-$EndSheet
-$Sheet
-S 800  900  1900 3900
-U 53DCD805
-F0 "Arduino" 50
-F1 "Arduino.sch" 50
-F2 "SCLK" O R 2700 1250 60 
-F3 "MISO" I R 2700 1550 60 
-F4 "MOSI" O R 2700 1850 60 
-F5 "~CS" O R 2700 2150 60 
-F6 "~RESET" O R 2700 2850 60 
-F7 "~DR" I R 2700 2600 60 
-F8 "V+_ARD" O R 2700 3900 60 
-F9 "GND_ARD" I R 2700 4100 60 
-F10 "PumpUp" O R 2700 4350 60 
-F11 "PumpDown" O R 2700 4600 60 
 $EndSheet
 Text Notes 2900 4900 0    118  ~ 0
 Arduino +5V
@@ -136,6 +120,8 @@ F1 "Temperature.sch" 50
 F2 "10K Therm" I R 9150 2150 60 
 F3 "Therm+" O L 7250 2050 60 
 F4 "Therm-" O L 7250 2200 60 
+F5 "V+_WallWart" I L 7250 2350 60 
+F6 "V+_WallWart_Out" O R 9150 2350 60 
 $EndSheet
 $Sheet
 S 7300 3750 2200 1100
@@ -204,9 +190,7 @@ Wire Wire Line
 Wire Wire Line
 	3650 2600 4700 2600
 Wire Wire Line
-	9150 1200 10700 1200
-Wire Wire Line
-	9150 2150 10000 2150
+	10000 2150 9150 2150
 Wire Wire Line
 	10300 1500 10300 4000
 Wire Wire Line
@@ -249,8 +233,6 @@ Wire Wire Line
 	2700 2600 3150 2600
 Wire Wire Line
 	7250 1400 6800 1400
-Wire Wire Line
-	10150 1300 10150 2600
 $Sheet
 S 7250 800  1900 700 
 U 53C9635B
@@ -259,15 +241,9 @@ F1 "pH.sch" 50
 F2 "V+_WallWart" I L 7250 1400 60 
 F3 "ph_ADC_IN+" I L 7250 1000 60 
 F4 "pH_ADC_IN-" I L 7250 1200 60 
-F5 "pH_Probe_V" I R 9150 1000 60 
-F6 "pH_Probe_GND" I R 9150 1200 60 
+F5 "pH_Probe_V" I R 9150 1200 60 
+F6 "pH_Probe_GND" I R 9150 1000 60 
 $EndSheet
-Wire Wire Line
-	9150 1000 10600 1000
-Wire Wire Line
-	10600 1000 10600 1100
-Wire Wire Line
-	10600 1100 10700 1100
 $Sheet
 S 4700 900  1950 2200
 U 53CA7F21
@@ -305,12 +281,40 @@ Wire Wire Line
 Wire Wire Line
 	3650 2850 4700 2850
 Wire Wire Line
-	10150 2600 6800 2600
-Connection ~ 6800 2600
+	10100 2350 9150 2350
 Wire Wire Line
-	10150 1300 10700 1300
+	7250 2350 6800 2350
+Connection ~ 6800 2350
 Wire Wire Line
-	10700 1400 10000 1400
+	9150 1200 10700 1200
 Wire Wire Line
-	10000 1400 10000 2150
+	9150 1000 10450 1000
+Wire Wire Line
+	10100 2350 10100 1400
+Wire Wire Line
+	10100 1400 10700 1400
+Wire Wire Line
+	10000 2150 10000 1300
+Wire Wire Line
+	10000 1300 10700 1300
+Wire Wire Line
+	10450 1000 10450 1100
+Wire Wire Line
+	10450 1100 10700 1100
+$Sheet
+S 800  900  1900 3900
+U 53DCD805
+F0 "Arduino" 50
+F1 "Arduino.sch" 50
+F2 "SCLK" O R 2700 1250 60 
+F3 "MISO" I R 2700 1550 60 
+F4 "MOSI" O R 2700 1850 60 
+F5 "~CS" O R 2700 2150 60 
+F6 "V+_ARD" O R 2700 3900 60 
+F7 "GND_ARD" I R 2700 4100 60 
+F8 "PumpUp" O R 2700 4350 60 
+F9 "PumpDown" O R 2700 4600 60 
+F10 "~RESET" O R 2700 2850 60 
+F11 "~DR" I R 2700 2600 60 
+$EndSheet
 $EndSCHEMATC
