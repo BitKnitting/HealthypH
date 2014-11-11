@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 7
 Title ""
-Date "10 nov 2014"
+Date "11 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,8 +46,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 1350 3200 0    60   Input ~ 0
-ph_ADC_IN+
+Text HLabel 1350 3200 0    60   Output ~ 0
+ADC_IN
 $Comp
 L R R4
 U 1 1 53D7D158
@@ -59,8 +59,6 @@ F 3 "~" H 8400 3900 30  0000 C CNN
 	1    8400 3900
 	1    0    0    -1  
 $EndComp
-Text HLabel 8900 1950 0    60   Input ~ 0
-pH_ADC_IN-
 $Comp
 L AGND #PWR08
 U 1 1 53DCC7DA
@@ -147,33 +145,22 @@ $EndComp
 Wire Wire Line
 	3900 3500 3900 3750
 Wire Wire Line
-	1350 3200 3450 3200
-Wire Wire Line
 	2350 3050 2350 3200
-Connection ~ 2350 3200
 Wire Wire Line
 	8400 3250 8400 3650
 Wire Wire Line
 	4150 3100 5700 3100
-Wire Wire Line
-	2950 3200 2950 4100
 Wire Wire Line
 	2950 4100 4750 4100
 Wire Wire Line
 	4750 4100 4750 3300
 Wire Wire Line
 	4750 3300 4150 3300
-Connection ~ 2950 3200
 Wire Wire Line
 	8400 4450 8400 4150
 Wire Wire Line
-	9000 1950 9000 3450
-Wire Wire Line
-	9000 1950 8900 1950
-Wire Wire Line
 	8400 3450 9550 3450
 Connection ~ 8400 3450
-Connection ~ 9000 3450
 Wire Wire Line
 	3900 2300 3900 2900
 Wire Wire Line
@@ -216,4 +203,29 @@ V+_WallWart
 Wire Wire Line
 	7450 2500 8400 2500
 Connection ~ 7750 2500
+$Comp
+L TIP120 Q?
+U 1 1 54622290
+P 1800 3300
+F 0 "Q?" H 1750 3150 40  0000 R CNN
+F 1 "TIP120" H 1800 3450 40  0000 R CNN
+F 2 "TO220" H 1680 3405 29  0001 C CNN
+F 3 "~" H 1800 3300 60  0000 C CNN
+	1    1800 3300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2000 3200 3450 3200
+Connection ~ 2350 3200
+Wire Wire Line
+	1600 3200 1350 3200
+Wire Wire Line
+	1800 3650 1800 3500
+Text HLabel 1350 3650 0    60   Input ~ 0
+Read_pH
+Wire Wire Line
+	1350 3650 1800 3650
+Wire Wire Line
+	2950 4100 2950 3200
+Connection ~ 2950 3200
 $EndSCHEMATC
