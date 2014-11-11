@@ -1,10 +1,10 @@
-Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 10/20/2014 10:18:43 AM
+Cmp-Mod V01 Created by CvPcb (2013-07-07 BZR 4022)-stable date = 11/10/2014 4:15:12 AM
 
 BeginCmp
 TimeStamp = /53DCD805/53E0F48C;
 Reference = ARD1;
 ValeurCmp = ARDUINOPINS;
-IdModule  = ArduinoLettuceBuddy;
+IdModule  = LB_Arduino;
 EndCmp
 
 BeginCmp
@@ -24,7 +24,7 @@ EndCmp
 BeginCmp
 TimeStamp = /53C98328/544542CF;
 Reference = C3;
-ValeurCmp = C;
+ValeurCmp = .1;
 IdModule  = SM0805;
 EndCmp
 

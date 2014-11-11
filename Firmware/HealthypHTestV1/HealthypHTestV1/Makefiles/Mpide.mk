@@ -75,10 +75,10 @@ VARIANT  = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
 VARIANT_PATH = $(APPLICATION_PATH)/hardware/pic32/variants/$(VARIANT)
 
 ifeq ($(BOARD_PORT),pgm)
-  OPTIMISATION   = -O0
-  NO_SERIAL_CONSOLE = 1
+    OPTIMISATION   = -O0
+    NO_SERIAL_CONSOLE = 1
 else
-  OPTIMISATION   = -O2
+    OPTIMISATION   = -O2
 endif
 
 MCU_FLAG_NAME    = mprocessor

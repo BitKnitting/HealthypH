@@ -8,7 +8,7 @@
 # All rights reserved
 #
 #
-# Last update: Jul 29, 2014 release 170
+# Last update: Nov 01, 2014 release 224
 
 # ARDUINO 1.5.X IS STILL IN BETA, UNSTABLE AND PRONE TO BUGS
 WARNING_MESSAGE = 'ARDUINO 1.5.X IS STILL IN BETA, UNSTABLE AND PRONE TO BUGS'
@@ -19,7 +19,7 @@ WARNING_MESSAGE = 'ARDUINO 1.5.X IS STILL IN BETA, UNSTABLE AND PRONE TO BUGS'
 #
 PLATFORM         := Arduino
 BUILD_CORE       := avr
-PLATFORM_TAG      = ARDUINO=155 ARDUINO_ARCH_AVR EMBEDXCODE=$(RELEASE_NOW)
+PLATFORM_TAG      = ARDUINO=$(ARDUINO_RELEASE) ARDUINO_ARCH_AVR EMBEDXCODE=$(RELEASE_NOW)
 APPLICATION_PATH := $(ARDUINO_PATH)
 
 APP_TOOLS_PATH   := $(APPLICATION_PATH)/hardware/tools/avr/bin
@@ -27,11 +27,15 @@ CORE_LIB_PATH    := $(APPLICATION_PATH)/hardware/arduino/avr/cores/arduino
 APP_LIB_PATH     := $(APPLICATION_PATH)/libraries
 BOARDS_TXT       := $(APPLICATION_PATH)/hardware/arduino/avr/boards.txt
 
+ifneq ($(findstring LITTLEROBOTFRIENDS,$(GCC_PREPROCESSOR_DEFINITIONS)),)
+    BOARDS_TXT   := $(LITTLEROBOTFRIENDS_PATH)/boards.txt
+endif
+
 # Sketchbook/Libraries path
 # wildcard required for ~ management
 # ?ibraries required for libraries and Libraries
 #
-ifeq ($(USER_PATH)/Library/Arduino/preferences.txt,)
+ifeq ($(USER_PATH)/Library/Arduino15/preferences.txt,)
     $(error Error: run Arduino once and define the sketchbook path)
 endif
 
@@ -63,50 +67,50 @@ NM      = $(APP_TOOLS_PATH)/avr-nm
 #
 BOARD_NAME       := $(call PARSE_BOARD,$(BOARD_TAG),name)
 ifeq ($(BOARD_NAME),)
-  BOARD_NAME     := $(call PARSE_BOARD,$(BOARD_TAG1),name)
-  ifeq ($(BOARD_NAME),)
-    BOARD_NAME   := $(call PARSE_BOARD,$(BOARD_TAG2),name)
-  endif
+    BOARD_NAME     := $(call PARSE_BOARD,$(BOARD_TAG1),name)
+    ifeq ($(BOARD_NAME),)
+        BOARD_NAME   := $(call PARSE_BOARD,$(BOARD_TAG2),name)
+    endif
 endif
 
 MCU         := $(call PARSE_BOARD,$(BOARD_TAG),build.mcu)
 ifeq ($(MCU),)
-  MCU       := $(call PARSE_BOARD,$(BOARD_TAG1),build.mcu)
-  ifeq ($(MCU),)
-    MCU     := $(call PARSE_BOARD,$(BOARD_TAG2),build.mcu)
-  endif
+    MCU       := $(call PARSE_BOARD,$(BOARD_TAG1),build.mcu)
+    ifeq ($(MCU),)
+        MCU     := $(call PARSE_BOARD,$(BOARD_TAG2),build.mcu)
+    endif
 endif
 
 F_CPU       := $(call PARSE_BOARD,$(BOARD_TAG),build.f_cpu)
 ifeq ($(F_CPU),)
-  F_CPU     := $(call PARSE_BOARD,$(BOARD_TAG1),build.f_cpu)
-  ifeq ($(F_CPU),)
-    F_CPU   := $(call PARSE_BOARD,$(BOARD_TAG2),build.f_cpu)
-  endif
+    F_CPU     := $(call PARSE_BOARD,$(BOARD_TAG1),build.f_cpu)
+    ifeq ($(F_CPU),)
+        F_CPU   := $(call PARSE_BOARD,$(BOARD_TAG2),build.f_cpu)
+    endif
 endif
 
 MAX_FLASH_SIZE       := $(call PARSE_BOARD,$(BOARD_TAG),upload.maximum_size)
 ifeq ($(MAX_FLASH_SIZE),)
-  MAX_FLASH_SIZE     := $(call PARSE_BOARD,$(BOARD_TAG1),upload.maximum_size)
-  ifeq ($(MAX_FLASH_SIZE),)
-    MAX_FLASH_SIZE   := $(call PARSE_BOARD,$(BOARD_TAG2),upload.maximum_size)
-  endif
+    MAX_FLASH_SIZE     := $(call PARSE_BOARD,$(BOARD_TAG1),upload.maximum_size)
+    ifeq ($(MAX_FLASH_SIZE),)
+        MAX_FLASH_SIZE   := $(call PARSE_BOARD,$(BOARD_TAG2),upload.maximum_size)
+    endif
 endif
 
 AVRDUDE_BAUDRATE        := $(call PARSE_BOARD,$(BOARD_TAG),upload.speed)
 ifeq ($(AVRDUDE_BAUDRATE),)
-  AVRDUDE_BAUDRATE      := $(call PARSE_BOARD,$(BOARD_TAG1),upload.speed)
-  ifeq ($(AVRDUDE_BAUDRATE),)
-    AVRDUDE_BAUDRATE    := $(call PARSE_BOARD,$(BOARD_TAG2),upload.speed)
-  endif
+    AVRDUDE_BAUDRATE      := $(call PARSE_BOARD,$(BOARD_TAG1),upload.speed)
+    ifeq ($(AVRDUDE_BAUDRATE),)
+        AVRDUDE_BAUDRATE    := $(call PARSE_BOARD,$(BOARD_TAG2),upload.speed)
+    endif
 endif
 
 AVRDUDE_PROGRAMMER      := $(call PARSE_BOARD,$(BOARD_TAG),upload.protocol)
 ifeq ($(AVRDUDE_PROGRAMMER),)
-  AVRDUDE_PROGRAMMER    := $(call PARSE_BOARD,$(BOARD_TAG1),upload.protocol)
-  ifeq ($(AVRDUDE_PROGRAMMER),)
-    AVRDUDE_PROGRAMMER  := $(call PARSE_BOARD,$(BOARD_TAG2),upload.protocol)
-  endif
+    AVRDUDE_PROGRAMMER    := $(call PARSE_BOARD,$(BOARD_TAG1),upload.protocol)
+    ifeq ($(AVRDUDE_PROGRAMMER),)
+        AVRDUDE_PROGRAMMER  := $(call PARSE_BOARD,$(BOARD_TAG2),upload.protocol)
+    endif
 endif
 
 #ifeq ($(BOARD_TAG2),)
@@ -124,13 +128,15 @@ AVRDUDE_COM_OPTS  = -D -p$(MCU) -C$(AVRDUDE_CONF)
 ifneq ($(BOARD_TAG1),)
 #BOARD        = $(call PARSE_BOARD,$(BOARD_TAG1),board)
 #LDSCRIPT    = $(call PARSE_BOARD,$(BOARD_TAG1),ldscript)
-VARIANT      = $(call PARSE_BOARD,$(BOARD_TAG1),build.variant)
-VARIANT_PATH = $(APPLICATION_PATH)/hardware/arduino/avr/variants/$(VARIANT)
+    a1501         = $(call PARSE_BOARD,$(BOARD_TAG1),build.variant)
+    VARIANT      = $(patsubst arduino:%,%,$(a1501))
+    VARIANT_PATH = $(APPLICATION_PATH)/hardware/arduino/avr/variants/$(VARIANT)
 else
 #BOARD        = $(call PARSE_BOARD,$(BOARD_TAG),board)
 #LDSCRIPT    = $(call PARSE_BOARD,$(BOARD_TAG),ldscript)
-VARIANT      = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
-VARIANT_PATH = $(APPLICATION_PATH)/hardware/arduino/avr/variants/$(VARIANT)
+    a1501         = $(call PARSE_BOARD,$(BOARD_TAG),build.variant)
+    VARIANT      = $(patsubst arduino:%,%,$(a1501))
+    VARIANT_PATH = $(APPLICATION_PATH)/hardware/arduino/avr/variants/$(VARIANT)
 endif
 
 # Two locations for Arduino libraries
@@ -138,14 +144,14 @@ endif
 BUILD_APP_LIB_PATH  = $(APPLICATION_PATH)/hardware/arduino/$(BUILD_CORE)/libraries
 
 ifndef APP_LIBS_LIST
-    w1             = $(realpath $(sort $(dir $(wildcard $(APP_LIB_PATH)/*/*.h $(APP_LIB_PATH)/*/*/*.h $(APP_LIB_PATH)/*/*/*/*.h)))) # */
-    APP_LIBS_LIST  = $(subst $(APP_LIB_PATH)/,,$(filter-out $(EXCLUDE_LIST),$(w1)))
+    a1501             = $(realpath $(sort $(dir $(wildcard $(APP_LIB_PATH)/*/*.h $(APP_LIB_PATH)/*/*/*.h $(APP_LIB_PATH)/*/*/*/*.h)))) # */
+    APP_LIBS_LIST  = $(subst $(APP_LIB_PATH)/,,$(filter-out $(EXCLUDE_LIST),$(a1501)))
 
-    w2             = $(realpath $(sort $(dir $(wildcard $(BUILD_APP_LIB_PATH)/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*/*.h)))) # */
-    BUILD_APP_LIBS_LIST = $(subst $(BUILD_APP_LIB_PATH)/,,$(filter-out $(EXCLUDE_LIST),$(w2)))
+    a1502             = $(realpath $(sort $(dir $(wildcard $(BUILD_APP_LIB_PATH)/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*/*.h)))) # */
+    BUILD_APP_LIBS_LIST = $(subst $(BUILD_APP_LIB_PATH)/,,$(filter-out $(EXCLUDE_LIST),$(a1502)))
 else
-    w2             = $(realpath $(sort $(dir $(wildcard $(BUILD_APP_LIB_PATH)/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*/*.h)))) # */
-    BUILD_APP_LIBS_LIST = $(subst $(BUILD_APP_LIB_PATH)/,,$(filter-out $(EXCLUDE_LIST),$(w2)))
+    a1502             = $(realpath $(sort $(dir $(wildcard $(BUILD_APP_LIB_PATH)/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*.h $(BUILD_APP_LIB_PATH)/*/*/*/*.h)))) # */
+    BUILD_APP_LIBS_LIST = $(subst $(BUILD_APP_LIB_PATH)/,,$(filter-out $(EXCLUDE_LIST),$(a1502)))
 endif
 
 
@@ -153,23 +159,23 @@ endif
 # Another example of Arduino's quick and dirty job
 #
 ifneq ($(APP_LIBS_LIST),0)
-    w3              = $(patsubst %,$(APP_LIB_PATH)/%/src,$(APP_LIBS_LIST))
-    w3             += $(patsubst %,$(APP_LIB_PATH)/%/arch/$(BUILD_CORE),$(APP_LIBS_LIST))
-    APP_LIBS        = $(realpath $(sort $(dir $(foreach dir,$(w3),$(wildcard $(dir)/*.h $(dir)/*/*.h $(dir)/*/*/*.h))))) # */
+    a1503              = $(patsubst %,$(APP_LIB_PATH)/%/src,$(APP_LIBS_LIST))
+    a1503             += $(patsubst %,$(APP_LIB_PATH)/%/arch/$(BUILD_CORE),$(APP_LIBS_LIST))
+    APP_LIBS        = $(realpath $(sort $(dir $(foreach dir,$(a1503),$(wildcard $(dir)/*.h $(dir)/*/*.h $(dir)/*/*/*.h))))) # */
 
     APP_LIB_CPP_SRC = $(realpath $(sort $(foreach dir,$(APP_LIBS),$(wildcard $(dir)/*.cpp $(dir)/*/*.cpp $(dir)/*/*/*.cpp))))
     APP_LIB_C_SRC   = $(realpath $(sort $(foreach dir,$(APP_LIBS),$(wildcard $(dir)/*.c $(dir)/*/*.c $(dir)/*/*/*.c))))
 
-    APP_LIB_OBJS    = $(patsubst $(APP_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(APP_LIB_CPP_SRC))
-    APP_LIB_OBJS   += $(patsubst $(APP_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(APP_LIB_C_SRC))
+    APP_LIB_OBJS    = $(patsubst $(APP_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.cpp.o,$(APP_LIB_CPP_SRC))
+    APP_LIB_OBJS   += $(patsubst $(APP_LIB_PATH)/%.c,$(OBJDIR)/libs/%.c.o,$(APP_LIB_C_SRC))
 
     BUILD_APP_LIBS        = $(patsubst %,$(BUILD_APP_LIB_PATH)/%,$(BUILD_APP_LIBS_LIST))
 
     BUILD_APP_LIB_CPP_SRC = $(wildcard $(patsubst %,%/*.cpp,$(BUILD_APP_LIBS))) # */
     BUILD_APP_LIB_C_SRC   = $(wildcard $(patsubst %,%/*.c,$(BUILD_APP_LIBS))) # */
 
-    BUILD_APP_LIB_OBJS    = $(patsubst $(BUILD_APP_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.o,$(BUILD_APP_LIB_CPP_SRC))
-    BUILD_APP_LIB_OBJS   += $(patsubst $(BUILD_APP_LIB_PATH)/%.c,$(OBJDIR)/libs/%.o,$(BUILD_APP_LIB_C_SRC))
+    BUILD_APP_LIB_OBJS    = $(patsubst $(BUILD_APP_LIB_PATH)/%.cpp,$(OBJDIR)/libs/%.cpp.o,$(BUILD_APP_LIB_CPP_SRC))
+    BUILD_APP_LIB_OBJS   += $(patsubst $(BUILD_APP_LIB_PATH)/%.c,$(OBJDIR)/libs/%.c.o,$(BUILD_APP_LIB_C_SRC))
 endif
 
 
@@ -195,5 +201,5 @@ endif
 USB_TOUCH := $(call PARSE_BOARD,$(BOARD_TAG),upload.protocol)
 
 ifeq ($(USB_TOUCH),avr109)
-    USB_RESET  = $(UTILITIES_PATH)/serial1200.py
+    USB_RESET  = python $(UTILITIES_PATH)/reset_1200.py
 endif

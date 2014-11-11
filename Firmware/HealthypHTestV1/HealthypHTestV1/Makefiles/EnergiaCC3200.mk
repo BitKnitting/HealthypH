@@ -8,22 +8,32 @@
 # All rights reserved
 #
 #
-# Last update: Aug xx, 2014 release 174
+# Last update: Oct 01, 2014 release 205
 
 
 
 # Energia LaunchPad Stellaris and Tiva C specifics
 # ----------------------------------
 #
+APPLICATION_PATH := $(ENERGIA_PATH)
+ENERGIA_RELEASE  := $(shell tail -c2 $(APPLICATION_PATH)/lib/version.txt)
+ARDUINO_RELEASE  := $(shell head -c4 $(APPLICATION_PATH)/lib/version.txt | tail -c3)
+
+ifeq ($(shell if [[ '$(ENERGIA_RELEASE)' -ge '13' ]] ; then echo 1 ; else echo 0 ; fi ),0)
+    $(error Energia release 13 required.)
+endif
+
 PLATFORM         := Energia
 BUILD_CORE       := cc3200
-PLATFORM_TAG      = ENERGIA=13 ARDUINO=101 EMBEDXCODE=$(RELEASE_NOW) $(filter __%__ ,$(GCC_PREPROCESSOR_DEFINITIONS))
-#PLATFORM_TAG      = ENERGIA=9 ARDUINO=101 EMBEDXCODE=$(RELEASE_NOW) $(filter-out ENERGIA,$(GCC_PREPROCESSOR_DEFINITIONS))
-APPLICATION_PATH := $(ENERGIA_PATH)
+PLATFORM_TAG      = ENERGIA=$(ENERGIA_RELEASE) ARDUINO=$(ARDUINO_RELEASE) EMBEDXCODE=$(RELEASE_NOW) $(filter __%__ ,$(GCC_PREPROCESSOR_DEFINITIONS))
 
 UPLOADER          = cc3200serial
 CC3200SERIAL_PATH = $(APPLICATION_PATH)/hardware/tools
-CC3200SERIAL      = $(CC3200SERIAL_PATH)/lm4f/bin/serial
+ifneq ($(wildcard $(CC3200SERIAL_PATH)/lm4f/bin/serial),)
+    CC3200SERIAL      = $(CC3200SERIAL_PATH)/lm4f/bin/serial
+else
+    CC3200SERIAL      = $(CC3200SERIAL_PATH)/lm4f/bin/cc3200prog
+endif
 CC3200SERIAL_OPTS =
 
 # StellarPad requires a specific command
@@ -46,7 +56,7 @@ BUILD_CORE_C_SRCS    = $(wildcard $(BUILD_CORE_LIB_PATH)/*.c) # */
 #    BUILD_CORE_CPP_SRCS = $(filter-out %program.cpp, $(wildcard $(BUILD_CORE_LIB_PATH)/*.cpp)) # */
 #endif
 
-BUILD_CORE_OBJ_FILES  = $(BUILD_CORE_C_SRCS:.c=.o) $(BUILD_CORE_CPP_SRCS:.cpp=.o)
+BUILD_CORE_OBJ_FILES  = $(BUILD_CORE_C_SRCS:.c=.c.o) $(BUILD_CORE_CPP_SRCS:.cpp=.cpp.o)
 BUILD_CORE_OBJS       = $(patsubst $(BUILD_CORE_LIB_PATH)/%,$(OBJDIR)/%,$(BUILD_CORE_OBJ_FILES))
 
 # Sketchbook/Libraries path

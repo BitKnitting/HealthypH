@@ -93,5 +93,5 @@ EXTRA_CPPFLAGS = -MMD -I$(VARIANT_PATH) $(addprefix -D, $(PLATFORM_TAG))
 # Serial 1200 reset
 #
 #ifeq ($(USB_TOUCH),avr109)
-#    USB_RESET  = $(UTILITIES_PATH)/serial1200.py
+#    USB_RESET  = python $(UTILITIES_PATH)/reset_1200.py
 #endif

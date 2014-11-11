@@ -8,7 +8,7 @@
 # All rights reserved
 #
 #
-# Last update: May 11, 2014 release 158
+# Last update: Oct 30, 2014 release 225
 
 
 
@@ -16,7 +16,7 @@
 # ----------------------------------
 #
 PLATFORM         := Teensy
-PLATFORM_TAG      = ARDUINO=105 TEENSYDUINO=118 EMBEDXCODE=$(RELEASE_NOW)
+PLATFORM_TAG      = ARDUINO=105 TEENSYDUINO=120 TEENSY_CORE EMBEDXCODE=$(RELEASE_NOW)
 APPLICATION_PATH := $(TEENSY_PATH)
 
 
@@ -56,7 +56,7 @@ ifeq ($(USB_FLAGS),)
     USB_FLAGS = -DUSB_VID=null -DUSB_PID=null
 endif
 
-USB_FLAGS += -D$(TEENSY_USB) -D$(TEENSY_LAYOUT) -DTIME_T=$(shell date +%s)
+USB_FLAGS += $(addprefix -D,$(TEENSY_USB) $(TEENSY_LAYOUT)) -DTIME_T=$(shell date +%s)
 
 MAX_RAM_SIZE = $(call PARSE_BOARD,$(BOARD_TAG),upload.maximum_ram_size)
 

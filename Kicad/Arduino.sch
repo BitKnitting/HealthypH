@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 7 7
 Title ""
-Date "21 oct 2014"
+Date "10 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -68,17 +68,6 @@ Text HLabel 2500 2450 0    60   Output ~ 0
 V+_ARD
 Wire Wire Line
 	3550 2450 2500 2450
-$Comp
-L ARDUINOPINS ARD1
-U 1 1 53E0F48C
-P 4650 3150
-F 0 "ARD1" H 4000 4750 60  0000 C CNN
-F 1 "ARDUINOPINS" H 4150 4950 60  0000 C CNN
-F 2 "~" H 5200 2200 60  0000 C CNN
-F 3 "~" H 5200 2200 60  0000 C CNN
-	1    4650 3150
-	1    0    0    -1  
-$EndComp
 Text HLabel 2500 2650 0    60   Input ~ 0
 GND_ARD
 Wire Wire Line
@@ -199,4 +188,15 @@ Text HLabel 6350 2800 2    60   Input ~ 0
 ~DR
 Wire Wire Line
 	5750 2800 6350 2800
+$Comp
+L ARDUINOPINS ARD?
+U 1 1 545EEF21
+P 4650 3150
+F 0 "ARD?" H 4000 4750 60  0000 C CNN
+F 1 "ARDUINOPINS" H 4150 4950 60  0000 C CNN
+F 2 "~" H 5200 2200 60  0000 C CNN
+F 3 "~" H 5200 2200 60  0000 C CNN
+	1    4650 3150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

@@ -10,7 +10,7 @@
 	http://embedXcode.weebly.com/
 	
 	
-embedXcode  • Aug 08, 2014 release 173 • Support for PICadillo-35T
-embedXcode+ • Aug 08, 2014 release 173 • Support for PICadillo-35T
+embedXcode  • Nov 07, 2014 release 231 • Stability improvements from mbed
+embedXcode+ • Nov 07, 2014 release 232 • Stability improvements from mbed
 	
 	

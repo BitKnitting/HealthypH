@@ -88,6 +88,8 @@ Menu menuPH("pH");
 Menu menuSPI("SPI");
 MenuItem temperature("temperature");
 
+MenuItem menuSPI_mi4("set RESET HIGH");
+MenuItem menuSPI_mi5("set RESET LOW");
 MenuItem menuSPI_mi1("read CONFIG bytes");
 MenuItem menuSPI_mi2("set CONFIG 1 to 24 bits and OSR=256");
 MenuItem menuSPI_mi3("read ADC");
@@ -105,12 +107,12 @@ MenuItem menuPH_mi2("Read");
  * LED Diag tests are in LEDDiags.cpp
  * see the Arduino schematic in the Healthy pH Shield schematic for pin assignment
  *******************************************************************************/
-const byte red_pin = A4;
-const byte green_pin = A3;
+const byte red_pin = A3;
+const byte green_pin = A4;
 const byte blue_pin = A2;
-
+//LEDDiagTests (byte red_pin,byte green_pin,byte blue_pin);
 LEDDiagTests LEDTests(red_pin,green_pin,blue_pin);
-MCP3901 adc_mcp3901(10,4,2);
+MCP3901 adc_mcp3901(10,8,9);
 Thermistor therm;
 pH pHStuff;
 Statistic myStats;  //from http://playground.arduino.cc/Main/Statistics
@@ -218,12 +220,30 @@ void on_SPI_readConfigs_selected(MenuItem* p_menu_item)
 {
     Serial.println(F("\n*********************************"));
     byte config = adc_mcp3901.read_config(1);
-    Serial.print(F("---> Config 1: 0X"));
+    Serial.print(F("---> Config 1 (default = 0X10): 0X"));
     Serial.println(config,HEX);
     config = adc_mcp3901.read_config(2);
-    Serial.print(F("---> Config 2: 0X"));
+    Serial.print(F("---> Config 2 (default = 0XC ): 0X"));
     Serial.println(config,HEX);
 }
+/******************************************************************************
+ * As noted in the MCP3901 data sheet, the RESET pin must be set to HIGH.  Setting it to HIGH in the software will varify it is HIGH when probing with DMM or scope.
+ *******************************************************************************/
+void on_SPI_set_reset_high(MenuItem* p_menu_item)
+{
+      Serial.println(F("\n*********************************"));
+    adc_mcp3901.set_reset(true);
+}
+/******************************************************************************
+ * The other "side" of on_SPI_set_reset_high
+ *******************************************************************************/
+void on_SPI_set_reset_low(MenuItem* p_menu_item)
+{
+    Serial.println(F("\n*********************************"));
+    adc_mcp3901.set_reset(false);
+}
+
+
 /******************************************************************************
  * Change config 1 from default to sampling at 24 bit width and OSR = 256
  *******************************************************************************/
@@ -241,12 +261,21 @@ void on_SPI_set24bits_selected(MenuItem* p_menu_item)
 void on_SPI_readADC_selected(MenuItem* p_menu_item)
 {
     Serial.println(F("***********************************"));
+    Serial.println(F("Enter Channel (0 or 1): "));
+    while (Serial.available() == 0) {;}
+    unsigned int channel_number = Serial.parseInt();
+    if (channel_number != 0 || channel_number !=1){
+        Serial.print(F("Channel "));
+        Serial.print(channel_number);
+        Serial.println(F(" is not a valid channel.  Defaulting to Channel 0"));
+        channel_number = 0;
+    }
     Serial.println(F("Enter number readings: "));
     while (Serial.available () == 0) {;}
     unsigned int num_readings = Serial.parseInt();
     myStats.clear(); //explicitly start clean
     for (int i=0;i < num_readings;i++){
-        float volts = adc_mcp3901.read_volts(0);
+        float volts = adc_mcp3901.read_volts(channel_number);
         Serial.print(F("--> Volts: "));
         Serial.println(volts);
         myStats.add( volts);
@@ -263,12 +292,16 @@ void on_SPI_readADC_selected(MenuItem* p_menu_item)
 void setup() 
 {
     Serial.begin(9600);
+    //255 = off
+    LEDTests.turnLEDon(255,0,255);
     showHelp();
     //set up the menu
     mm.add_menu(&menuSPI);
     menuSPI.add_item(&menuSPI_mi1, &on_SPI_readConfigs_selected);
     menuSPI.add_item(&menuSPI_mi2, &on_SPI_set24bits_selected);
     menuSPI.add_item(&menuSPI_mi3, &on_SPI_readADC_selected);
+    menuSPI.add_item(&menuSPI_mi4, &on_SPI_set_reset_high);
+    menuSPI.add_item(&menuSPI_mi5, &on_SPI_set_reset_low);
     mm.add_menu(&menuLED);
     menuLED.add_item(&menuLED_mi1, &on_turn_LED_on);
     menuLED.add_item(&menuLED_mi2, &on_turn_LED_off);

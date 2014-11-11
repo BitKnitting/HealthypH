@@ -36,11 +36,11 @@ ifeq ($(wildcard $(DOXYFILE)),)
 endif
 
 
-GENERATE_HTML   = $(strip $(shell grep 'GENERATE_HTML *=' $(DOXYFILE) | cut -d = -f 2 ))
-GENERATE_PDF    = $(strip $(shell grep 'GENERATE_LATEX *=' $(DOXYFILE) | cut -d = -f 2 ))
-GENERATE_DOCSET = $(strip $(shell grep 'GENERATE_DOCSET *=' $(DOXYFILE) | cut -d = -f 2 ))
+GENERATE_HTML   = $(strip $(shell grep 'GENERATE_HTML *=' $(DOXYFILE) | cut -d = -f 2- ))
+GENERATE_PDF    = $(strip $(shell grep 'GENERATE_LATEX *=' $(DOXYFILE) | cut -d = -f 2- ))
+GENERATE_DOCSET = $(strip $(shell grep 'GENERATE_DOCSET *=' $(DOXYFILE) | cut -d = -f 2- ))
 
-BUNDLE_ID       = $(strip $(shell grep 'DOCSET_BUNDLE_ID *=' $(DOXYFILE) | cut -d = -f 2 ))
+BUNDLE_ID       = $(strip $(shell grep 'DOCSET_BUNDLE_ID *=' $(DOXYFILE) | cut -d = -f 2- ))
 DOCSET_PATH     = $(USER_PATH)/Library/Developer/Shared/Documentation/DocSets/$(BUNDLE_ID).docset
 LOAD_UTIL_PATH  = $(UTILITIES_PATH)/loadDocSet.scpt
 
@@ -48,9 +48,9 @@ PDF_PATH        = $(DOCUMENTS_PATH)/latex/refman.pdf
 TEX_PATH        = $(DOCUMENTS_PATH)/latex/refman.tex
 
 ifeq ($(GENERATE_HTML),YES)
-ifeq ($(wildcard $(DOXYGEN_PATH)),)
-    $(error Error: application doxygen not found)
-endif
+    ifeq ($(wildcard $(DOXYGEN_PATH)),)
+        $(error Error: application doxygen not found)
+    endif
 endif
 
 #embed1

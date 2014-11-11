@@ -20,13 +20,43 @@
 // THE SKETCH IS IN HealthypHTestV1.ino
 // ----------------------------------
 //
-// Last update: Aug 08, 2014 release 173
+// Last update: Oct 30, 2014 release 225
 
 // IDE selection
 #if defined(EMBEDXCODE)
 
 // Core library and main()
-#if defined(MPIDE)
+#if defined(MBED)
+
+#include "mbed.h"
+
+/**
+ * Default setup function. This function may be overridden.
+ */
+void setup() __attribute__((weak));
+//void setup() {}
+
+/**
+ * Default loop function. This function may be overridden.
+ */
+void loop() __attribute__((weak));
+//void loop() {}
+
+int main(void)
+{
+//    init();
+    
+    setup();
+    
+    for (;;)
+    {
+        loop();
+    }
+    return 0;
+}
+
+
+#elif defined(MPIDE)
 // ============================================================================= chipKIT specific
 
 //************************************************************************
@@ -139,7 +169,44 @@ int main(void)
 #elif defined(ENERGIA)
 // ============================================================================= LaunchPad MSP430, Stellaris and Tiva, Experimeter Board FR5739 specific
 
-#if defined(__LM4F120H5QR__) || defined(__TM4C1230C3PM__) || defined(__TM4C129XNCZAD__)
+#if defined(__CC3200R1M1RGC__)
+
+#include <Energia.h>
+#include "inc/hw_gpio.h"
+#include "driverlib/rom_map.h"
+#include "driverlib/prcm.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/systick.h"
+#include <driverlib/utils.h>
+#include "inc/hw_hib1p2.h"
+#include "inc/hw_hib3p3.h"
+
+extern void (* const g_pfnVectors[])(void);
+
+int main(void)
+{
+	IntVTableBaseSet((unsigned long)&g_pfnVectors[0]);
+    
+	MAP_PRCMPeripheralClkEnable(PRCM_GPIOA0, PRCM_RUN_MODE_CLK);
+	MAP_PRCMPeripheralClkEnable(PRCM_GPIOA1, PRCM_RUN_MODE_CLK);
+	MAP_PRCMPeripheralClkEnable(PRCM_GPIOA2, PRCM_RUN_MODE_CLK);
+	MAP_PRCMPeripheralClkEnable(PRCM_GPIOA3, PRCM_RUN_MODE_CLK);
+    
+	MAP_IntMasterEnable();
+	PRCMCC3200MCUInit();
+	MAP_SysTickIntEnable();
+	MAP_SysTickPeriodSet(F_CPU / 1000);
+	MAP_SysTickEnable();
+    
+	setup();
+    
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+	}
+}
+
+#elif defined(__LM4F120H5QR__) || defined(__TM4C1230C3PM__) || defined(__TM4C129XNCZAD__) || defined(__TM4C123GH6PM__)
 // ----------------------------------------------------------------------------- LaunchPad Stellaris and Tiva specific
 #include <Energia.h>
 
@@ -158,51 +225,58 @@ int main(void)
 #include "driverlib/sysctl.h"
 #include "driverlib/eeprom.h"
 
+#ifdef __cplusplus
+extern "C" {
+    
+    void _init(void)
+    {
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_EEPROM0);
+        if(ROM_EEPROMInit() == EEPROM_INIT_ERROR) {
+            if(ROM_EEPROMInit() != EEPROM_INIT_ERROR)
+                EEPROMMassErase();
+        }
+        
+        timerInit();
+        
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOH);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOJ);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOL);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOP);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOQ);
+#ifdef TARGET_IS_SNOWFLAKE_RA0
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOR);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOS);
+        ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOT);
+#endif
+        
+        //Unlock and commit NMI pins PD7 and PF0
+        HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0x4C4F434B;
+        HWREG(GPIO_PORTF_BASE + GPIO_O_CR) |= 0x1;
+        HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = 0x4C4F434B;
+        HWREG(GPIO_PORTD_BASE + GPIO_O_CR) |= 0x80;
+    } /* void _init(void) */
+    
+} /* extern "C" */
+#endif
+
 int main(void)
 {
+	setup();
     
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_EEPROM0);
-    if(ROM_EEPROMInit() == EEPROM_INIT_ERROR) {
-    	if(ROM_EEPROMInit() != EEPROM_INIT_ERROR)
-    		EEPROMMassErase();
-    }
-    
-    timerInit();
-    
-	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOC);
-	ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOE);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOH);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOJ);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOK);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOL);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOM);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOP);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOQ);
-#ifdef TARGET_IS_SNOWFLAKE_RA0
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOR);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOS);
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOT);
-#endif
-    
-    //Unlock and commit NMI pins PD7 and PF0
-    HWREG(GPIO_PORTF_BASE + GPIO_O_LOCK) = 0x4C4F434B;
-    HWREG(GPIO_PORTF_BASE + GPIO_O_CR) |= 0x1;
-    HWREG(GPIO_PORTD_BASE + GPIO_O_LOCK) = 0x4C4F434B;
-    HWREG(GPIO_PORTD_BASE + GPIO_O_CR) |= 0x80;
-    
-    setup();
-    
-    for (;;) {
-        loop();
-        if (serialEventRun) serialEventRun();
-    }
-    
+	for (;;) {
+		loop();
+		if (serialEventRun) serialEventRun();
+	}
 }
 
 #else
@@ -259,8 +333,57 @@ int main(void)
 //                                                                              LightBlue
 
 
+#elif defined(ROBOTIS)
+// ============================================================================= Robotis specific
+
+/******************************************************************************
+ * The MIT License
+ *
+ * Copyright (c) 2010 LeafLabs LLC.
+ * libcs3_stm32_med_density.a
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use, copy,
+ * modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS
+ * BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
+ * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *****************************************************************************/
+
+// Force init to be called *first*, i.e. before static object allocation.
+// Otherwise, statically allocated objects that need libmaple may fail.
+#include "Pandora.h"
+
+__attribute__(( constructor )) void premain() {
+    init();
+}
+int main(void) {
+    setup();
+    
+    while (1) {
+        loop();
+    }
+    return 0;
+}
+
+
+
 #elif defined(MAPLE_IDE)
 // ============================================================================= Maple specific
+
+#include <WProgram.h>
 
 // *****************************************************************************
 //  The MIT License
@@ -360,6 +483,74 @@ int main(void)
     for(;;)
         loop();
 }
+
+#elif defined(RFDUINO)
+// ============================================================================= RFduino specific
+
+/*
+ Copyright (c) 2013 OpenSourceRF.com.  All right reserved.
+ 
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ 
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for more details.
+ 
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+/*
+ Copyright (c) 2011 Arduino.  All right reserved.
+ 
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ 
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ See the GNU Lesser General Public License for more details.
+ 
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+#define ARDUINO_MAIN
+#include "Arduino.h"
+
+/*
+ * \brief Main entry point of Arduino application
+ */
+int main( void )
+{
+    init();
+    
+    setup();
+    
+    for (;;)
+    {
+        loop();
+}
+
+    return 0;
+}
+
 
 #elif defined(COSA)
 // ============================================================================= Cosa for AVR specific
@@ -513,6 +704,34 @@ namespace __cxxabiv1
     extern "C" void __cxa_pure_virtual(void) 
     {
     }
+}
+
+
+#elif defined(REDBEARLAB)
+// ============================================================================= RedBearLab specific
+
+#define ARDUINO_MAIN
+
+#include "Arduino.h"
+
+/*
+ * \brief Main entry point of Arduino application
+ */
+
+
+int main( void )
+{
+    lfclk_config();
+    //RTC1_Init();
+    rtc_timer_init();
+    setup();
+    
+    for (;;)
+    {
+        loop();
+    }
+    
+    return 0;
 }
 
 
@@ -768,8 +987,8 @@ int main(void)
 }
 
 
-#endif                                                                          // architecture
-#endif                                                                          // Arduino
+#endif                                                                          // end architecture
+#endif                                                                          // end Arduino
 
 #else                                                                           // error
 #error Platform not defined
@@ -780,4 +999,6 @@ int main(void)
 
 
 #endif                                                                          // end embedXcode
+
+
 

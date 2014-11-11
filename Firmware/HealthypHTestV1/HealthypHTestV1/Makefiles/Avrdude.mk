@@ -8,7 +8,7 @@
 # All rights reserved
 #
 #
-# Last update: Apr 22, 2014 release 151
+# Last update: Oct 26, 2014 release 222
 
 
 
@@ -37,9 +37,24 @@ ifndef AVRDUDE_COM_OPTS
     AVRDUDE_COM_OPTS  = -q -V -F -p$(MCU) -C$(AVRDUDE_CONF)
 endif
 
-ifndef AVRDUDE_OPTS
+# Normal programming info
+#
+ifeq ($(AVRDUDE_PROGRAMMER),)
+    AVRDUDE_PROGRAMMER = $(call PARSE_BOARD,$(BOARD_TAG),upload.protocol)
+endif
+
+ifeq ($(AVRDUDE_BAUDRATE),)
+    AVRDUDE_BAUDRATE   = $(call PARSE_BOARD,$(BOARD_TAG),upload.speed)
+endif
+
+#ifndef AVRDUDE_OPTS
+ifeq ($(AVRDUDE_OPTS),)
 #    AVRDUDE_OPTS      = -c$(AVRDUDE_PROGRAMMER) -b$(AVRDUDE_BAUDRATE) -P$(AVRDUDE_PORT)
-    AVRDUDE_OPTS      = -c$(AVRDUDE_PROGRAMMER) -b$(AVRDUDE_BAUDRATE)
+    ifeq ($(AVRDUDE_BAUDRATE),)
+        AVRDUDE_OPTS      = -c$(AVRDUDE_PROGRAMMER)
+    else
+        AVRDUDE_OPTS      = -c$(AVRDUDE_PROGRAMMER) -b$(AVRDUDE_BAUDRATE)
+    endif
 endif
 
 ifndef AVRDUDE_MCU
@@ -54,16 +69,6 @@ ifneq ($(ISP_PORT),)
     AVRDUDE_ISP_OPTS  = -P $(ISP_PORT) $(ISP_PROG)
 else
     AVRDUDE_ISP_OPTS  = $(ISP_PROG)
-endif
-
-# normal programming info
-#
-ifndef AVRDUDE_PROGRAMMER
-    AVRDUDE_PROGRAMMER = $(call PARSE_BOARD,$(BOARD_TAG),upload.protocol)
-endif
-
-ifndef AVRDUDE_BAUDRATE
-    AVRDUDE_BAUDRATE   = $(call PARSE_BOARD,$(BOARD_TAG),upload.speed)
 endif
 
 # fuses if you're using e.g. ISP

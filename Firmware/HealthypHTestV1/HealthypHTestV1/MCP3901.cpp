@@ -5,7 +5,8 @@
 //  Created by Margaret Johnson on 9/24/14.
 //  Copyright (c) 2014 Margaret Johnson. All rights reserved.
 //
-
+#define ADC_WIDTH 2
+#define CHAR_BIT 8
 //used to set the last bit of the control byte - 1 = read, 0 = write
 const char register_read = 1;
 const char register_write = 0;
@@ -16,6 +17,7 @@ const byte address_config1_control = (0x0A << 1); //0X0A = 0000 0000 0000 1010 0
 
 //the ADC CH0 and CH1 bytes begin at the MSB of CH0, then increment from there
 const byte address_CH0_msb = 0x00;  //address of MSB of CH0
+const byte address_CH1_msb = 0x03 << 1;
 
 
 MCP3901::MCP3901(byte cs_n, byte reset_n, byte dr_n)
@@ -38,6 +40,7 @@ MCP3901::MCP3901(byte cs_n, byte reset_n, byte dr_n)
 }
 /******************************************************************************
  * Read the 24 bit ADC value from either CH0 or CH1
+ * TEST: 16 bit read.
  *******************************************************************************/
 int32_t MCP3901::read_value(byte channel_num)
 {
@@ -47,34 +50,61 @@ int32_t MCP3901::read_value(byte channel_num)
         case 0:
             break;
         case 1:
-            readaddress = address_CH0_msb + 3;
+            //CH1 starts at address 3.  This needs to be bit shifted one since the address bits
+            //are bits 1 - 5.  3 << 1 = 6.  Bit 0 = read or write.  Can ignore bits 6 & 7.
+            readaddress = address_CH1_msb;
             break;
         default:
             return -1.0;
             break;
     }
     readaddress = readaddress | register_read;
+    Serial.print("Readaddress: ");
+    Serial.println(readaddress,HEX);
     long adc_value=0;  //need 3 bytes for the ADC data
-    byte adc_value_bytes[4]={0};
+   // byte adc_value_bytes[4]={0};
+    byte adc_value_bytes[2] = {0};
     //we're using the SPI bus so set CS pin to LOW
     digitalWrite(CS_N,LOW);
+    //send in the control byte
     SPI.transfer(readaddress);
     //start with the 2nd byte since this is a 24 bit number and bit twiddling is needed if the number is negative.
-    for (byte i=1;i<4;i++){
-        adc_value_bytes[i] = SPI.transfer(0xFF);
+    //MSB first (adc_value_bytes[1] = MSB, adc_value_bytes[3] = LSB)
+//    for (byte i=1;i<4;i++){
+//        adc_value_bytes[i] = SPI.transfer(0xFF);
+//        Serial.println(adc_value_bytes[i],HEX);
+//    }
+    int16_t iADC_value=0;
+    for (byte i = 0;i<2;i++)
+    {
+        byte ret = SPI.transfer(0xFF);
+        Serial.println(ret,HEX);
+        iADC_value += ret;
+        iADC_value <<= (ADC_WIDTH-1-i)*CHAR_BIT;
     }
+//    for (byte i = 0;i<2;i++)
+//    {
+//        adc_value_bytes[i] = SPI.transfer(0xFF);
+//        Serial.println(adc_value_bytes[i],HEX);
+//    }
     //we're done using the SPI bus so set CS pin to HIGH
     digitalWrite(CS_N,HIGH);
     //numbers are stored in two's complement.  This would be super easy if what was returned was a 32 bit number.  But alas, 24 bits are returned.
     //I check the 24th bit to see if it is a 1.  If it is, this is a negative number.  If a negative number, set the MSB byte to 0xFFFF.
     //i then set the first bit of the 2nd to MSB to 0 since this is the two's complement bit for the 24 bit value.
     //i found this post on two's complement helpful: http://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html#intro
-    if (CHECK_BIT(adc_value_bytes[1],7)) {
-        adc_value_bytes[0]  = 0xFFFF;
-        adc_value_bytes[1] &= ~0x8000;
-    }
-    adc_value =   (long)adc_value_bytes[0] << 24 | (long)adc_value_bytes[1]<<16 | (long)adc_value_bytes[2] << 8  | (long)adc_value_bytes[3];
-    return(adc_value);
+//    if (CHECK_BIT(adc_value_bytes[1],7)) {
+//        Serial.println("negative number");
+//        adc_value_bytes[0]  = 0xFFFF;
+//        adc_value_bytes[1] &= ~0x8000;
+//    }
+    //adc_value =   (long)adc_value_bytes[0] << 24 | (long)adc_value_bytes[1]<<16 | (long)adc_value_bytes[2] << 8  | (long)adc_value_bytes[3];
+//   uint16_t tadc_value = adc_value_bytes[0] << 8 | adc_value_bytes[1];
+    Serial.print("ADC Value: 0x");
+    Serial.print(iADC_value,HEX);
+    Serial.print(" | ");
+    Serial.println(iADC_value);
+    return(iADC_value);
 }
 
 /******************************************************************************
@@ -168,4 +198,12 @@ void MCP3901::write_byte(byte addr,byte value)
     SPI.transfer(value);
     //done with the SPI bus - set CS pin to HIGH
     digitalWrite(CS_N,HIGH);
+}
+/******************************************************************************
+ * This is for a debugging check to see if the RESET line in hw can be seen as set.  The RESET line might show LOW for example, if the wrong RESET pin is initialized in software.  Just a simple check when debugging the SPI.
+ *******************************************************************************/
+void MCP3901::set_reset(bool high)
+{
+    if (high) digitalWrite(RESET_N,HIGH);
+    else digitalWrite(RESET_N,LOW);
 }

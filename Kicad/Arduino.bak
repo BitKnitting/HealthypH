@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 7 7
 Title ""
-Date "21 oct 2014"
+Date "10 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -62,27 +62,12 @@ Wire Wire Line
 	5750 2400 6350 2400
 Text HLabel 2500 3550 0    60   Output ~ 0
 PumpDown
-Text HLabel 6400 3000 2    60   Output ~ 0
+Text HLabel 6350 3000 2    60   Output ~ 0
 ~RESET
-Text HLabel 6450 2800 2    60   Input ~ 0
-~DR
-Wire Wire Line
-	5750 2800 6450 2800
 Text HLabel 2500 2450 0    60   Output ~ 0
 V+_ARD
 Wire Wire Line
 	3550 2450 2500 2450
-$Comp
-L ARDUINOPINS ARD1
-U 1 1 53E0F48C
-P 4650 3150
-F 0 "ARD1" H 4000 4750 60  0000 C CNN
-F 1 "ARDUINOPINS" H 4150 4950 60  0000 C CNN
-F 2 "~" H 5200 2200 60  0000 C CNN
-F 3 "~" H 5200 2200 60  0000 C CNN
-	1    4650 3150
-	1    0    0    -1  
-$EndComp
 Text HLabel 2500 2650 0    60   Input ~ 0
 GND_ARD
 Wire Wire Line
@@ -93,8 +78,6 @@ Text HLabel 2500 3750 0    60   Output ~ 0
 PumpUp
 Wire Wire Line
 	2500 3750 3550 3750
-Wire Wire Line
-	5750 3000 6400 3000
 $Comp
 L R R14
 U 1 1 540F4E5D
@@ -182,15 +165,11 @@ Wire Wire Line
 Connection ~ 1050 4350
 Wire Wire Line
 	1050 4750 1500 4750
-Text Notes 2700 5050 2    60   ~ 0
-Changed model (3 units, pins = datasheet)
 Wire Wire Line
 	3550 2850 3300 2850
 Wire Wire Line
 	3300 2850 3300 2650
 Connection ~ 3300 2650
-Text Notes 3450 3000 2    60   ~ 0
-Connected 2nd Ard GND.
 Wire Wire Line
 	3400 4750 3100 4750
 Wire Wire Line
@@ -203,4 +182,21 @@ Wire Wire Line
 	3400 4750 3400 4350
 Wire Wire Line
 	3400 4350 3550 4350
+Wire Wire Line
+	5750 3000 6350 3000
+Text HLabel 6350 2800 2    60   Input ~ 0
+~DR
+Wire Wire Line
+	5750 2800 6350 2800
+$Comp
+L ARDUINOPINS ARD?
+U 1 1 545EEF21
+P 4650 3150
+F 0 "ARD?" H 4000 4750 60  0000 C CNN
+F 1 "ARDUINOPINS" H 4150 4950 60  0000 C CNN
+F 2 "~" H 5200 2200 60  0000 C CNN
+F 3 "~" H 5200 2200 60  0000 C CNN
+	1    4650 3150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

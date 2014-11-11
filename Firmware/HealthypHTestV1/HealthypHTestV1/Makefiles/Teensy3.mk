@@ -8,7 +8,7 @@
 # All rights reserved
 #
 #
-# Last update: Mar 01, 2014 release 136
+# Last update: Oct 30, 2014 release 225
 
 
 
@@ -36,7 +36,7 @@ BUILD_CORE_C_SRCS    = $(wildcard $(BUILD_CORE_LIB_PATH)/*.c) # */
 #    BUILD_CORE_CPP_SRCS = $(filter-out %program.cpp, $(wildcard $(BUILD_CORE_LIB_PATH)/*.cpp)) # */
 #endif
 
-BUILD_CORE_OBJ_FILES  = $(BUILD_CORE_C_SRCS:.c=.o) $(BUILD_CORE_CPP_SRCS:.cpp=.o)
+BUILD_CORE_OBJ_FILES  = $(BUILD_CORE_C_SRCS:.c=.c.o) $(BUILD_CORE_CPP_SRCS:.cpp=.cpp.o)
 BUILD_CORE_OBJS       = $(patsubst $(BUILD_CORE_LIB_PATH)/%,$(OBJDIR)/%,$(BUILD_CORE_OBJ_FILES))
 
 # Sketchbook/Libraries path
@@ -87,8 +87,8 @@ EXTRA_LDFLAGS   = -mthumb -T$(CORE_LIB_PATH)/$(LDSCRIPT)
 # CXX = flags for C++ only
 # CPP = flags for both C and C++
 #
-EXTRA_CPPFLAGS  = $(addprefix -D, $(PLATFORM_TAG)) $(call PARSE_BOARD,$(BOARD_TAG),build.option3) -nostdlib -mthumb -MMD
-EXTRA_CXXFLAGS  = -fno-exceptions -fno-rtti -felide-constructors -std=gnu++0x
+EXTRA_CPPFLAGS  = $(addprefix -D,$(PLATFORM_TAG)) $(call PARSE_BOARD,$(BOARD_TAG),build.option3) -nostdlib -mthumb -MMD
+CXXFLAGS  = -fno-exceptions -fno-rtti -felide-constructors -std=gnu++0x
 
 OBJCOPYFLAGS  = -R .eeprom -O ihex
 TARGET_HEXBIN = $(TARGET_HEX)

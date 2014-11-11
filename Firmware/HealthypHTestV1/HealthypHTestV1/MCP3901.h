@@ -22,6 +22,7 @@ class MCP3901
     byte read_byte(byte addr);
     byte read_config(byte num);
     void write_config(byte num,byte value);
+    void set_reset(bool high);
 private:
     byte CS_N,RESET_N, DR_N;
     
