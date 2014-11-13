@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 7
 Title ""
-Date "11 nov 2014"
+Date "12 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -87,8 +87,7 @@ F1 "Temperature.sch" 50
 F2 "10K Therm" I R 9150 2150 60 
 F3 "V+_WallWart" I L 7250 2350 60 
 F4 "V+_WallWart_Out" O R 9150 2350 60 
-F5 "ADC_IN" O L 7250 2050 60 
-F6 "Read_Temp" I L 7250 2200 60 
+F5 "Temp_Vin" O L 7250 2100 60 
 $EndSheet
 $Sheet
 S 7300 3750 2200 1100
@@ -184,17 +183,6 @@ Wire Wire Line
 	3150 2000 2700 2000
 Wire Wire Line
 	7250 1400 6800 1400
-$Sheet
-S 7250 800  1900 700 
-U 53C9635B
-F0 "pH" 50
-F1 "pH.sch" 50
-F2 "V+_WallWart" I L 7250 1400 60 
-F3 "pH_Probe_V" I R 9150 1200 60 
-F4 "pH_Probe_GND" I R 9150 1000 60 
-F5 "ADC_IN" O L 7250 1000 60 
-F6 "Read_pH" I L 7250 1200 60 
-$EndSheet
 Wire Wire Line
 	10100 2350 9150 2350
 Wire Wire Line
@@ -227,8 +215,8 @@ F4 "PumpUp" O R 2700 4350 60
 F5 "PumpDown" O R 2700 4600 60 
 F6 "SDA" B R 2700 2000 60 
 F7 "SCL" B R 2700 1650 60 
-F8 "Read_pH" O R 2700 3300 60 
-F9 "Read_Temp" O R 2700 3700 60 
+F8 "pH_ON" O R 2700 2700 60 
+F9 "Temp_ON" O R 2700 2950 60 
 $EndSheet
 $Sheet
 S 4700 900  1950 2200
@@ -238,27 +226,27 @@ F1 "DigitalAccess.sch" 50
 F2 "V+_WallWart" I R 6650 2950 60 
 F3 "SCL" B L 4700 1650 60 
 F4 "SDA" B L 4700 2000 60 
-F5 "ADC_IN" I R 6650 1450 60 
+F5 "pH_Vin" I R 6650 1100 60 
+F6 "Temp_Vin" I R 6650 2100 60 
+F7 "pH_ON" I L 4700 2700 60 
+F8 "Temp_ON" I L 4700 2950 60 
+$EndSheet
+$Sheet
+S 7250 800  1900 700 
+U 53C9635B
+F0 "pH" 50
+F1 "pH.sch" 50
+F2 "V+_WallWart" I L 7250 1400 60 
+F3 "pH_Probe_V" I R 9150 1200 60 
+F4 "pH_Probe_GND" I R 9150 1000 60 
+F5 "pH_Vin" O L 7250 1100 60 
 $EndSheet
 Wire Wire Line
-	2700 3300 6950 3300
+	7250 1100 6650 1100
 Wire Wire Line
-	6950 3300 6950 1200
+	7250 2100 6650 2100
 Wire Wire Line
-	2700 3700 7000 3700
+	2700 2700 4700 2700
 Wire Wire Line
-	7000 3700 7000 2200
-Wire Wire Line
-	6950 1200 7250 1200
-Wire Wire Line
-	7000 2200 7250 2200
-Wire Wire Line
-	7250 1000 6750 1000
-Wire Wire Line
-	6750 1000 6750 2050
-Wire Wire Line
-	6750 2050 7250 2050
-Wire Wire Line
-	6650 1450 6750 1450
-Connection ~ 6750 1450
+	4700 2950 2700 2950
 $EndSCHEMATC

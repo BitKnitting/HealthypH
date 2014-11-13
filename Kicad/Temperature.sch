@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 7
 Title ""
-Date "11 nov 2014"
+Date "12 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -70,8 +70,8 @@ F 3 "~" H 3700 3300 30  0000 C CNN
 $EndComp
 Text HLabel 5300 3300 2    60   Input ~ 0
 10K Therm
-Text HLabel 1000 2700 0    60   Output ~ 0
-ADC_IN
+Text HLabel 1400 2700 0    60   Output ~ 0
+Temp_Vin
 Wire Wire Line
 	2650 3300 2650 3650
 Wire Wire Line
@@ -128,25 +128,8 @@ Text Notes 6700 3000 0    60   ~ 0
 Thermistor hangs off two of the 8 TB connectors.
 Wire Wire Line
 	3450 3300 2650 3300
-$Comp
-L TIP120 Q?
-U 1 1 5462158B
-P 1900 2800
-F 0 "Q?" H 1850 2650 40  0000 R CNN
-F 1 "TIP120" H 1900 2950 40  0000 R CNN
-F 2 "TO220" H 1780 2905 29  0001 C CNN
-F 3 "~" H 1900 2800 60  0000 C CNN
-	1    1900 2800
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	2100 2700 4550 2700
 Wire Wire Line
-	1700 2700 1000 2700
-Text HLabel 1150 3300 0    60   Input ~ 0
-Read_Temp
-Wire Wire Line
-	1150 3300 1900 3300
-Wire Wire Line
-	1900 3300 1900 3000
+	2100 2700 1400 2700
 $EndSCHEMATC

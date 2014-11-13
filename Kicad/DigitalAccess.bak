@@ -174,4 +174,21 @@ Connection ~ 4850 2900
 Wire Wire Line
 	4400 3450 4400 3700
 Connection ~ 4400 3700
+$Comp
+L R R?
+U 1 1 546247DE
+P 4650 3200
+F 0 "R?" V 4730 3200 40  0000 C CNN
+F 1 "R" V 4657 3201 40  0000 C CNN
+F 2 "~" V 4580 3200 30  0000 C CNN
+F 3 "~" H 4650 3200 30  0000 C CNN
+	1    4650 3200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4650 2950 4650 2900
+Connection ~ 4650 2900
+Wire Wire Line
+	4650 3450 4650 4000
+Connection ~ 4650 4000
 $EndSCHEMATC
