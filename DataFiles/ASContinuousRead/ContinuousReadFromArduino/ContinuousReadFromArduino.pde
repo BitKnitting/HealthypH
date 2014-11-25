@@ -27,11 +27,11 @@ void setup() {
  //MJ: BAD PRACTICE - hard coded serial port.  Most of the Processing sketches I saw used the line above to associate a variable to a port
  //this isn't a great idea either because as is my case - the serial port used by the ARduino IDE is not the first one...I don't know the
  //Processing code well enough to generalize.
-  String portName = "/dev/tty.usbmodem14111";
+  String portName = "/dev/tty.usbmodem1451";
   port = new Serial(this, portName, 9600);
   port.clear();  // function from serial library that throws out the first reading, in case we started reading in the middle of a string from Arduino
   //MJ: HARD CODED the path and name of the output file to hold data.  The idea is this is throwaway code where the UI IS the code.
-  output = createWriter("/Users/margaret/Documents/Lettuce Buddy HW/HealthypH/DataFiles/minipHContinuousRead/minipHTapWater.csv");
+  output = createWriter("/Users/margaret/Downloads/adc_test.csv");
   serial = port.readStringUntil(end); // function that reads the string from serial port until a println and then assigns string to our string variable (called 'serial')
   serial = null; // initially, the string will be null (empty)
 }

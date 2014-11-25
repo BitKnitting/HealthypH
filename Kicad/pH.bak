@@ -36,9 +36,9 @@ EELAYER 27 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 7
+Sheet 7 7
 Title ""
-Date "11 nov 2014"
+Date "12 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -46,8 +46,8 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text HLabel 1350 3200 0    60   Output ~ 0
-ADC_IN
+Text HLabel 1750 3200 0    60   Output ~ 0
+pH_Vin
 $Comp
 L R R4
 U 1 1 53D7D158
@@ -203,31 +203,12 @@ V+_WallWart
 Wire Wire Line
 	7450 2500 8400 2500
 Connection ~ 7750 2500
-$Comp
-L TIP120 Q?
-U 1 1 54622290
-P 1800 3300
-F 0 "Q?" H 1750 3150 40  0000 R CNN
-F 1 "TIP120" H 1800 3450 40  0000 R CNN
-F 2 "TO220" H 1680 3405 29  0001 C CNN
-F 3 "~" H 1800 3300 60  0000 C CNN
-	1    1800 3300
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	2000 3200 3450 3200
 Connection ~ 2350 3200
 Wire Wire Line
-	1600 3200 1350 3200
-Wire Wire Line
-	1800 3650 1800 3500
-Text HLabel 1350 3650 0    60   Input ~ 0
-Read_pH
-Wire Wire Line
-	1350 3650 1800 3650
+	2000 3200 1750 3200
 Wire Wire Line
 	2950 4100 2950 3200
 Connection ~ 2950 3200
-Text Notes 900  3800 0    60   ~ 0
-HIGH from Arduino = read pH
 $EndSCHEMATC

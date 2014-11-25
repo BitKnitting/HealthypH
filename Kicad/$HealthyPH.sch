@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 7
 Title ""
-Date "12 nov 2014"
+Date "25 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -57,28 +57,6 @@ Text Notes 2900 4900 0    118  ~ 0
 Arduino +5V
 Text Notes 4300 750  0    118  ~ 0
 9-12V Wall Wart
-$Comp
-L R R6
-U 1 1 53E4B553
-P 3400 1650
-F 0 "R6" V 3480 1650 40  0000 C CNN
-F 1 "499" V 3407 1651 40  0000 C CNN
-F 2 "~" V 3330 1650 30  0000 C CNN
-F 3 "~" H 3400 1650 30  0000 C CNN
-	1    3400 1650
-	0    -1   -1   0   
-$EndComp
-$Comp
-L R R7
-U 1 1 53E4B560
-P 3400 2000
-F 0 "R7" V 3480 2000 40  0000 C CNN
-F 1 "499" V 3407 2001 40  0000 C CNN
-F 2 "~" V 3330 2000 30  0000 C CNN
-F 3 "~" H 3400 2000 30  0000 C CNN
-	1    3400 2000
-	0    -1   -1   0   
-$EndComp
 $Sheet
 S 7250 1900 1900 600 
 U 53C98328
@@ -142,9 +120,9 @@ Wire Notes Line
 Wire Notes Line
 	600  600  3000 600 
 Wire Wire Line
-	3650 1650 4700 1650
+	2700 1650 4700 1650
 Wire Wire Line
-	3650 2000 4700 2000
+	2700 2000 4700 2000
 Wire Wire Line
 	10000 2150 9150 2150
 Wire Wire Line
@@ -177,10 +155,6 @@ Wire Wire Line
 	10700 1800 10700 4500
 Wire Wire Line
 	10700 4500 9500 4500
-Wire Wire Line
-	3150 1650 2700 1650
-Wire Wire Line
-	3150 2000 2700 2000
 Wire Wire Line
 	7250 1400 6800 1400
 Wire Wire Line
@@ -215,8 +189,8 @@ F4 "PumpUp" O R 2700 4350 60
 F5 "PumpDown" O R 2700 4600 60 
 F6 "SDA" B R 2700 2000 60 
 F7 "SCL" B R 2700 1650 60 
-F8 "pH_ON" O R 2700 2700 60 
-F9 "Temp_ON" O R 2700 2950 60 
+F8 "pH_OFF" O R 2700 2700 60 
+F9 "Temp_OFF" O R 2700 2950 60 
 $EndSheet
 $Sheet
 S 4700 900  1950 2200
@@ -228,8 +202,8 @@ F3 "SCL" B L 4700 1650 60
 F4 "SDA" B L 4700 2000 60 
 F5 "pH_Vin" I R 6650 1100 60 
 F6 "Temp_Vin" I R 6650 2100 60 
-F7 "pH_ON" I L 4700 2700 60 
-F8 "Temp_ON" I L 4700 2950 60 
+F7 "pH_OFF" I L 4700 2700 60 
+F8 "Temp_OFF" I L 4700 2950 60 
 $EndSheet
 $Sheet
 S 7250 800  1900 700 

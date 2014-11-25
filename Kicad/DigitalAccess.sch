@@ -38,7 +38,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 6 7
 Title ""
-Date "12 nov 2014"
+Date "25 nov 2014"
 Rev ""
 Comp ""
 Comment1 ""
@@ -59,23 +59,10 @@ F 3 "" H 5650 4950 60  0000 C CNN
 	1    5650 4950
 	1    0    0    -1  
 $EndComp
-$Comp
-L VREF U?
-U 1 1 5461FB75
-P 5700 2150
-F 0 "U?" H 6200 2000 60  0000 C CNN
-F 1 "VREF" H 6250 2300 60  0000 C CNN
-F 2 "" H 5450 2250 60  0000 C CNN
-F 3 "" H 5450 2250 60  0000 C CNN
-	1    5700 2150
-	1    0    0    -1  
-$EndComp
 Text HLabel 4650 1400 0    60   Input ~ 0
 V+_WallWart
 Wire Wire Line
-	5700 1400 5700 1600
-Wire Wire Line
-	5700 3200 5700 2800
+	5700 1400 5700 3200
 Text HLabel 4150 3700 0    60   BiDi ~ 0
 SCL
 Wire Wire Line
@@ -83,7 +70,7 @@ Wire Wire Line
 Text HLabel 4150 4000 0    60   BiDi ~ 0
 SDA
 Wire Wire Line
-	4800 4000 4150 4000
+	4150 4000 4800 4000
 $Comp
 L MCP3221 U?
 U 1 1 5461FD90
@@ -108,8 +95,6 @@ F 3 "~" H 5050 1700 60  0000 C CNN
 	1    5050 1700
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5050 1400 8700 1400
 Wire Wire Line
 	5050 1400 5050 1500
 Wire Wire Line
@@ -213,7 +198,6 @@ Wire Wire Line
 	8700 4450 8700 4650
 Wire Wire Line
 	8700 1400 8700 3250
-Connection ~ 5700 1400
 Text HLabel 9850 3800 2    60   Input ~ 0
 pH_Vin
 Wire Wire Line
@@ -223,11 +207,14 @@ Temp_Vin
 Wire Wire Line
 	9850 4100 9400 4100
 Text HLabel 9850 3650 2    60   Input ~ 0
-pH_ON
+pH_OFF
 Wire Wire Line
 	9400 3650 9850 3650
 Text HLabel 9850 3950 2    60   Input ~ 0
-Temp_ON
+Temp_OFF
 Wire Wire Line
 	9400 3950 9850 3950
+Wire Wire Line
+	5050 1400 8700 1400
+Connection ~ 5700 1400
 $EndSCHEMATC

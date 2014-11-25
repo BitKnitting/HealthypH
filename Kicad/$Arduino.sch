@@ -87,11 +87,11 @@ Wire Wire Line
 Text HLabel 950  4550 0    60   BiDi ~ 0
 SCL
 Text HLabel 6950 4200 2    60   Output ~ 0
-pH_ON
+pH_OFF
 Wire Wire Line
 	5750 4200 6950 4200
 Text HLabel 6950 4000 2    60   Output ~ 0
-Temp_ON
+Temp_OFF
 Wire Wire Line
 	5750 4000 6950 4000
 $EndSCHEMATC
